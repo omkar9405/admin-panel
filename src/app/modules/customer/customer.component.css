@@ -1,0 +1,14 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    top: 20px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
