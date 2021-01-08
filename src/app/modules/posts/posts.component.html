@@ -1,38 +1,39 @@
-
-<mat-card>
-    <a mat-list-item routerLinkActive="list-item-active" (click)="clicked()">
+<div class="posts">
+<mat-card (click)="clicked()">
+    <a mat-list-item routerLinkActive="list-item-active" >
         Post 1
     </a>
 </mat-card>
-<mat-divider></mat-divider>
 
-<mat-card>
-    <a mat-list-item routerLinkActive="list-item-active" (click)="clicked()">
+
+<mat-card (click)="clicked()">
+    <a mat-list-item routerLinkActive="list-item-active" >
         Post 2
     </a>
 </mat-card>
-<mat-divider></mat-divider>
 
-<mat-card>
-    <a mat-list-item routerLinkActive="list-item-active" (click)="clicked()">
+
+<mat-card (click)="clicked()">
+    <a mat-list-item routerLinkActive="list-item-active" >
         Post 3
     </a>
 </mat-card>
-<mat-divider></mat-divider>
-<mat-card>
-    <a mat-list-item routerLinkActive="list-item-active" (click)="clicked()">
-        Post 2
+
+<mat-card (click)="clicked()">
+    <a mat-list-item routerLinkActive="list-item-active" >
+        Post 4
     </a>
 </mat-card>
-<mat-divider></mat-divider>
 
-<mat-card>
-    <a mat-list-item routerLinkActive="list-item-active" (click)="clicked()">
-        Post 3
+
+<mat-card (click)="clicked()">
+    <a mat-list-item routerLinkActive="list-item-active" >
+        Post 5
     </a>
 </mat-card>
-<mat-divider></mat-divider>
 
+</div>
+<div class="Post">
 <router-outlet></router-outlet>
-
+</div>
 <mat-divider></mat-divider>
