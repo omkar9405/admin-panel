@@ -1,4 +1,5 @@
 import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,12 +9,16 @@ import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+  constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
   toggleSidebar(){
     this.toggleSideBarForMe.emit();
+  }
+  logout()
+  {
+    this.router.navigate(['login'],{relativeTo:this.route});
   }
 
 }

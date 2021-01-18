@@ -1,0 +1,46 @@
+<section fxLayout="row wrap" fxLayoutAlign="center ">
+    <mat-card fxFlex="500px" fxFlex.xs="100%">
+        <mat-card-title>Create a new employee</mat-card-title>
+        <form [formGroup]="employeeForm" autocomplete="off" novalidate (ngSubmit)="createOwner(employeeForm.value)" fxLayout="column wrap"
+      fxLayoutAlign="center" fxLayoutGap="10px">
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput type="text" placeholder="Employee's name" formControlName="name" id="name">
+                <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+                <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+                <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 60 characters</mat-error>
+              </mat-form-field>
+              
+              <mat-form-field>
+                <mat-label>Type</mat-label>
+                <mat-select  placeholder="Type"  formControlName="type">
+                    <mat-option value="option1">Option 1</mat-option>
+                    <mat-option value="option2" >Option 2 (disabled)</mat-option>
+                    <mat-option value="option3">Option 3</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" 
+                    readonly (click)="picker.open()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              
+              <mat-form-field>
+                <input matInput type="text" placeholder="Employee's address" formControlName="address">
+                <mat-hint align="end">Not more then 100 characters long.</mat-hint>
+                <mat-error *ngIf="hasError('address', 'required')">Address is required</mat-error>
+                <mat-error *ngIf="hasError('address', 'maxlength')">You have more than 100 characters</mat-error>
+              </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+            <mat-card-actions align="center">
+                <button mat-raised-button color="primary" [disabled]="!employeeForm.valid">Create</button>
+                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+              </mat-card-actions>
+        </mat-card-actions>
+        </form> 
+    </mat-card>
+  </section>

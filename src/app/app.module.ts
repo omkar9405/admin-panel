@@ -5,8 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layout/default/default.module';
-
-
+import { ViewemployeeComponent } from './modules/employee/viewemployee/viewemployee.component';
 
 @NgModule({
   declarations: [

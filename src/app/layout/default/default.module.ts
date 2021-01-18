@@ -12,14 +12,24 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'; 
 import { MatIconModule } from '@angular/material/icon';
 import { SharedModule } from 'src/app/shared/shared.module';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { AdminComponent } from 'src/app/modules/admin/admin.component';
 import { CustomerComponent } from 'src/app/modules/customer/customer.component';
 import { EmployeeComponent } from 'src/app/modules/employee/employee.component';
-import {MatCardModule} from '@angular/material/card';
+import { AddEmployeeComponent } from 'src/app/modules/employee/add-employee/add-employee.component';
+import { ViewemployeeComponent } from 'src/app/modules/employee/viewemployee/viewemployee.component';
+import { MatCardModule } from '@angular/material/card';
 import { ViewpostComponent } from 'src/app/modules/posts/viewpost/viewpost.component';
+import { SignupComponent } from 'src/app/signup/signup.component';
+import { LoginComponent } from 'src/app/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 @NgModule({
   declarations: [
@@ -29,12 +39,17 @@ import { ViewpostComponent } from 'src/app/modules/posts/viewpost/viewpost.compo
     AdminComponent,
     CustomerComponent,
     EmployeeComponent,
-    ViewpostComponent
+    ViewpostComponent,
+    AddEmployeeComponent,
+    SignupComponent,
+    LoginComponent,
+    ViewemployeeComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatDividerModule,
     MatPaginatorModule,
@@ -45,7 +60,10 @@ import { ViewpostComponent } from 'src/app/modules/posts/viewpost/viewpost.compo
     MatInputModule,
     MatTableModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class DefaultModule { }
