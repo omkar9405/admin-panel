@@ -11,11 +11,13 @@ import { AddEmployeeComponent } from './modules/employee/add-employee/add-employ
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ViewemployeeComponent } from './modules/employee/viewemployee/viewemployee.component';
+import { AuthGuard } from './_helper';
 
 const routes: Routes = [
   {
     path:'',
-    component: LoginComponent
+    redirectTo:  'login',
+    pathMatch:  'full'
   },
   {
     path:'login',
@@ -27,7 +29,7 @@ const routes: Routes = [
   },
 {
     path:'app',
-    component: DefaultComponent,
+    component: DefaultComponent,canActivate: [AuthGuard],
     children:[{
       path:'dashboard',
       component: DashboardComponent

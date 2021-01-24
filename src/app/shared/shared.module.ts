@@ -27,7 +27,6 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     MatMenuModule,
     MatListModule,
-
     RouterModule
   ],
   exports:[

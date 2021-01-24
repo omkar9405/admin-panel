@@ -28,9 +28,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+//import { CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule } from 'ng-uikit-pro-standard'
+// MDB Angular Free
+import { CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 
-
-
+import { SelectModule } from 'ng-uikit-pro-standard';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -44,6 +46,8 @@ import { MatSelectModule } from '@angular/material/select';
     SignupComponent,
     LoginComponent,
     ViewemployeeComponent,
+    LoginComponent
+    
   ],
   imports: [
     CommonModule,
@@ -63,7 +67,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule
   ]
 })
 export class DefaultModule { }

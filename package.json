@@ -23,8 +23,11 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "angular-bootstrap-md": "^10.1.1",
+    "g": "^2.0.1",
     "highcharts": "^8.2.2",
     "highcharts-angular": "^2.8.2",
+    "ng-uikit-pro-standard": "^1.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
