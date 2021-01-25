@@ -2,37 +2,46 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import jwt_decode from 'jwt-decode';
 import { environment } from '../../environments/environment';
-import { User } from '../_models/user';
+import { Customer } from '../_models/customer';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+    private currentCustomerSubject: BehaviorSubject<Customer>;
+    public currentCustomer: Observable<Customer>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        this.currentUser = this.currentUserSubject.asObservable();
+        this.currentCustomerSubject = new BehaviorSubject<Customer>(JSON.parse(localStorage.getItem('currentCustomer')));
+        this.currentCustomer = this.currentCustomerSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
-        return this.currentUserSubject.value;
+    public get currentCustomerValue(): Customer {
+        return this.currentCustomerSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, { username, password })
-            .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
-                return user;
+    login(email: string, password: string) {
+        return this.http.post<any>(`${environment.apiUrl}/customers/login`, { email, password })
+            .pipe(map(customer => {
+                // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
+                const cust=this.getDecodedAccessToken(customer.token)
+                localStorage.setItem('currentCustomer', JSON.stringify(cust));
+                this.currentCustomerSubject.next(cust);
+                return cust;
             }));
     }
+    getDecodedAccessToken(token: string): any {
+        try{
+            return jwt_decode(token);
+        }
+        catch(Error){
+            return null;
+        }
+      }
 
     logout() {
-        // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+        // remove Customer from local storage to log Customer out
+        localStorage.removeItem('currentCustomer');
+        this.currentCustomerSubject.next(null);
     }
 }

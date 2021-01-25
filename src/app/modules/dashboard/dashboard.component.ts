@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   constructor() { 
-    console.log(localStorage.getItem('currentUser'));
+    console.log(localStorage.getItem('currentCustomer'));
   }
 
   ngOnInit(): void {

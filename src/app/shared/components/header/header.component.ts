@@ -2,7 +2,7 @@ import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { User } from '../../../_models/user';
+import { Customer } from '../../../_models/customer';
 import { AuthenticationService } from '../../../_services/authentication.service';
 
 @Component({
@@ -13,7 +13,7 @@ import { AuthenticationService } from '../../../_services/authentication.service
 export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
   constructor(private router:Router,private route:ActivatedRoute,private authenticationService: AuthenticationService) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    this.authenticationService.currentCustomer.subscribe(x => this.currentCustomer = x);
    }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   toggleSidebar(){
     this.toggleSideBarForMe.emit();
   }
-  currentUser: User;
+  currentCustomer: Customer;
 
    
 
