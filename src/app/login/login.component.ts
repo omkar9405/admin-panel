@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../_services/authentication.service';
@@ -26,7 +25,6 @@ export class LoginComponent implements OnInit {
         // redirect to home if already logged in
         if (this.authenticationService.currentCustomerValue) { 
             this.router.navigate(['/app']);
-           
         }
     }
 

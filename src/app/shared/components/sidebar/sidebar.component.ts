@@ -7,11 +7,17 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+name="";
+email="";
   constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.router.navigate(['dashboard'],{relativeTo:this.route});
+    var customer=localStorage.getItem('currentCustomer');
+    var json = JSON.parse(customer);
+    var obj=json["customer"];
+    this.name=obj["name"];
+   this.email=obj["email"];
   }
   dash()
   {
