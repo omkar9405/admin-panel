@@ -12,6 +12,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ViewemployeeComponent } from './modules/employee/viewemployee/viewemployee.component';
 import { AuthGuard } from './_helper';
+import { HomeComponent } from './components/home/home.component';
+import { TaskersComponent } from './components/taskers/taskers.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,14 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'home',
+    component:HomeComponent
+  },
+  {
+    path:'tasker',
+    component:TaskersComponent
   },
   {
     path:'signup',

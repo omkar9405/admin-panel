@@ -9,11 +9,19 @@ import { MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { MDBBootstrapModule, DropdownModule } from 'angular-bootstrap-md';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './_helper';
+import { HomeComponent } from './components/home/home.component';
+import { TaskersComponent } from './components/taskers/taskers.component';
+import { TeamComponent } from './components/team/team.component';
+import { HfooterComponent } from './components/hfooter/hfooter.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    TaskersComponent,
+    TeamComponent,
+    HfooterComponent,
    
   ],
   imports: [

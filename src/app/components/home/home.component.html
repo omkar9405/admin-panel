@@ -1,0 +1,201 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">AtYourService</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#">
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn bg-back text-white" data-target="#signup-modal"
+                        data-toggle="modal">
+                        Sign In / Sign Up
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Select your city -->
+<div class="container">
+    <div class="row custom-section d-flex align-items-center">
+        <div class="col-12 col-lg-4">
+            <h1 class="fw-bold fs-1">JustDial For a Service</h1>
+            <p>Hand-picked professionals at your service.</p>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Where do u need a service</h5>
+                    <div class="dropdown d-inline-block">
+                        <button class="btn dropdown-toggle btn-lg btn-primary" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select your City
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Pune</a>
+                            <a class="dropdown-item" href="#">Mumbai</a>
+                            <a class="dropdown-item" href="#">Kolhapur</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-8">
+            <img src="./assets/bcg.jpg" />
+        </div>
+    </div>
+</div>
+
+<!-- Info section -->
+<!-- Why our service -->
+<div class="container">
+    <div class="row p-4">
+        <div class="col-md-6 mt-4">
+            <h1 class="p-3">Why At Your Service</h1>
+            <div class="d-flex">
+                <i class="fas fa-hand-holding-usd p-3 fa-3x" style="color: #F57C47;"></i>
+                <div class="mb-2 p-2">
+                    <h4>Transparent Pricing</h4>
+                    <span class="text-secondary">No hidden charges</span>
+                </div>
+            </div>
+            <div class="d-flex">
+                <i class="fas fa-users-cog p-3 fa-3x" style="color:#F57C47;"></i>
+                <div class="p-2 mb-2">
+                    <h4>Experts Only</h4>
+                    <span class="text-secondary">Professionals are well trained</span>
+                </div>
+            </div>
+            <div class="d-flex">
+                <i class="fas fa-tools p-3 fa-3x" style="color: #F57C47;"></i>
+                <div class="p-2">
+                    <h4>Fully Equipped</h4>
+                    <span class="text-secondary">We bring everything to get job done</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-4" style="background-color: #DCEDF5;">
+            <i class="fad fa-shield-check fa-9x p-4 mb-4"></i>
+            <h1 class="ml-3">100% Quality Assured</h1>
+        </div>
+    </div>
+</div>
+<app-taskers></app-taskers>
+
+<!-- modal Sign In / Sign Up -->
+<div class="modal" id="signup-modal">
+    <div class="modal-dialog modal-lg .modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container mt-2 mb-4">
+                    <div class="col-sm-8 ml-auto mr-auto pt-4">
+                        <ul class="nav nav-pills nav-fill mb-1" id="pills-tab" role="tablist">
+                            <li class="nav-item"> <a class="nav-link active" id="pills-signin-tab"
+                                    data-toggle="pill" href="#pills-signin" role="tab" aria-controls="pills-signin"
+                                    aria-selected="true">Sign In</a> </li>
+                            <li class="nav-item"> <a class="nav-link" id="pills-signup-tab" data-toggle="pill"
+                                    href="#pills-signup" role="tab" aria-controls="pills-signup"
+                                    aria-selected="false">Sign Up</a> </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-signin" role="tabpanel"
+                                aria-labelledby="pills-signin-tab">
+                                <div class="col-sm-12 border border-primary shadow rounded pt-2 mt-3">
+                                    <form method="post" id="singninFrom">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Email <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="email" name="email" id="email" class="form-control"
+                                                placeholder="Enter valid email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" name="password" id="password"
+                                                class="form-control" placeholder="***********" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label><input type="checkbox" name="condition" id="condition">
+                                                        Remember me.</label>
+                                                </div>
+                                                <div class="col text-right"> <a href="javascript:;"
+                                                        data-toggle="modal" data-target="#forgotPass">Forgot
+                                                        Password?</a> </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="submit" value="Sign In"
+                                                class="btn btn-block btn-primary">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-signup" role="tabpanel"
+                                aria-labelledby="pills-signup-tab">
+                                <div class="col-sm-12 border border-primary shadow rounded pt-2 mt-3">
+                                    <form method="post" id="singnupFrom">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Email <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="email" name="signupemail" id="signupemail"
+                                                class="form-control" placeholder="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" name="signupusername" id="signupusername"
+                                                class="form-control" placeholder="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Phone Number</label>
+                                            <input type="text" name="signupphone" id="signupphone"
+                                                class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Password <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="password" name="signuppassword" id="signuppassword"
+                                                class="form-control" placeholder="" pattern="^\S{6,}$"
+                                                onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;"
+                                                required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><input type="checkbox" name="signupcondition"
+                                                    id="signupcondition" required> I agree with the <a
+                                                    href="javascript:;">Terms &amp;
+                                                    Conditions</a> for
+                                                Registration.</label>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" name="signupsubmit" value="Sign Up"
+                                                class="btn btn-block btn-primary">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-hfooter></app-hfooter>
