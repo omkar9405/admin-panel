@@ -18,7 +18,7 @@ import { TaskersComponent } from './components/taskers/taskers.component';
 const routes: Routes = [
   {
     path:'',
-    redirectTo:  'login',
+    redirectTo:  'home',
     pathMatch:  'full'
   },
   {

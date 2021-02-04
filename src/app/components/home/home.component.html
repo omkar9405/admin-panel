@@ -98,8 +98,8 @@
 <app-taskers></app-taskers>
 
 <!-- modal Sign In / Sign Up -->
-<div class="modal" id="signup-modal">
-    <div class="modal-dialog modal-lg .modal-dialog-centered">
+<div class="modal " id="signup-modal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="container mt-2 mb-4">
@@ -115,42 +115,96 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-signin" role="tabpanel"
                                 aria-labelledby="pills-signin-tab">
+                                <div class="alert alert-info">
+                                    Username: omkarpowar612@gmail.com<br />
+                                    Password: omkar@123
+                                </div>
                                 <div class="col-sm-12 border border-primary shadow rounded pt-2 mt-3">
-                                    <form method="post" id="singninFrom">
+                                    <form  [formGroup]="loginRequest" (ngSubmit)="onSubmit()">
                                         <div class="form-group">
-                                            <label class="font-weight-bold">Email <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="email" name="email" id="email" class="form-control"
-                                                placeholder="Enter valid email" required>
+                                            <label 
+                                                class="font-weight-bold" 
+                                                for="username"
+                                                >Email 
+                                                <span 
+                                                class="text-danger"
+                                                >*</span>
+                                            </label>
+                                            <input 
+                                                type="email" 
+                                            
+                                                class="form-control"
+                                                formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }" 
+                                               
+                                                placeholder="Enter valid email">
+                                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                                </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="font-weight-bold">Password <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="password" name="password" id="password"
-                                                class="form-control" placeholder="***********" required>
+                                            <label 
+                                                class="font-weight-bold" 
+                                                for="password"
+                                                >Password 
+                                                <span
+                                                class="text-danger"
+                                                >*</span>
+                                            </label>
+                                            <input 
+                                                type="password"  
+                                                
+                                                formControlName="password" 
+                                                class="form-control" 
+                                                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                                                
+                                                placeholder="***********" 
+                                                >
+                                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                                </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="row">
                                                 <div class="col">
-                                                    <label><input type="checkbox" name="condition" id="condition">
-                                                        Remember me.</label>
+                                                    <label>
+                                                        <input 
+                                                        type="checkbox" 
+                                                        name="condition" 
+                                                        id="condition">
+                                                        Remember me.
+                                                    </label>
                                                 </div>
-                                                <div class="col text-right"> <a href="javascript:;"
-                                                        data-toggle="modal" data-target="#forgotPass">Forgot
-                                                        Password?</a> </div>
+                                                <div class="col text-right"> 
+                                                    <a href="javascript:;"
+                                                       data-toggle="modal" 
+                                                       data-target="#forgotPass"
+                                                       >Forgot Password?
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="submit" name="submit" value="Sign In"
-                                                class="btn btn-block btn-primary">
-                                        </div>
+                                        <!-- <div class="form-group">
+                                            <input 
+                                                type="submit" 
+                                                name="submit" 
+                                                value="Sign In"
+                                                class="btn btn-block btn-primary"
+                                                (click)="login()"  >
+                                            
+                                        </div> -->
+                                        <button [disabled]="loading" class="btn btn-primary">
+                                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                            Login
+                                        </button>
+                                        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                                     </form>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-signup" role="tabpanel"
                                 aria-labelledby="pills-signup-tab">
                                 <div class="col-sm-12 border border-primary shadow rounded pt-2 mt-3">
-                                    <form method="post" id="singnupFrom">
+                                    <!-- <form id="singnupFrom">
                                         <div class="form-group">
                                             <label class="font-weight-bold">Email <span
                                                     class="text-danger">*</span></label>
@@ -187,7 +241,7 @@
                                             <input type="submit" name="signupsubmit" value="Sign Up"
                                                 class="btn btn-block btn-primary">
                                         </div>
-                                    </form>
+                                    </form> -->
                                 </div>
                             </div>
                         </div>

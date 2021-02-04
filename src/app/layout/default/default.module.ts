@@ -33,6 +33,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 
 import { SelectModule } from 'ng-uikit-pro-standard';
+import { HomeComponent } from 'src/app/components/home/home.component';
+import { TaskersComponent } from 'src/app/components/taskers/taskers.component';
+import { TeamComponent } from 'src/app/components/team/team.component';
+import { HfooterComponent } from 'src/app/components/hfooter/hfooter.component';
+import { ServicesComponent } from 'src/app/components/services/services.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -46,7 +51,11 @@ import { SelectModule } from 'ng-uikit-pro-standard';
     SignupComponent,
     LoginComponent,
     ViewemployeeComponent,
-    LoginComponent
+    HomeComponent,
+    TaskersComponent,
+    TeamComponent,
+    HfooterComponent,
+    ServicesComponent,
     
   ],
   imports: [
