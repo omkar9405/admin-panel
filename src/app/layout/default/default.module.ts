@@ -23,7 +23,7 @@ import { ViewemployeeComponent } from 'src/app/modules/employee/viewemployee/vie
 import { MatCardModule } from '@angular/material/card';
 import { ViewpostComponent } from 'src/app/modules/posts/viewpost/viewpost.component';
 import { SignupComponent } from 'src/app/signup/signup.component';
-import { LoginComponent } from 'src/app/login/login.component';
+import { LoginComponent } from 'src/app/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
