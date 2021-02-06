@@ -8,12 +8,18 @@ import { EmployeeComponent } from './modules/employee/employee.component';
 import { CustomerComponent } from './modules/customer/customer.component';
 import { ViewpostComponent } from './modules/posts/viewpost/viewpost.component';
 import { AddEmployeeComponent } from './modules/employee/add-employee/add-employee.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewemployeeComponent } from './modules/employee/viewemployee/viewemployee.component';
 import { AuthGuard } from './_helper';
 import { HomeComponent } from './components/home/home.component';
 import { TaskersComponent } from './components/taskers/taskers.component';
+import { LogincustomerComponent } from './customer/logincustomer/logincustomer.component';
+import { LoginemployeeComponent } from './employees/loginemployee/loginemployee.component';
+import { EmployeeprofileComponent } from './employees/employeeprofile/employeeprofile.component';
+import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
+import { ViewcustomerComponent } from './modules/customer/viewcustomer/viewcustomer.component';
+import { EditcustomerComponent } from './modules/customer/editcustomer/editcustomer.component';
 
 const routes: Routes = [
   {
@@ -33,10 +39,6 @@ const routes: Routes = [
   {
     path:'tasker',
     component:TaskersComponent
-  },
-  {
-    path:'signup',
-    component: SignupComponent
   },
 {
     path:'app',
@@ -71,10 +73,38 @@ const routes: Routes = [
   },
   {
     path:'customer',
-    component: CustomerComponent
+    component: CustomerComponent,
+    children:[
+    {
+      path:'viewcustomer/:id',
+      component: ViewcustomerComponent
+    },
+    {
+      path:'editcustomer/:id',
+      component: EditcustomerComponent
+    }
+    ]
   },
   ]
-  }
+  },
+  {
+    path:'customerLogin',
+    component:LogincustomerComponent
+  },
+  {
+    path:'employeeLogin',
+    component:LoginemployeeComponent
+  },
+  {
+    path:'employeeProfile/:id',
+    component:EmployeeprofileComponent
+  },
+  {
+    path:'customerProfle/:id',
+    component:CustomerprofileComponent
+  },
+ 
+
 ];
 
 @NgModule({

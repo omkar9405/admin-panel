@@ -1,70 +1,72 @@
-import { AfterViewInit,ViewChild,Component } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit,ViewChild,Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CustomerService } from 'src/app/_services/customer.service';
+import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
 
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
+
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css']
 })
-export class CustomerComponent implements AfterViewInit{
- 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color','action'];
-  dataSource: MatTableDataSource<UserData>;
+export class CustomerComponent implements OnInit{
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-
-  constructor() {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  customers:[];
+  customerDto = {
+    "customername":"",
+    "service":"",
+    "address":"",
+    "pincode":0,
+    "mobile": 0,
+    "gender":"",
+    "email": "",
+    "dob":"",
+    "password": "",
+    "feedback":[]
+   }
+  constructor(public router:Router,
+    private datatableservice: DatatableService,
+    public route:ActivatedRoute,
+    private authenticationService: CustomerService) {
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  ngOnInit() {
+   this.getlist(); 
   }
+ getlist()
+ {
+  this.authenticationService.getcustomerList().subscribe((res: any) => {
+    console.log(res);
+    this.customers = res.map((key) => ({ ...key }));
+    this.datatableservice.initTable('customers');
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+ }
+  
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  edit(id)
+  {
 
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
+    this.router.navigate(['editcustomer',id],{relativeTo:this.route});
+  }
+  view(id)
+  {
+    this.router.navigate(['viewcustomer',id],{relativeTo:this.route});
+  }
+  delete(id)
+  {
+    this.authenticationService.delete(id).subscribe((res: any) => {
+      this.datatableservice.destroy();
+      this.getlist();
+    }, (err) => {
+      console.log('Error while deleting ');
+      console.error(err);
+    });
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}

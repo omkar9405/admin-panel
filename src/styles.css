@@ -2,3 +2,54 @@ body{
     padding: 0%;
     margin: 0%;
 }
+.global-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1999;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    opacity: 1;
+    transition: opacity .5s ease-in-out;
+  }
+
+  .global-loader-fade-in {
+    opacity: 0;
+  }
+
+  .global-loader-hidden {
+    display: none;
+  }
+
+  .global-loader h1 {
+    /* font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: normal; */
+    font-size: 44px;
+    letter-spacing: 0.4rem;
+    white-space: pre;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: repeating-linear-gradient(to right,
+        rgb(0, 42, 255), rgb(66, 39, 176), #FF9800, rgb(3, 23, 244), rgb(10, 6, 120), #FF9800);
+    background-size: 750% auto;
+    background-position: 0 100%;
+    animation: gradient 20s infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -750% 0;
+    }
+  }

@@ -22,13 +22,13 @@ import { AddEmployeeComponent } from 'src/app/modules/employee/add-employee/add-
 import { ViewemployeeComponent } from 'src/app/modules/employee/viewemployee/viewemployee.component';
 import { MatCardModule } from '@angular/material/card';
 import { ViewpostComponent } from 'src/app/modules/posts/viewpost/viewpost.component';
-import { SignupComponent } from 'src/app/signup/signup.component';
+import { SignupComponent } from 'src/app/components/signup/signup.component';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
-//import { CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule } from 'ng-uikit-pro-standard'
+
 // MDB Angular Free
 import { CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule } from 'angular-bootstrap-md'
 
@@ -38,6 +38,9 @@ import { TaskersComponent } from 'src/app/components/taskers/taskers.component';
 import { TeamComponent } from 'src/app/components/team/team.component';
 import { HfooterComponent } from 'src/app/components/hfooter/hfooter.component';
 import { ServicesComponent } from 'src/app/components/services/services.component';
+import { ViewcustomerComponent } from 'src/app/modules/customer/viewcustomer/viewcustomer.component';
+import { EditcustomerComponent } from 'src/app/modules/customer/editcustomer/editcustomer.component';
+
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -56,6 +59,8 @@ import { ServicesComponent } from 'src/app/components/services/services.componen
     TeamComponent,
     HfooterComponent,
     ServicesComponent,
+    ViewcustomerComponent,
+    EditcustomerComponent,
     
   ],
   imports: [

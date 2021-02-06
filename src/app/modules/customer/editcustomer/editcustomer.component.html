@@ -1,0 +1,216 @@
+<div class="mat-elevation-z8">
+    <div class="card height-auto">
+        <div class="card-body">
+            <div class="heading-layout1">
+          
+      
+        
+<div class="container">
+        <div class="item-title">
+            <h2>{{customerDto.customername}}</h2>
+        </div>
+    <form [formGroup]="signupForm">
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Email 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="email" 
+            formControlName="email" 
+            name="email"
+            [(ngModel)]="customerDto.email"
+            [value]="customerDto.email"
+            class="form-control" 
+            placeholder="Enter Valid Email" 
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            required>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Name 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="customername" 
+            name="customername"
+            [(ngModel)]="customerDto.customername"
+            [value]="customerDto.customername"
+            class="form-control" 
+            placeholder="Enter Your Full Name" 
+            [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+            required>
+            <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
+                <div *ngIf="f.customername.errors.required">customername is required</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Service
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="service" 
+            name="service"
+            [(ngModel)]="customerDto.service"
+            [value]="customerDto.service"
+            class="form-control" 
+            placeholder="Enter Your Service" 
+            [ngClass]="{ 'is-invalid': submitted && f.service.errors }" 
+            required>
+            <div *ngIf="submitted && f.service.errors" class="invalid-feedback">
+                <div *ngIf="f.service.errors.required">service is required</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Phone Number</label>
+        <input 
+            type="text" 
+            formControlName="mobile"
+            name="mobile"
+            [(ngModel)]="customerDto.mobile" 
+            [value]="customerDto.mobile"
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+            placeholder="Enter valid phone"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">mobile number is required</div>
+            </div>
+
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Address </label>
+        <input 
+            type="text" 
+            formControlName="address"
+            name="address"
+            [(ngModel)]="customerDto.address"
+            [value]="customerDto.address" 
+            [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+            placeholder="Enter Address"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                <div *ngIf="f.address.errors.required">address is required</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Pincode</label>
+        <input 
+            type="text" 
+            formControlName="pincode"
+            name="pincode"
+            [(ngModel)]="customerDto.pincode"
+            [value]="customerDto.pincode" 
+            [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"
+            placeholder="Enter valid pincode"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                <div *ngIf="f.pincode.errors.required">pincode is required</div>
+            </div>
+    </div>
+
+   
+
+    <div class="form-group">
+        <label class="font-weight-bold">Gender </label>
+          <select 
+            class="custom-select" 
+            formControlName="gender"
+            name="gender"
+            placeholder="&nbsp;"
+            [(ngModel)]="customerDto.gender"
+            [value]="customerDto.gender"
+            size="1"
+            required>
+            <option selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Date of Birth </label>
+        <input 
+            type="date" 
+            formControlName="dob" 
+            name="dob"
+            [(ngModel)]="customerDto.dob"
+            [value]="customerDto.dob"
+
+            class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Password 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="password" 
+            name="password"
+            [(ngModel)]="customerDto.password"
+            [value]="customerDto.password"
+            class="form-control" 
+            placeholder="***************" 
+            required>
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Feedback </label>
+            <input 
+            type="text" 
+            formControlName="feedback" 
+            name="feedback"
+            [(ngModel)]="customerDto.feedback"
+            [value]="customerDto.feedback"
+            class="form-control" 
+            placeholder="***************" 
+            >
+      
+
+    </div>
+
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-block btn-primary" (click)="update()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Update
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </div>
+</form>
+</div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -24,12 +24,16 @@ export class AuthenticationService {
         return this.http.post<any>(`${environment.apiUrl}/customers/login`, { email, password })
             .pipe(map(customer => {
                 // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
+                localStorage.setItem('Token',customer.token);
                 const cust=this.getDecodedAccessToken(customer.token)
                 localStorage.setItem('currentCustomer', JSON.stringify(cust));
                 this.currentCustomerSubject.next(cust);
                 return cust;
             }));
     }
+    signup(customerDto): any {
+        return this.http.post<any>(`${environment.apiUrl}/customers/signup`, customerDto);       
+      }
     getDecodedAccessToken(token: string): any {
         try{
             return jwt_decode(token);
