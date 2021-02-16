@@ -10,7 +10,7 @@ import { AuthenticationService } from '../../_services/authentication.service';
 })
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
-  
+  success='';
   customerDto = {
    "customername":"",
    "mobile": 0,
@@ -54,7 +54,7 @@ export class SignupComponent implements OnInit {
     this.authenticationService.signup(this.customerDto).subscribe(
       (data:any) => {
         console.log(data);
-     
+        this.success='success';
         alert("Registered Successfully");
         this.clearAll();
        

@@ -28,7 +28,8 @@ body{
   .global-loader h1 {
     /* font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-weight: normal; */
-    font-size: 44px;
+
+    font-size: 35px;
     letter-spacing: 0.4rem;
     white-space: pre;
 
@@ -53,3 +54,5 @@ body{
       background-position: -750% 0;
     }
   }
+
+
