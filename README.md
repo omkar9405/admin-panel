@@ -1,3 +1,5 @@
+![Visitor Count](https://profile-counter.glitch.me/omkar9405/count.svg)
+
 # JustDialDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
