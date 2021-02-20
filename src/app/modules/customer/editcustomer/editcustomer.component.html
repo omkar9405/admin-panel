@@ -9,18 +9,30 @@
         <div class="item-title">
             <h2>{{customerDto.customername}}</h2>
         </div>
+       
     <form [formGroup]="signupForm">
+       
+        <div class="form-group">
+        <input 
+            type="file" 
+            accept="image/*"   
+            (change)="showPreview($event)" />
+        <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+            <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
+        </div>
+        <!-- Image Preview -->
+        <!-- <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+          <img [src]="imageURL" [alt]="signupForm.value.imagePath">
+
+        </div> -->
+      
+        <!-- Assign Image Alt -->
+        <!-- <input formControlName="name" placeholder="Enter name">
+      
+        <button type="submit">Submit</button> -->
+       </div>
+
     <div class="form-group">
-        <input type="file" name="img[]" class="file" accept="image/*">
-        <div class="ml-2 col-sm-6">
-            <img src="https://placehold.it/80x80" id="preview" class="img-thumbnail">
-          </div>    
-        <div class="input-group my-3">
-                <input type="text" class="form-control" disabled placeholder="Upload File" id="file">
-                <div class="input-group-append">
-                <button type="button" class="browse btn btn-primary">Browse...</button>
-                </div>
-            </div>
         <label 
             class="font-weight-bold"
             >Email 

@@ -33,6 +33,7 @@ export class EditcustomerComponent implements OnInit {
     customerDto = {
     "customername":"",
     "service":"",
+    "imagePath":"",
     "address":"",
     "pincode":0,
     "mobile": 0,
@@ -47,6 +48,8 @@ export class EditcustomerComponent implements OnInit {
    submitted = false;
    returnUrl: string;
     error = '';
+    imageURL: string;
+  
   
     ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
@@ -60,7 +63,8 @@ export class EditcustomerComponent implements OnInit {
       password: ['', Validators.required],
       dob:['',Validators.required],
       signupcondition:['',Validators.required],
-      feedback:['',Validators.required]
+      feedback:['',Validators.required],
+      imagePath: [null]
   });
   
     this.id=this.route.snapshot.params['id'];
@@ -75,6 +79,7 @@ export class EditcustomerComponent implements OnInit {
       this.customerDto.customername = res.customername;
       this.customerDto.service = res.service;
       this.customerDto.address = res.address;
+      this.customerDto.imagePath = res.imagePath;
       this.customerDto.pincode = res.pincode;
       this.customerDto.mobile = res.mobile;
       this.customerDto.gender = res.gender;
@@ -82,7 +87,8 @@ export class EditcustomerComponent implements OnInit {
       this.customerDto.dob = res.dob;   
       this.customerDto.password = res.password;
       this.customerDto.feedback=res.feedback;
-      // console.log(this.Dto);
+      // console.log(this.Dto);;
+      this.imageURL=this.customerDto.imagePath;
 
     }, (err) => {
       console.log('Error while fetching');
@@ -107,4 +113,20 @@ export class EditcustomerComponent implements OnInit {
         this.loading =false;
     });
   }
+  showPreview(event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.signupForm.patchValue({
+      imagePath: file
+    });
+    this.signupForm.get('imagePath').updateValueAndValidity()
+
+    // File Preview
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageURL = reader.result as string;
+      this.customerDto.imagePath=this.imageURL;
+    }
+    reader.readAsDataURL(file)
+  }
+
 }
