@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   customerDto = {
    "customername":"",
    "mobile": 0,
-   "gender":"",
+   "gender":"Select Gender",
    "email": "",
    "dob":"",
    "password": "",

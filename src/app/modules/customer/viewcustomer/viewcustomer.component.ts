@@ -18,6 +18,7 @@ export class ViewcustomerComponent implements OnInit {
     "customername":"",
     "service":"",
     "address":"",
+    "imagePath":"",
     "pincode":0,
     "mobile": 0,
     "gender":"",
@@ -41,10 +42,11 @@ export class ViewcustomerComponent implements OnInit {
       this.customerDto.mobile = res.mobile;
       this.customerDto.gender = res.gender;
       this.customerDto.email = res.email;
+      this.customerDto.imagePath = res.imagePath;
       this.customerDto.dob = res.dob;   
       this.customerDto.password = res.password;
       this.customerDto.feedback=res.feedback;
-      // console.log(this.Dto);
+      console.log(this.customerDto);
 
     }, (err) => {
       console.log('Error while fetching');

@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row text-center">
+    <div class="row team text-center">
         <!-- Team item --> 
         <div *ngFor="let T of team" class="col-xl-3 col-sm-6 mb-5">
-            <div class="bg-white rounded shadow-sm py-5 px-4"><img src="./assets/dp.png" alt="" width="100"
+            <div class="bg-white team-top rounded shadow-sm py-5 px-4"><img src="{{T.imagePath}}" alt="{{T.name}}" width="100"
                     class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
                 <h5 class="mb-0">{{T.name}}</h5><span class="small text-uppercase text-muted">{{T.position}}</span>
                 <ul class="social mb-0 list-inline mt-3">

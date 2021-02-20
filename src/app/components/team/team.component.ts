@@ -22,6 +22,7 @@ export class TeamComponent implements OnInit {
     this.authenticationService.getteamList().subscribe((res: any) => {
       this.team = res.map((key) => ({ ...key }));
       console.log('Team Loaded Successfull');
+      console.log(this.team);
     }, (err) => {
       console.log('Error while fetching data');
       console.error(err);

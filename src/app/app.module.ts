@@ -13,6 +13,7 @@ import { EmployeeprofileComponent } from './employees/employeeprofile/employeepr
 import { LogincustomerComponent } from './customer/logincustomer/logincustomer.component';
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { DatatableService } from './_services/datatableservice/datatable.service';
+import { SignupEmployeeComponent } from './employees/signup-employee/signup-employee.component';
 
 
 
@@ -25,6 +26,7 @@ import { DatatableService } from './_services/datatableservice/datatable.service
     EmployeeprofileComponent,
     LogincustomerComponent,
     CustomerprofileComponent,
+    SignupEmployeeComponent,
    
   
     

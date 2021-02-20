@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">AtYourService</a>
+        <a class="navbar-brand" href="#">At<span style="color: #F57C47;">Y</span>ourService</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -25,7 +25,17 @@
                     <!-- <button type="button" class="btn bg-back text-white" (click)="login()">
                         
                     </button> -->
-                    <a mat-list-item class="btn bg-back text-white" routerLinkActive="list-item-active"  routerLink="/login">Sign In / Sign Up</a>
+                    <!-- <a mat-list-item class="btn bg-back text-white" routerLinkActive="list-item-active"  routerLink="/login">Sign In / Sign Up</a> -->
+                    <div class="dropdown">
+                        <button class="btn drop-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Login/SignUp
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/customerLogin">Customer</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/employeeLogin">Tasker</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/login">Admin</a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -41,17 +51,16 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Where do u need a service</h5>
-                    <div class="dropdown d-inline-block">
-                        <button class="btn dropdown-toggle btn-lg btn-primary" type="button" id="dropdownMenuButton"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select your City
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Select Your City:
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Pune</a>
-                            <a class="dropdown-item" href="#">Mumbai</a>
-                            <a class="dropdown-item" href="#">Kolhapur</a>
+                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">KOlhapur</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Pune</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Mumbai</a>
                         </div>
-                    </div>
+                      </div>
                 </div>
             </div>
         </div>
@@ -98,7 +107,7 @@
 <div class="container">
         <app-taskers></app-taskers>
 </div>
-<div class="container">
+<div class="container" style="padding-top: 20px;">
         <app-team></app-team>
 </div>
 <app-hfooter></app-hfooter>

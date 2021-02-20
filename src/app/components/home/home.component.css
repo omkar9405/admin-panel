@@ -1,7 +1,16 @@
 .bg-dark {
-    background-color: rgb(0, 0, 0) !important;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
 }
-
+.drop-btn{
+   background-color: #3626cc;
+    color: white;
+   
+}
+.drop-btn:hover{
+    font-size: 16px;
+    box-shadow:0px 0px 10px 0.5px  #666 ;
+}
 .navbar-brand {
     font-family: monospace;
     font-weight: bold;
