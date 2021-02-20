@@ -1,4 +1,4 @@
-[![GitHub](https://github-readme-stats-abserari.vercel.app/api?username=abserari&show_icons=true&bg_color=30,e96443,904e95&title_color=fff&text_color=fff)](https://github.com/admin-panel)
+![Visitor Count](https://profile-counter.glitch.me/omkar9405/count.svg)
 
 # JustDialDashboard
 
