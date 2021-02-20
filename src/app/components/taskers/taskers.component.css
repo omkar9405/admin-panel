@@ -1,4 +1,8 @@
 .tasker{
-    background: rgb(241,248,249);
-    background: linear-gradient(0deg, rgba(241,248,249,1) 0%, rgba(143,209,223,0.989233193277311) 96%);
+    background:#07042c;
+  
+}
+.tasker:hover{
+    cursor: pointer;
+    box-shadow:0px 0px 10px 0.5px  #666 ;
 }

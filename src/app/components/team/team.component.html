@@ -2,9 +2,10 @@
     <div class="row team text-center">
         <!-- Team item --> 
         <div *ngFor="let T of team" class="col-xl-3 col-sm-6 mb-5">
-            <div class="bg-white team-top rounded shadow-sm py-5 px-4"><img src="{{T.imagePath}}" alt="{{T.name}}" width="100"
+            <div class="team-top rounded shadow-sm py-5 px-4">
+                <img src="{{T.imagePath}}" alt="{{T.name}}" width="100"
                     class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                <h5 class="mb-0">{{T.name}}</h5><span class="small text-uppercase text-muted">{{T.position}}</span>
+                <h5 class="mb-0">{{T.name}}</h5><span class="small text-warning text-uppercase ">{{T.position}}</span>
                 <ul class="social mb-0 list-inline mt-3">
                     <li class="list-inline-item"><a href="{{T.facebook}}" target="_blank" class="social-link"><i
                                 class="fab fa-facebook-f"></i></a></li>

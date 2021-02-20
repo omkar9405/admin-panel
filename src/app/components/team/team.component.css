@@ -1,14 +1,18 @@
 .team{
-    background: rgb(157,225,254);
-    background: linear-gradient(90deg, rgba(157,225,254,0.5438550420168067) 26%, rgba(35,129,221,1) 100%);
+    background:#07042c;
+    margin-bottom: -10px;
 }
 .team-top{
-    margin-top:20px ;
-    background: rgb(241,248,249);
-background: linear-gradient(0deg, rgba(241,248,249,1) 0%, rgba(199,194,183,0.989233193277311) 96%);
+    margin-top:30px;
+    background:#2b274f;
+    
+}
+.team-top:hover{
+    cursor: pointer;
+    box-shadow:0px 0px 10px 0.1px  #fff ;
 }
 .rounded-circle{
-    width: 80%;
-    height: 150px;
+    width: 70%;
+    height: 140px;
     border-radius: 50%;
 }
