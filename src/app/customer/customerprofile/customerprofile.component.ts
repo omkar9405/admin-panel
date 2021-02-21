@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/_services/authentication.service';
 
 @Component({
   selector: 'app-customerprofile',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerprofileComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(
+  
+  ): void {
   }
-
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/customerlogin']);
+}
 }

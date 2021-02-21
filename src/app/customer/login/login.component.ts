@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     ) { 
         // redirect to home if already logged in
         if (this.authenticationService.currentCustomerValue) { 
-            this.router.navigate(['/app']);
+            this.router.navigate(['/customerPrifile']);
         }
     }
 
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         });
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/app/dashboard';
+       // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/customerProfle';
     }
 
     // convenience getter for easy access to form fields
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
                 data => {
                     alert("Login Successful..");
                     console.log(localStorage.getItem('Token'));
-                    this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['/customerProfile']);
                    
                 },
                 error => {
@@ -64,4 +64,5 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
     }
+    
 }

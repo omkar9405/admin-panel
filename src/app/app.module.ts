@@ -10,11 +10,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './_helper';
 import { LoginemployeeComponent } from './employees/loginemployee/loginemployee.component';
 import { EmployeeprofileComponent } from './employees/employeeprofile/employeeprofile.component';
-import { LogincustomerComponent } from './customer/logincustomer/logincustomer.component';
+
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { DatatableService } from './_services/datatableservice/datatable.service';
 import { SignupEmployeeComponent } from './employees/signup-employee/signup-employee.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,17 +27,13 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
     AppComponent,
     LoginemployeeComponent,
     EmployeeprofileComponent,
-    LogincustomerComponent,
     CustomerprofileComponent,
     SignupEmployeeComponent,
     AdminLoginComponent,
-   
-  
-    
- 
- 
   ],
   imports: [
+    CommonModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
