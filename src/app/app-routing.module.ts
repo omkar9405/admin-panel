@@ -20,6 +20,7 @@ import { EmployeeprofileComponent } from './employees/employeeprofile/employeepr
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { ViewcustomerComponent } from './modules/customer/viewcustomer/viewcustomer.component';
 import { EditcustomerComponent } from './modules/customer/editcustomer/editcustomer.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     
   },
   {
-    path:'login',
+    path:'customerlogin',
     component:LoginComponent
   },
   {
@@ -87,10 +88,10 @@ const routes: Routes = [
   },
   ]
   },
-  {
-    path:'customerLogin',
-    component:LogincustomerComponent
-  },
+  // {
+  //   path:'customerLogin',
+  //   component:LogincustomerComponent
+  // },
   {
     path:'employeeLogin',
     component:LoginemployeeComponent
@@ -103,6 +104,10 @@ const routes: Routes = [
     path:'customerProfle/:id',
     component:CustomerprofileComponent
   },
+  {
+    path:'adminLogin',
+    component:AdminLoginComponent
+  }
  
 
 ];

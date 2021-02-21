@@ -14,6 +14,7 @@ import { LogincustomerComponent } from './customer/logincustomer/logincustomer.c
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { DatatableService } from './_services/datatableservice/datatable.service';
 import { SignupEmployeeComponent } from './employees/signup-employee/signup-employee.component';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 
 
@@ -27,6 +28,7 @@ import { SignupEmployeeComponent } from './employees/signup-employee/signup-empl
     LogincustomerComponent,
     CustomerprofileComponent,
     SignupEmployeeComponent,
+    AdminLoginComponent,
    
   
     
