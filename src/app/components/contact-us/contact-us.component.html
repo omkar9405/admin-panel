@@ -1,0 +1,104 @@
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">At<span style="color: #F57C47;">Y</span>ourService</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink='/home' routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#">
+                        Services
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  routerLinkActive="list-item-active"  routerLink="/contactUs">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn drop-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Login/SignUp
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/customerlogin">Customer</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/employeeLogin">Tasker</a>
+                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/adminLogin">Admin</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="contact">
+    <div class="container">
+        <div class="p-2">
+            <h2 class="text-center text-primary font-weight-bold">Contact Us</h2>
+        </div>
+    <div class="row">
+            <div class="col-lg-6 mt-4">
+             <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122053.9521723117!2d74.21320251172696!3d17.063551991119148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc174c4124484bd%3A0x35d1cbf0672b3f50!2sRajarambapu%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1615462601712!5m2!1sen!2sin"
+                    width="100%" height="520px" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-6 mt-4">
+                        <div class="info">
+                            <i class="fas fa-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>abcd@example.com</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="info w-100 mt-4">
+                            <i class="fas fa-phone-volume"></i>
+                            <h4>Call:</h4>
+                            <p>+911234567890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form mt-4">
+                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="fname" class="form-control" id="fname" placeholder="First Name"
+                                data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name"
+                                data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 form-group">
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <input type="text" class="form-control" name="phone" id="phone"
+                                placeholder="Your Mobile No." data-rule="minlen:10"
+                                data-msg="Please enter a valid mobile number" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                            data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="message" rows="5" data-rule="required"
+                            data-msg="Please write something for us" placeholder="Message"></textarea>
+                    </div>
+                    <div class="text-center"><button type="submit">Send Message</button></div>
+                </div> 
+            </div>
+        </div> 
+    </div>
+</div>
+<app-hfooter></app-hfooter>

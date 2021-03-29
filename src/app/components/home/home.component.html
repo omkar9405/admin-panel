@@ -1,56 +1,11 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="#">At<span style="color: #F57C47;">Y</span>ourService</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#">
-                        Services
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <!-- <button type="button" class="btn bg-back text-white" (click)="login()">
-                        
-                    </button> -->
-                    <!-- <a mat-list-item class="btn bg-back text-white" routerLinkActive="list-item-active"  routerLink="/login">Sign In / Sign Up</a> -->
-                    <div class="dropdown">
-                        <button class="btn drop-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Login/SignUp
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/customerlogin">Customer</a>
-                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/employeeLogin">Tasker</a>
-                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/adminLogin">Admin</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<app-navbar></app-navbar>
 <!-- Select your city -->
 <div class="router">
-
-
 <div class="container">
     <div class="row custom-section d-flex align-items-center">
         <div class="col-12 col-lg-4">
             <h1 class="fw-bold fs-1"><span style="color: #F57C47;">J</span>ust<span style="color: #F57C47;">D</span>ial For a Service</h1>
-            <p style="color: #fff;">Hand-picked professionals at your service.</p>           
+            <p style="color: #000;">Hand-picked professionals at your service.</p>           
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Where do u need a service</h5>
@@ -59,7 +14,7 @@
                           Select Your City:
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">KOlhapur</a>
+                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Kolhapur</a>
                           <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Pune</a>
                           <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Mumbai</a>
                         </div>
@@ -107,11 +62,12 @@
         </div>
     </div>
 </div>
+
 <div class="container">
-        <app-taskers></app-taskers>
+    <app-taskers></app-taskers>
 </div>
 <div class="container" style="padding-top: 20px;padding-bottom: 20px;margin-bottom: 10px;">
-        <app-team></app-team>
+    <app-team></app-team>
 </div>
 <app-hfooter></app-hfooter>
 </div>

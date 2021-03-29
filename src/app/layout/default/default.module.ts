@@ -40,6 +40,9 @@ import { HfooterComponent } from 'src/app/components/hfooter/hfooter.component';
 import { ServicesComponent } from 'src/app/components/services/services.component';
 import { ViewcustomerComponent } from 'src/app/modules/customer/viewcustomer/viewcustomer.component';
 import { EditcustomerComponent } from 'src/app/modules/customer/editcustomer/editcustomer.component';
+import { ServicesPageComponent } from 'src/app/components/services-page/services-page.component';
+import { ContactUsComponent } from 'src/app/components/contact-us/contact-us.component';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -55,13 +58,16 @@ import { EditcustomerComponent } from 'src/app/modules/customer/editcustomer/edi
     LoginComponent,
     ViewemployeeComponent,
     HomeComponent,
+    ServicesPageComponent,
+    ContactUsComponent,
     TaskersComponent,
     TeamComponent,
     HfooterComponent,
     ServicesComponent,
     ViewcustomerComponent,
     EditcustomerComponent,
-    
+    NavbarComponent
+   
   ],
   imports: [
     CommonModule,

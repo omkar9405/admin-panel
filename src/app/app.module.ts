@@ -17,6 +17,8 @@ import { SignupEmployeeComponent } from './employees/signup-employee/signup-empl
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LayoutComponent } from './components/layout/layout.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 
@@ -30,6 +32,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CustomerprofileComponent,
     SignupEmployeeComponent,
     AdminLoginComponent,
+    LayoutComponent,
+ 
+
   ],
   imports: [
     CommonModule,

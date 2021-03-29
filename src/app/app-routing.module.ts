@@ -21,6 +21,9 @@ import { ViewcustomerComponent } from './modules/customer/viewcustomer/viewcusto
 import { EditcustomerComponent } from './modules/customer/editcustomer/editcustomer.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminAuthGuard } from './_helper/adminAuth.guard';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { ServicesPageComponent } from './components/services-page/services-page.component';
+import { LayoutComponent } from './components/layout/layout.component';
 
 const routes: Routes = [
   {
@@ -88,10 +91,6 @@ const routes: Routes = [
   },
   ]
   },
-  // {
-  //   path:'customerLogin',
-  //   component:LogincustomerComponent
-  // },
   {
     path:'employeeLogin',
     component:LoginemployeeComponent
@@ -107,6 +106,14 @@ const routes: Routes = [
   {
     path:'adminLogin',
     component:AdminLoginComponent
+  },
+  {
+    path:'contactUs',
+    component:ContactUsComponent
+  },
+  {
+    path:'servicePage',
+    component:ServicesPageComponent 
   }
  
 
