@@ -1,1 +1,70 @@
-<p>signup-employee works!</p>
+<div class="home-info">
+<div class="reg-info">
+<form id="signupForm" [formGroup]="signupForm">
+<input 
+    type="text" 
+    placeholder="Full Name" 
+    formControlName="name"
+    name="name"
+    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+    required>
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Name is required</div>
+    </div>
+<input 
+    type="email" 
+    placeholder="Email" 
+    formControlName="email"
+    name="email"
+    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+    required>
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+    </div>
+<input 
+    type="password" 
+    placeholder="********" 
+    formControlName="password"
+    name="password"
+    required>
+<input 
+    type="date" 
+    formControlName="dob"
+    name="dob"
+    placeholder="Date Of Birth" 
+    required>
+<input 
+    type="text" 
+    placeholder="Phone Number" 
+    formControlName="mobile"
+    name="mobile"
+    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+    required>
+    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+        <div *ngIf="f.mobile.errors.required">mobile number is required</div>
+    </div>
+<div class="form-group">    
+    <select 
+            name="service" 
+            formControlName="service" 
+            placeholder="Choose" 
+            class="select-input"
+            required>
+            <option [selected]>Choose Option</option>
+            <option value="Hair Dresser">Hair Dresser</option>
+            <option value="Painter">Painter</option>
+            <option value="Electrician">Electrician</option>
+            <option value="Plumber">Plumber</option>
+            <option value="Repairmen">Repairmen</option>
+    </select>
+</div>
+    
+<button [disabled]="loading" (click)="register()">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+    Register</button>
+<div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+</form>
+
+</div>
+
+</div>

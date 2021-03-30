@@ -1,1 +1,53 @@
-<p>loginemployee works!</p>
+<section class="home-page">
+<div class="container">
+<div class="row">
+<div class="col-md-3 hidden-xs hidden-sm"></div>
+<div class="col-xs-12 col-md-6">
+    <form id="loginForm" class="login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="header">
+            <span class="sign">Sign In</span>
+            <span class="reg">Registration</span>
+        </div>
+        <div class="log">
+            <br>
+            <input 
+                type="email" 
+                placeholder="Email"
+                formControlName="email"
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"                                
+                >
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                </div>
+
+            <input 
+                type="password" 
+                placeholder="********"
+                formControlName="password"
+                [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                >
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+            <br><br>
+
+            <button
+                [disabled]="loading">
+                <span 
+                *ngIf="loading" 
+                class="spinner-border spinner-border-sm mr-1"
+                ></span>
+                Login</button><br>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}
+                </div>
+        </div>
+       
+            <app-signup-employee></app-signup-employee>
+    
+    </form>
+   
+</div>
+<div class="col-md-3 hidden-xs hidden-sm"></div>
+</div>
+</div>
+</section>
