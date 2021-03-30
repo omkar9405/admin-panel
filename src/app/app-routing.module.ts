@@ -24,6 +24,7 @@ import { AdminAuthGuard } from './_helper/adminAuth.guard';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { ServicesPageComponent } from './components/services-page/services-page.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { TaskerProfileComponent } from './components/tasker-profile/tasker-profile.component';
 
 const routes: Routes = [
   {
@@ -114,6 +115,10 @@ const routes: Routes = [
   {
     path:'servicePage',
     component:ServicesPageComponent 
+  },
+  {
+    path:'taskerProfile',
+    component:TaskerProfileComponent 
   }
  
 

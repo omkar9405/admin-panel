@@ -1,69 +1,139 @@
-<div class="home-info">
-<form id="signupForm" [formGroup]="signupForm">
-<input 
-    type="text" 
-    placeholder="Full Name" 
-    formControlName="name"
-    name="name"
-    [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
-    required>
-    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-        <div *ngIf="f.name.errors.required">Name is required</div>
-    </div>
-<input 
-    type="email" 
-    placeholder="Email" 
-    formControlName="email"
-    name="email"
-    [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-    required>
-    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
-    </div>
-<input 
-    type="password" 
-    placeholder="********" 
-    formControlName="password"
-    name="password"
-    required>
-<input 
-    type="date" 
-    formControlName="dob"
-    name="dob"
-    placeholder="Date Of Birth" 
-    required>
-<input 
-    type="text" 
-    placeholder="Phone Number" 
-    formControlName="mobile"
-    name="mobile"
-    [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-    required>
-    <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-        <div *ngIf="f.mobile.errors.required">mobile number is required</div>
-    </div>
-<div class="form-group">    
-    <select 
-            name="service" 
-            formControlName="service" 
-            placeholder="Choose" 
-            class="select-input"
+<form id="singnupFrom" [formGroup]="signupForm" >
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Email 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="email" 
+            formControlName="email" 
+            name="email"
+            [(ngModel)]="taskerDto.email"
+            class="form-control" 
+            placeholder="Enter Valid Email" 
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
             required>
-            <option [selected]>Choose Option</option>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Name 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="customername" 
+            name="customername"
+            [(ngModel)]="taskerDto.customername"
+            class="form-control" 
+            placeholder="Enter Your Full Name" 
+            [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+            required>
+            <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
+                <div *ngIf="f.customername.errors.required">customername is required</div>
+            </div>
+    </div>
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Phone Number</label>
+        <input 
+            type="text" 
+            formControlName="mobile"
+            name="mobile"
+            [(ngModel)]="taskerDto.mobile" 
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+            placeholder="Enter valid phone"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">mobile number is required</div>
+            </div>
+
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Gender </label>
+          <select 
+            class="custom-select" 
+            formControlName="gender"
+            name="gender"
+            [(ngModel)]="taskerDto.gender"
+            
+            required>
+            <option [selected]>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label class="font-weight-bold">Date of Birth </label>
+        <input 
+            type="date" 
+            formControlName="dob" 
+            name="dob"
+            [(ngModel)]="taskerDto.dob"
+            class="form-control" required>
+    </div>
+
+
+    <div class="form-group">
+        <label class="font-weight-bold">Job Type </label>
+          <select 
+            class="form-control" 
+            formControlName="jobtype"
+            name="jobtype"
+            [(ngModel)]="taskerDto.jobtype"
+            required>
+            <option [selected]>Select Jobtype</option>
             <option value="Hair Dresser">Hair Dresser</option>
             <option value="Painter">Painter</option>
             <option value="Electrician">Electrician</option>
             <option value="Plumber">Plumber</option>
             <option value="Repairmen">Repairmen</option>
-    </select>
-</div>
-    
-<button [disabled]="loading" (click)="register()">
-    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-    Register</button>
-<div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            <option value="carpenter">Carpenter</option>
+          </select>
+    </div>
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Password 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="password" 
+            formControlName="password" 
+            name="password"
+            [(ngModel)]="taskerDto.password"
+            class="form-control" 
+            placeholder="***************" 
+        
+            required>
+    </div>
+    <!-- <div class="form-group">
+        <label><input 
+                type="checkbox" 
+                required> I agree with the <a
+                href="javascript:;">Terms &amp;
+                Conditions</a> for
+            Registration.</label>
+    </div> -->
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-block btn-primary" (click)="register()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            SignUp
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </div>
 </form>
 
 
-
-</div>

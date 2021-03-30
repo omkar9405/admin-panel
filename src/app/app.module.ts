@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { TaskerProfileComponent } from './components/tasker-profile/tasker-profile.component';
 
 
 
@@ -33,6 +34,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     SignupEmployeeComponent,
     AdminLoginComponent,
     LayoutComponent,
+    TaskerProfileComponent,
  
 
   ],

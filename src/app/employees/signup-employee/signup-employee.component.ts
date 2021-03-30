@@ -18,6 +18,7 @@ export class SignupEmployeeComponent implements OnInit {
    "gender":"Select Gender",
    "email": "",
    "dob":"",
+   "jobtype":"",
    "password": "",
    "signupcondition":"Accepted"
   }
