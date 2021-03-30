@@ -1,4 +1,8 @@
+
 <section class="home-page">
+    <button class="btn back-btn btn-primary" routerLinkActive="list-item-active"  routerLink="/home">
+        <i class="far fa-arrow-alt-circle-left"></i>
+        back</button>
 <div class="container">
 <div class="row">
 <div class="col-md-3 hidden-xs hidden-sm"></div>
@@ -41,9 +45,9 @@
                 <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}
                 </div>
         </div>
-       
+        <div class="reg-info">
             <app-signup-employee></app-signup-employee>
-    
+        </div>
     </form>
    
 </div>

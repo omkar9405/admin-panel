@@ -18,9 +18,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
    
   }
-  // login()
-  // {
-  //   this.router.navigate(['login'],{relativeTo:this.route});
-  // }
+ submit(city){
+localStorage.setItem('city',city);
+this.router.navigate(['/servicePage']);
+ }
 
   }

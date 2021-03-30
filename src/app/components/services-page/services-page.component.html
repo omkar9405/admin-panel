@@ -20,13 +20,13 @@
                     <div class="dropdown show">
                         <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Select City
+                            {{city}}
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">Pune</a>
-                            <a class="dropdown-item" href="#">Mumbai</a>
-                            <a class="dropdown-item" href="#">Kolhapur</a>
+                            <a class="dropdown-item" (click)="selectCity('Pune')">Pune</a>
+                            <a class="dropdown-item" (click)="selectCity('Mumbai')">Mumbai</a>
+                            <a class="dropdown-item" (click)="selectCity('Kolhapur')">Kolhapur</a>
                         </div>
                     </div>
                 </div>

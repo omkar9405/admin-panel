@@ -14,9 +14,9 @@
                           Select Your City:
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Kolhapur</a>
-                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Pune</a>
-                          <a  class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="#">Mumbai</a>
+                          <a class="dropdown-item"  mat-list-item  (click)="submit('Kolhapur')">Kolhapur</a>
+                          <a  class="dropdown-item"  mat-list-item  (click)="submit('Pune')">Pune</a>
+                          <a  class="dropdown-item"  mat-list-item  (click)="submit('Mumbai')">Mumbai</a>
                         </div>
                       </div>
                 </div>

@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <!-- bootstrap css -->
-  
-  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
   integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
 
@@ -23,6 +21,8 @@
   <link rel="stylesheet" href="assets/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="assets/css/buttons.dataTables.min.css">
   <link rel="stylesheet" href="assets/css/alerts.css">
+
+  
 </head>
 <body class="mat-typography">
   <div class="dashboard-content-one">
@@ -74,19 +74,18 @@
 <script src="assets/js/buttons.colVis.min.js"></script> 
 <script>
   $(document).ready(function () {
-      $(".header .sign").click(function () {
-          $(".reg-info").fadeOut(function () {
-              $(".log").slideDown();
-              $(".header .sign").css("background", "#01AEF2");
-              $(".header .reg").css("background", "#041122");
-          });
-      })
-
       $(".header .reg").click(function () {
           $(".log").fadeOut(function () {
               $(".reg-info").slideDown();
               $(".header .reg").css("background", "#01AEF2");
               $(".header .sign").css("background", "#041122")
+          });
+      })
+      $(".header .sign").click(function () {
+          $(".reg-info").fadeOut(function () {
+              $(".log").slideDown();
+              $(".header .sign").css("background", "#01AEF2");
+              $(".header .reg").css("background", "#041122");
           });
       })
   })
