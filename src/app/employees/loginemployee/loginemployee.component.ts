@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { TaskerService } from 'src/app/_services/tasker.service';
 
 @Component({
   selector: 'app-loginemployee',
@@ -20,11 +21,11 @@ export class LoginemployeeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: TaskerService
 ) { 
     // redirect to home if already logged in
-    if (this.authenticationService.currentCustomerValue) { 
-        this.router.navigate(['/customerPrifile']);
+    if (this.authenticationService.currentTaskerValue) { 
+        this.router.navigate(['/employeeProfile']);
     }
 }
 
@@ -55,7 +56,7 @@ onSubmit() {
             data => {
                 alert("Login Successful..");
                 console.log(localStorage.getItem('Token'));
-                this.router.navigate(['/customerProfile']);
+                this.router.navigate(['/employeeProfile']);
                
             },
             error => {
