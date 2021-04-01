@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
+import { TaskerService } from 'src/app/_services/tasker.service';
 
 @Component({
   selector: 'app-signup-employee',
@@ -13,14 +14,14 @@ export class SignupEmployeeComponent implements OnInit {
   signupForm: FormGroup;
   success='';
   taskerDto = {
-   "customername":"",
+   "name":"",
    "mobile": 0,
    "gender":"Select Gender",
    "email": "",
    "dob":"",
-   "jobtype":"",
-   "password": "",
-   "signupcondition":"Accepted"
+   "username":"",
+   "jobtype":"Select Job Type",
+   "password": ""
   }
   loading = false;
   submitted = false;
@@ -30,19 +31,22 @@ export class SignupEmployeeComponent implements OnInit {
     private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
-  ) { }
+        private authenticationService: TaskerService
+  ) {
+    
+   }
  
  
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      customername:['',Validators.required],
+      name:['',Validators.required],
       mobile:['',Validators.required],
       gender:['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       dob:['',Validators.required],
-      signupcondition:['',Validators.required]
+      jobtype:['',Validators.required],
+      username:['',Validators.required]
   });
   }
 
@@ -50,15 +54,18 @@ export class SignupEmployeeComponent implements OnInit {
 
   register() {
     this.submitted = true;
-
-
-        this.loading = true;
-    this.authenticationService.signup(this.taskerDto).subscribe(
-      (data:any) => {
+    this.loading = true;
+    this.authenticationService.save(this.taskerDto).subscribe(
+      (data:any) => 
+      {
         console.log(data);
         this.success='success';
         alert("Registered Successfully");
+        
         this.clearAll();
+        
+        this.router.navigate(['/employeeLogin']);
+        
        
     },(err) => {
         alert(err);
@@ -70,10 +77,12 @@ export class SignupEmployeeComponent implements OnInit {
 
   clearAll()
   {
-    this.taskerDto.customername="",
+    this.taskerDto.name="",
     this.taskerDto.mobile= 0,
-    this.taskerDto.gender="",
+    this.taskerDto.username="",
+    this.taskerDto.gender="Select Gender",
     this.taskerDto.email= "",
+    this.taskerDto.jobtype="Select Job Type",
     this.taskerDto.dob="",
     this.taskerDto.password= ""
   }

@@ -30,17 +30,40 @@
         </label>
         <input 
             type="text" 
-            formControlName="customername" 
-            name="customername"
-            [(ngModel)]="taskerDto.customername"
+            formControlName="name" 
+            name="name"
+            [(ngModel)]="taskerDto.name"
             class="form-control" 
             placeholder="Enter Your Full Name" 
-            [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
             required>
-            <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
-                <div *ngIf="f.customername.errors.required">customername is required</div>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">name is required</div>
             </div>
     </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Username
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="username" 
+            name="username"
+            [(ngModel)]="taskerDto.username"
+            class="form-control" 
+            placeholder="Enter Your Userame" 
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }" 
+            required>
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+    </div>
+    
     <div class="form-group">
         <label 
             class="font-weight-bold"
@@ -87,7 +110,7 @@
     <div class="form-group">
         <label class="font-weight-bold">Job Type </label>
           <select 
-            class="form-control" 
+            class="custom-select" 
             formControlName="jobtype"
             name="jobtype"
             [(ngModel)]="taskerDto.jobtype"
