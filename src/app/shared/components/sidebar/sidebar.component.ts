@@ -11,6 +11,8 @@ export class SidebarComponent implements OnInit {
  
 name="";
 email="";
+imagePath="";
+username="";
   constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -19,7 +21,9 @@ email="";
     var json = JSON.parse(admin);
     var obj=json["admin"];
     this.name=obj["name"];
-   this.email=obj["email"];
+    this.email=obj["email"];
+    this.imagePath=obj["imagePath"];
+    this.username=obj["username"];
   }
   
   dash()
