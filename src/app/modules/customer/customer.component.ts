@@ -14,6 +14,7 @@ import { DatatableService } from 'src/app/_services/datatableservice/datatable.s
 export class CustomerComponent implements OnInit{
 
   customers:[];
+  id='';
   customerDto = {
     "customername":"",
     "service":"",
@@ -50,11 +51,12 @@ export class CustomerComponent implements OnInit{
 
   edit(id)
   {
-
+    this.id=id;
     this.router.navigate(['editcustomer',id],{relativeTo:this.route});
   }
   view(id)
   {
+    this.id=id;
     this.router.navigate(['viewcustomer',id],{relativeTo:this.route});
   }
   delete(id)

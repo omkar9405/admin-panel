@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from 'src/app/_services/customer.service';
 
@@ -8,7 +8,7 @@ import { CustomerService } from 'src/app/_services/customer.service';
   styleUrls: ['./viewcustomer.component.css']
 })
 export class ViewcustomerComponent implements OnInit {
-  id="";
+  @Input() id:String;
   constructor(
     private route:ActivatedRoute,
     private authenticationService: CustomerService
@@ -28,7 +28,7 @@ export class ViewcustomerComponent implements OnInit {
     "feedback":""
    }
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
+    // this.id=this.route.snapshot.params['id'];
     this.getCustomer(this.id);
   }
   getCustomer(ID)

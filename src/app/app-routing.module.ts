@@ -25,7 +25,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { ServicesPageComponent } from './components/services-page/services-page.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { TaskerProfileComponent } from './components/tasker-profile/tasker-profile.component';
-
+import { ViewadminsComponent } from './modules/admin/viewadmins/viewadmins.component';
+import { EditadminsComponent } from './modules/admin/editadmins/editadmins.component';
+import { TaskerAuthGuard } from './_helper/taskerAuth.guard';
+import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path:'',
@@ -47,23 +50,36 @@ const routes: Routes = [
   },
 {
     path:'app',
-    component: DefaultComponent,canActivate: [AdminAuthGuard],
-    children:[{
-      path:'dashboard',
-      component: DashboardComponent
-    },
-    {
-    path:'posts',
-    component: PostsComponent,
-    children:[{
-      path: 'viewpost',
-      component: ViewpostComponent
-    }]
-  },
-  {
-    path:'admin',
-    component: AdminComponent
-  },
+    component: DefaultComponent,
+children:[
+        {
+           path:'dashboard',
+            component: DashboardComponent
+        },
+          {
+            path:'posts',
+            component: PostsComponent,
+              children:[{
+                      path: 'viewpost',
+                      component: ViewpostComponent
+                        }]
+          },
+          {
+            path:'admin',
+            component: AdminComponent,
+            children:[
+              {
+                path:'viewadmin/:id',
+                component: ViewadminsComponent
+              },
+              {
+                path:'editadmin/:id',
+                component: EditadminsComponent
+              }
+            ]
+          },
+          
+  
   {
     path:'employee',
     component: EmployeeComponent,
@@ -97,7 +113,7 @@ const routes: Routes = [
     component:LoginemployeeComponent
   },
   {
-    path:'employeeProfile',
+    path:'employeeProfile',canActivate:[TaskerAuthGuard],
     component:EmployeeprofileComponent
   },
   {
@@ -125,7 +141,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ReactiveFormsModule,RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

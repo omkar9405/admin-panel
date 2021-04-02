@@ -22,6 +22,8 @@ export class EditcustomerComponent implements OnInit {
   constructor( 
     private formBuilder: FormBuilder,
     private route:ActivatedRoute,
+    public router:Router,
+    private location: Location,
     private datatableservice: DatatableService,
     private authenticationService: CustomerService)
      {}
@@ -97,6 +99,10 @@ export class EditcustomerComponent implements OnInit {
     return this.customerDto;
   }
   
+  back()
+  { 
+    this.location.back();
+  }
   update() {
     this.submitted = true;
         this.loading = true;

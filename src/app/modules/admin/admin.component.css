@@ -1,0 +1,57 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    top: 20px;
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+  
+
+
+/*************popup************************/
+
+/* .container 
+{
+  
+	background-size: cover;
+	background-repeat:no-repeat;    
+}
+.container-box
+{
+	display:inline-block; 
+        padding:10px; 
+   
+	background: rgba(136, 82, 82, 0.8);
+	border: 1px solid #fff;	
+	position: fixed;
+  	top: 55%;
+  	left: 0;
+
+}
+
+.modal-content
+{
+        background: rgba(255, 255, 255, 1);	
+        background: rgba(255, 255, 255, 1);	
+        position: fixed;
+        margin-top:30%;
+
+        width:200%;
+        transform: translate(-25%,-25%);
+} */
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1080;
+  width: 100vw;
+  height: 100vh;
+}

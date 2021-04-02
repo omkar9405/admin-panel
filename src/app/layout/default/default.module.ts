@@ -43,7 +43,9 @@ import { EditcustomerComponent } from 'src/app/modules/customer/editcustomer/edi
 import { ServicesPageComponent } from 'src/app/components/services-page/services-page.component';
 import { ContactUsComponent } from 'src/app/components/contact-us/contact-us.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-
+import { TaskerProfileComponent } from 'src/app/components/tasker-profile/tasker-profile.component';
+import { EditadminsComponent } from 'src/app/modules/admin/editadmins/editadmins.component';
+import { ViewadminsComponent } from 'src/app/modules/admin/viewadmins/viewadmins.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -66,8 +68,10 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
     ServicesComponent,
     ViewcustomerComponent,
     EditcustomerComponent,
-    NavbarComponent
-   
+    NavbarComponent,
+    TaskerProfileComponent,
+    EditadminsComponent,
+    ViewadminsComponent,   
   ],
   imports: [
     CommonModule,

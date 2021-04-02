@@ -37,7 +37,7 @@
                 <td>{{ customer.email }}</td>
                 <td>{{ customer.dob }}</td>
                 <td>
-                <button (click)="edit(customer.id)" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
+                <button (click)="edit(customer.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
                 <button (click)="view(customer.id)" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
                 <button (click)="delete(customer.id)"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
                 </td>
@@ -49,7 +49,7 @@
     </div>
 </div> 
   <mat-divider></mat-divider>
-  <div>
-    <router-outlet (getlist)="getlist()"></router-outlet>  
+  <div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <router-outlet [id]="id" (getlist)="getlist()"></router-outlet>  
   </div>
   
