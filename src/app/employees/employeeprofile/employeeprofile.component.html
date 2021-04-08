@@ -1,4 +1,279 @@
-<button class="btn back-btn btn-primary" (click)="logout()">
-    <i class="far fa-arrow-alt-circle-left"></i>
-    back</button>
-<p>employeeprofile works!</p>
+<div class="Employee">
+<div >
+    <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="height: max-content;">
+            <div class="card">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar">
+                                <img src="../assets/dp.png" alt="{User_Name}" class="img-thumbnail">
+                            </div>
+                            <h3 class="user-name">ABC_XYZ</h3>
+                            <h4>Tasker Job</h4>
+                        </div>
+                        <div class="about">
+                            <h4>I'm tasker_name Tasker 1-2 line intro.
+                            </h4>
+                            <br>
+                            <h4>Contact No:</h4>
+                            <p style="font-size:medium">7410507619</p>
+                            <h4>Email</h4>
+                            <p style="font-size:medium">tasker@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs navs -->
+        <div class="col-md-9">
+            <ul class=" nav nav-pills nav-fill mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link font-weight-bold active" data-toggle="tab" href="#ex1-tabs-1" role="tab"
+                        aria-controls="ex1-tabs-1" aria-selected="true">Profile</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link font-weight-bold" data-toggle="tab" href="#ex1-tabs-2" role="tab"
+                        aria-controls="ex1-tabs-2" aria-selected="false">Activities</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link font-weight-bold" data-toggle="tab" href="#ex1-tabs-3" role="tab"
+                        aria-controls="ex1-tabs-3" aria-selected="false">Notifications</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="ex1">
+                <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tabs-1">
+                    <div class="col-md-12">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h3 class="mb-2 text-primary">Personal Details</h3>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" class="form-control" id="firstName"
+                                                placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" class="form-control" id="lastName"
+                                                placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" class="form-control" id="phone"
+                                                placeholder="Enter phone number">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="eMail">Email</label>
+                                            <input type="email" class="form-control" id="eMail"
+                                                placeholder="Enter email ID">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h3 class="mt-3 mb-2 text-primary">Address</h3>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="Street">Street</label>
+                                            <input type="name" class="form-control" id="Street"
+                                                placeholder="Enter Street">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="ciTy">City</label>
+                                            <input type="name" class="form-control" id="ciTy"
+                                                placeholder="Enter City">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="sTate">State</label>
+                                            <input type="text" class="form-control" id="sTate"
+                                                placeholder="Enter State">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="zIp">Zip Code</label>
+                                            <input type="text" class="form-control" id="zIp" placeholder="Zip Code">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <button type="button" id="submit" name="submit"
+                                                class="btn btn-danger">Cancel</button>
+                                            <button type="button" id="submit" name="submit"
+                                                class="btn btn-primary">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tabs-2">
+                    <div class="mat-elevation-z8" >
+                        <div class="card height-auto" style="background-color:transparent; color: white;" >
+                          <div class="card-body">
+                            <div class="heading-layout1">
+                              <div class="item-title">
+                                <h2>Activities</h2>
+                              </div>
+                            </div>
+                    
+                            <div class="table-responsive" >
+                            <table id="example" class="table display data-table text-nowrap cell-border" >
+                                <thead>
+                                     <tr>
+                                        <th>Id</th>
+                                        <th>Customer</th>
+                                        <th>Order Date</th>
+                                        <th>Address</th>
+                                        <th>Net Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr>
+                                        
+                                        <td>{{}}</td>
+                                        <td><a [href]="#">{{}}</a></td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
+                                        <td><span class="status text-success">&bull;</span>{{}}</td>
+                                        <td><a href="#editStatus" class="view" title="Edit Status"
+                                                data-toggle="modal">
+                                                <i class="fas fa-pen-square"></i>
+                                            </a></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td>2</td>
+                                        <td><a href="#">Paula
+                                                Wilson</a></td>
+                                        <td>Jun 21, 2017</td>
+                                        <td>Singhgad Road, Pune</td>
+                                        <td>1,260 RS</td>
+                                        <td><span class="status text-info">&bull;</span> Pending</td>
+                                        <td><a href="#editStatus" class="view" title="Edit Status"
+                                                data-toggle="modal">
+                                                <i class="fas fa-pen-square"></i></a></td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tabs-3">
+                    <div class="col-md-12">
+                        <div class="book-card card-white mb-5">
+                            <div class="card-heading clearfix border-bottom mb-4">
+                                <h4 class="card-title">Booking Requests</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-unstyled">
+                                    <li class="position-relative booking">
+                                        <div class="media">
+                                            <div class="msg-img">
+                                                <img src="../assets/dp.png" alt="">
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="mb-4 text-primary">Sunny Apartment</h5>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Booking
+                                                        Date:</span>
+                                                    <span>01/01/2022</span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Service
+                                                        Details:</span>
+                                                    <span>Plumbing Service</span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Price:</span>
+                                                    <span>150 RS</span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Client:</span>
+                                                    <span class="border-right pr-2 mr-2">John Inoue</span>
+                                                    <span class="border-right pr-2 mr-2"> john@example.com</span>
+                                                    <span>123-563-789</span>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <span
+                                                        class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Address:</span>
+                                                    <span class="border-right pr-2 mr-2">Rajarampuri,
+                                                        Kolhapur</span>
+                                                    <span>416400</span>
+                                                </div>
+                                                <span class="button-to-right">
+                                                    <a href="#" class="btn-gray btn-success text-white">
+                                                        <i class="far fa-check-circle mr-2"></i>
+                                                        Accept
+                                                    </a>
+                                                    <a href="#" class="btn-gray btn-danger ml-4">
+                                                        <i class="far fa-times-circle mr-2"></i> Reject
+                                                    </a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Tabs navs -->
+</div>
+<div id="editStatus" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Edit Status</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="text-secondary">Update Status</label>
+                        <select class="form-control">
+                            <option>Status</option>
+                            <option>Completed</option>
+                            <option>Pending</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-info" value="Save">
+                </div>    
+        </div>
+    </div>
+</div>
+</div>
