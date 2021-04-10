@@ -29,6 +29,7 @@ import { ViewadminsComponent } from './modules/admin/viewadmins/viewadmins.compo
 import { EditadminsComponent } from './modules/admin/editadmins/editadmins.component';
 import { TaskerAuthGuard } from './_helper/taskerAuth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServiceComponent } from './components/services-page/service/service.component';
 const routes: Routes = [
   {
     path:'',
@@ -129,8 +130,12 @@ children:[
     component:ContactUsComponent
   },
   {
-    path:'servicePage',
-    component:ServicesPageComponent 
+    path:'servicePage/:city',
+    component:ServicesPageComponent, 
+  },
+  {
+    path:'services/:service',
+    component:ServiceComponent
   },
   {
     path:'taskerProfile',

@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div>
+<div >
     <div class="card">
         <img class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="550"
             src="./assets/43039.jpg" aria-label="Placeholder: Card image" preserveAspectRatio="xMidYMid slice"
@@ -38,9 +38,11 @@
                     <h6>Painters</h6>
                 </div>
                 <div class="servs-align">
+                    <a (click)="submit('Salon')"> 
                     <img class="rounded mx-auto" src="./assets/salon_women_thumb.jpg" alt="Hairdresser"
                         height="60px" width="60px" />
                     <h6>Salon For Women</h6>
+                    </a>
                 </div>
                 <div class="servs-align">
                     <img class="rounded mx-auto" src="./assets/salon_men_thumb.jpg" alt="barber" height="60px"
@@ -71,4 +73,7 @@
         </div>
     </div>
 </div>
+<!-- <div *ngIf='Showservice'>
+    <app-service></app-service>
+</div> -->
 

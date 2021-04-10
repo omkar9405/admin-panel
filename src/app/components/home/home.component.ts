@@ -8,7 +8,6 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
   constructor(
     private router:Router,private route:ActivatedRoute
   ) { 
@@ -19,8 +18,7 @@ export class HomeComponent implements OnInit {
    
   }
  submit(city){
-localStorage.setItem('city',city);
-this.router.navigate(['/servicePage']);
+this.router.navigate(['/servicePage',city]);
  }
 
   }

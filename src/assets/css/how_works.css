@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('http://fontawesome.io/assets/font-awesome/css/font-awesome.css');
+
+.service {
+    font-family: 'Poppins', sans-serif;
+} 
+
+.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 150%;
+    justify-content: center;
+}
+
+.shadow {
+    min-width: 700px;
+    max-width: 700px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.card-shadow {
+    -webkit-box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
+    -moz-box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
+    box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
+    background-color: #07042c;
+    width: 29rem
+}
+
+#accordion .panel {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+
+#accordion .panel-heading {
+    padding: 0;
+}
+
+#accordion .panel-title a {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #000;
+    background: #fff;
+    border: none;
+    border-bottom: 2px solid #06cde7;
+    padding: 15px 20px 15px 47px;
+    position: relative;
+    transition: all 0.5s ease 0s;
+}
+
+#accordion .panel-title a.collapsed {
+    border-bottom-color: #ddd;
+    color: rgba(17, 17, 17, 0.822);
+}
+
+#accordion .panel-title a:before {
+    font-family: FontAwesome;
+    content: "\f106";
+    font-weight: 900;
+    font-size: 18px;
+    position: absolute;
+    top: 30%;
+    left: 20px;
+    transition: all 0.3s ease 0s;
+}
+
+#accordion .panel-title a.collapsed:before {
+    content: "\f107";
+}
+
+#accordion .panel-body {
+    font-size: 15px;
+    color: #111;
+    line-height: 25px;
+    background: #f6f6f6;
+    border: none;
+    padding: 14px 20px;
+}
+
+li a {
+    color: #000;
+}
+
+li a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.text-body {
+    color: #000;
+}
+
+.home-img{
+    height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+/* .text-color{
+    color: rgba(37, 33, 33, 0.616);
+} */
+.helper-card {
+    position: fixed;
+    right: 25px;
+    top: 8rem;
+}
+
+@media only screen and (max-width: 1080px) {
+    .helper-card {
+        position: relative;
+        margin-left: 50px;
+    }
+}
+.li-items{
+    font-size: large;
+    color: #ddd;
+    line-height: 50px;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}

@@ -46,6 +46,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TaskerProfileComponent } from 'src/app/components/tasker-profile/tasker-profile.component';
 import { EditadminsComponent } from 'src/app/modules/admin/editadmins/editadmins.component';
 import { ViewadminsComponent } from 'src/app/modules/admin/viewadmins/viewadmins.component';
+import { ServiceComponent } from 'src/app/components/services-page/service/service.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -61,6 +62,7 @@ import { ViewadminsComponent } from 'src/app/modules/admin/viewadmins/viewadmins
     ViewemployeeComponent,
     HomeComponent,
     ServicesPageComponent,
+    ServiceComponent,
     ContactUsComponent,
     TaskersComponent,
     TeamComponent,
