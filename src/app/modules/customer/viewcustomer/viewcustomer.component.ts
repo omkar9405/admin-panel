@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from 'src/app/_services/customer.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-viewcustomer',
   templateUrl: './viewcustomer.component.html',
@@ -11,7 +11,8 @@ export class ViewcustomerComponent implements OnInit {
   @Input() id:String;
   constructor(
     private route:ActivatedRoute,
-    private authenticationService: CustomerService
+    private authenticationService: CustomerService,
+    private location: Location
   ) { }
  
   customerDto = {
@@ -28,7 +29,7 @@ export class ViewcustomerComponent implements OnInit {
     "feedback":""
    }
   ngOnInit(): void {
-    // this.id=this.route.snapshot.params['id'];
+     this.id=this.route.snapshot.params['id'];
     this.getCustomer(this.id);
   }
   getCustomer(ID)
@@ -53,6 +54,10 @@ export class ViewcustomerComponent implements OnInit {
       console.error(err);
     });
     return this.customerDto;
+  }
+  back()
+  { 
+    this.location.back();
   }
 
 }

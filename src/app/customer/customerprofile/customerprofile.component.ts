@@ -9,7 +9,8 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
   styleUrls: ['./customerprofile.component.css']
 })
 export class CustomerprofileComponent implements OnInit {
-
+tasker:[]
+id=''
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -17,10 +18,10 @@ export class CustomerprofileComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) { }
 
-  ngOnInit(
-  
-  ): void {
+  ngOnInit( ): void {
+    this.id=localStorage.getItem('CurrentTasker');
   }
+
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/customerlogin']);

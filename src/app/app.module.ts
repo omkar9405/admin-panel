@@ -30,7 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     AppComponent,
     LoginemployeeComponent,
-    EmployeeprofileComponent,
+    
     CustomerprofileComponent,
     SignupEmployeeComponent,
     AdminLoginComponent,

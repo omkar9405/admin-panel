@@ -1,6 +1,4 @@
-.rounded-circle{
-    width: 200px;
-}
+
 @media screen and (max-width: 991.98px) {
     .rounded-circle{
         width: 150px;

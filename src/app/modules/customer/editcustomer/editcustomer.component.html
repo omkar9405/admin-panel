@@ -6,7 +6,7 @@
             <div class="heading-layout1">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Delete</h4>
+                        <h4 class="modal-title" id="myModalLabel">Close</h4>
                       </div>
                      
                  
@@ -19,13 +19,17 @@
     <form [formGroup]="signupForm">
        
         <div class="form-group">
-        <input 
-            type="file" 
+            <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                <label for="uploadImage">
+                    <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
+                </label>
+            </div>
+            <input 
+            type="file"
+            id="uploadImage" 
             accept="image/*"   
-            (change)="showPreview($event)" />
-        <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
-            <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
-        </div>
+            (change)="showPreview($event)" hidden/>
+        
        </div>
 
     <div class="form-group">
