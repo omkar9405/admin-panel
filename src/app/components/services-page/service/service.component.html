@@ -5,11 +5,11 @@
             <ol class="breadcrumb shadow-lg bg-light m-4">
                 <li class="breadcrumb-item "><i class="fas fa-home"></i><a href="#"
                         class="pr-md-3 pl-md-2 pr-2 pl-1 ">Home</a></li>
-                <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 my-3">City</a></li>
-                <li class="breadcrumb-item "><a href="#" class="px-md-3 px-1 active-1">Salon At Home</a> </li>
+                <li class="breadcrumb-item "><a (click)="back()" class="px-md-3 px-1 my-3">{{City}}</a></li>
+                <li class="breadcrumb-item "><a  class="px-md-3 px-1 active-1">{{Service}} At Home</a> </li>
             </ol>
         </div>
-        <h1 class="text-body mt-4 ml-3 p-3">Salon at Home in city</h1>
+        <h1 class="text-body mt-4 ml-3 p-3" style="color: purple;">{{Service}} at Home in {{City}}</h1>
         <ul class="m-4 li-items">
             <li class="text-white">Branded Products are used</li>
             <li class="text-white">On Time Services</li>
@@ -22,7 +22,7 @@
                     <li class="list-inline-item  text-link"><a href="#how-works">How It Works</a></li>
                     <li class="list-inline-item  text-link"><a href="#paint">Barbers</a></li>
                     <li class="list-inline-item  text-link"><a href="#faqs">FAQs</a></li>
-                    <li class="list-inline-item  text-link"><a href="#paint-info">About Salon at
+                    <li class="list-inline-item  text-link"><a href="#paint-info">About {{Service}} at
                             Home</a>
                     </li>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="d-flex">
                         <i class="fas fa-user-shield fa-2x p-3"></i>
                         <div class="mb-2 p-2 ml-2">
-                            <h4 class="font-weight-normal">Hassle free service</h4>
+                            <h4 class="text-normal">Hassle free service</h4>
                             <span class="text-secondary">Our professionals will contact as soon as possible</span>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-service',
   templateUrl: './service.component.html',
@@ -8,7 +8,8 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 })
 export class ServiceComponent implements OnInit {
 Service=''
-  constructor(private route:ActivatedRoute,private router:Router) { 
+City=''
+  constructor(private route:ActivatedRoute,private location:Location,private router:Router) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
    }
@@ -26,6 +27,11 @@ Service=''
   ngOnInit(): void {
     
     this.Service = this.route.snapshot.paramMap.get('service');
+    this.City = this.route.snapshot.paramMap.get('city'); 
+  }
+  back()
+  {
+    this.location.back();
   }
 
 }

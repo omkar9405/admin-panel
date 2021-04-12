@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-
+import {Location } from '@angular/common';
 import { Router, ActivatedRoute, NavigationEnd, Params } from '@angular/router';
 @Component({
   selector: 'app-services-page',
@@ -12,7 +12,7 @@ export class ServicesPageComponent implements OnInit {
 
   Showservice=false;
   hideservice=true;
-  constructor(private route:ActivatedRoute,private router:Router) { 
+  constructor(private route:ActivatedRoute, private location:Location,private router:Router) { 
     this.router.routeReuseStrategy.shouldReuseRoute = function(){
       return false;
    }
@@ -40,7 +40,11 @@ export class ServicesPageComponent implements OnInit {
     this.Showservice=true;
     this.hideservice=false;
     
-    this.router.navigate(['services',service]);
+    this.router.navigate(['services',this.city,service]);
+  }
+  back()
+  {
+    this.location.back();
   }
 
 }

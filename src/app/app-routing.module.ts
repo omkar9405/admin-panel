@@ -134,7 +134,7 @@ children:[
     component:ServicesPageComponent, 
   },
   {
-    path:'services/:service',
+    path:'services/:city/:service',
     component:ServiceComponent
   },
   {
