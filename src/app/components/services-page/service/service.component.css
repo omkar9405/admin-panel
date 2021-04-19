@@ -1,42 +1,41 @@
-
-.service{
-    font-family: 'Poppins', sans-serif;
+.service {
+    font-family: "Poppins", sans-serif;
     color: #000;
-}
-
-.row-flex {
+  }
+  
+  .row-flex {
     display: flex;
     flex-wrap: wrap;
     width: 150%;
     justify-content: center;
-}
-
-.shadow {
+  }
+  
+  .shadow {
     min-width: 700px;
     max-width: 700px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.card-shadow {
+  }
+  
+  .card-shadow {
     -webkit-box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
     -moz-box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
     box-shadow: 9px 9px 5px 0px rgba(12, 25, 94, 0.75);
     background-color: #07042c;
-    width: 29rem
-}
-
-#accordion .panel {
+    width: 29rem;
+  }
+  
+  #accordion .panel {
     border: none;
     box-shadow: none;
     border-radius: 0;
     margin-bottom: 15px;
-}
-
-#accordion .panel-heading {
+  }
+  
+  #accordion .panel-heading {
     padding: 0;
-}
-
-#accordion .panel-title a {
+  }
+  
+  #accordion .panel-title a {
     display: block;
     font-size: 16px;
     font-weight: bold;
@@ -48,14 +47,14 @@
     padding: 15px 20px 15px 47px;
     position: relative;
     transition: all 0.5s ease 0s;
-}
-
-#accordion .panel-title a.collapsed {
+  }
+  
+  #accordion .panel-title a.collapsed {
     border-bottom-color: #ddd;
     color: rgba(17, 17, 17, 0.822);
-}
-
-#accordion .panel-title a:before {
+  }
+  
+  #accordion .panel-title a:before {
     font-family: FontAwesome;
     content: "\f106";
     font-weight: 900;
@@ -64,86 +63,88 @@
     top: 30%;
     left: 20px;
     transition: all 0.3s ease 0s;
-}
-
-#accordion .panel-title a.collapsed:before {
+  }
+  
+  #accordion .panel-title a.collapsed:before {
     content: "\f107";
-}
-
-#accordion .panel-body {
+  }
+  
+  #accordion .panel-body {
     font-size: 15px;
     color: #111;
     line-height: 25px;
     background: #f6f6f6;
     border: none;
     padding: 14px 20px;
-}
-
-li a {
+  }
+  
+  li a {
     color: #000;
-}
-
-li a:hover {
+  }
+  
+  li a:hover {
     color: #000;
     text-decoration: none;
-}
-
-.text-body{
+  }
+  
+  .text-body {
     color: #000;
-    font-weight: 1000!important;
-}
-.text-link{
+    font-weight: 1000 !important;
+  }
+  .text-link {
     color: #000;
     font-size: 20px;
-    font-weight: 800!important;
-}
-.text-normal{
+    font-weight: 800 !important;
+  }
+  .text-normal {
     font-size: 18px;
-    font-weight: 400!important;
-}
-.text-side{
+    font-weight: 400 !important;
+  }
+  .text-side {
     color: white;
     font-size: 30px;
-}
-.text-white{
+  }
+  .text-white {
     font-size: 18px;
-}
-h1{
+  }
+  h1 {
     font-size: 2.5rem;
-}
-
-.home-img{
+  }
+  
+  .home-img {
     position: relative;
     width: 100%;
     height: 70vh;
     background-size: cover;
     background-repeat: no-repeat;
-}
-/* .text-color{
+  }
+  /* .text-color{
     color: rgba(37, 33, 33, 0.616);
-} */
-.helper-card {
+  } */
+  .helper-card {
     position: fixed;
     width: 500px;
     right: 25px;
     top: 8rem;
-}
-.container{
+  }
+  .container {
     position: relative;
     width: auto;
-}
-@media only screen and (max-width: 1080px) {
+  }
+  @media only screen and (max-width: 1080px) {
     .helper-card {
-        position: relative;
-        margin-left: 50px;
+      position: relative;
+      margin-left: 10px;
+      top: 0;
+      right: 0;
     }
-}
-.li-items{
+  }
+  .li-items {
     font-size: small;
     color: #ddd;
     line-height: 50px;
-}
-
-.breadcrumb{
+  }
+  
+  .breadcrumb {
     background-color: transparent;
-}
+  }
