@@ -89,6 +89,10 @@
     color: #000;
     font-weight: 1000 !important;
   }
+  .text-purple{
+    color: white;
+    font-weight: 1000 !important;
+  }
   .text-link {
     color: #000;
     font-size: 20px;
