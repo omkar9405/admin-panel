@@ -5,12 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layout/default/default.module';
-import { MDBBootstrapModule, DropdownModule } from 'angular-bootstrap-md';
+import { DropdownModule } from 'angular-bootstrap-md';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor, JwtInterceptor } from './_helper';
 import { LoginemployeeComponent } from './employees/loginemployee/loginemployee.component';
-import { EmployeeprofileComponent } from './employees/employeeprofile/employeeprofile.component';
-
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { DatatableService } from './_services/datatableservice/datatable.service';
 import { SignupEmployeeComponent } from './employees/signup-employee/signup-employee.component';
@@ -18,27 +16,17 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-
-
-
-
-
-
+import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginemployeeComponent,
-    
     CustomerprofileComponent,
     SignupEmployeeComponent,
     AdminLoginComponent,
     LayoutComponent,
-    
-   
- 
-
+    EditemployeeComponent
   ],
   imports: [
     CommonModule,

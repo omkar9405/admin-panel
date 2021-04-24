@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, ChildrenOutletContexts } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { DefaultComponent } from './layout/default/default.component';
 import { PostsComponent } from './modules/posts/posts.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
@@ -8,7 +8,6 @@ import { EmployeeComponent } from './modules/employee/employee.component';
 import { CustomerComponent } from './modules/customer/customer.component';
 import { ViewpostComponent } from './modules/posts/viewpost/viewpost.component';
 import { AddEmployeeComponent } from './modules/employee/add-employee/add-employee.component';
-import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './customer/login/login.component';
 import { ViewemployeeComponent } from './modules/employee/viewemployee/viewemployee.component';
 import { AuthGuard } from './_helper';
@@ -20,16 +19,17 @@ import { CustomerprofileComponent } from './customer/customerprofile/customerpro
 import { ViewcustomerComponent } from './modules/customer/viewcustomer/viewcustomer.component';
 import { EditcustomerComponent } from './modules/customer/editcustomer/editcustomer.component';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { AdminAuthGuard } from './_helper/adminAuth.guard';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { ServicesPageComponent } from './components/services-page/services-page.component';
-import { LayoutComponent } from './components/layout/layout.component';
 import { TaskerProfileComponent } from './components/tasker-profile/tasker-profile.component';
 import { ViewadminsComponent } from './modules/admin/viewadmins/viewadmins.component';
 import { EditadminsComponent } from './modules/admin/editadmins/editadmins.component';
 import { TaskerAuthGuard } from './_helper/taskerAuth.guard';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceComponent } from './components/services-page/service/service.component';
+import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
+import { AboutComponent } from './components/about/about.component';
+
 const routes: Routes = [
   {
     path:'',
@@ -49,7 +49,7 @@ const routes: Routes = [
     path:'tasker',
     component:TaskersComponent
   },
-{
+  {
     path:'app',
     component: DefaultComponent,
 children:[
@@ -89,9 +89,14 @@ children:[
       component: AddEmployeeComponent
     },
     {
-      path:'view-employee',
+      path:'view-employee/:id',
       component: ViewemployeeComponent
-    }]
+    },
+    {
+      path:'edit-employee/:id',
+      component: EditemployeeComponent
+    }
+  ]
   },
   {
     path:'customer',
@@ -130,6 +135,10 @@ children:[
     component:ContactUsComponent
   },
   {
+    path:'aboutus',
+    component:AboutComponent
+  },
+  {
     path:'servicePage/:city',
     component:ServicesPageComponent, 
   },
@@ -141,8 +150,6 @@ children:[
     path:'taskerProfile',
     component:TaskerProfileComponent 
   }
- 
-
 ];
 
 @NgModule({

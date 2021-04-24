@@ -1,0 +1,10 @@
+.about-us{
+    padding: 25px;;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.about-us p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    color: rgb(46, 45, 45);
+}

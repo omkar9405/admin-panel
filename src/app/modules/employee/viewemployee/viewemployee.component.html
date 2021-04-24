@@ -1,1 +1,151 @@
-<p>viewemployee works!</p>
+<div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="mat-elevation-z8">
+        <div class="card height-auto">
+          <div class="card-body">
+            <div class="heading-layout1">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Close</h4>
+              </div>
+                     
+              <div class="container">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12 mb-3 ">
+                        <img [src]="taskerDto.imagePath" [alt]="taskerDto.name" width="200px">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Full Name</h4>
+                      </div>
+                      <div class="col-sm-4 text-primary">
+                         <h4> {{ taskerDto.name}}    </h4>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">User Name</h4>
+                      </div>
+                      <div class="col-sm-4 text-primary">
+                         <h4> {{ taskerDto.username}}    </h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Email</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                       <h4> {{taskerDto.email}}</h4>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Mobile</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                       <h4> {{taskerDto.mobile}}</h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Address</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                       <h4> {{taskerDto.address}}</h4>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Pincode</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                       <h4> {{taskerDto.pincode}}</h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Skills</h4>
+                      </div>
+                      <div  class="col-sm-10 text-secondary" *ngFor="let skill of taskerDto.skills;">
+                        <div style="display: inline;width: 100%; height: 100%;">   
+                          <h4> {{skill.skillname}}</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">JobType</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <h4>{{taskerDto.jobtype}}</h4>
+                      </div>
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Date of Birth</h4>
+                      </div>
+                      <div class="col-sm-4 text-secondary">
+                        <h4>{{taskerDto.dob}}</h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <h4 class="mb-0">Active</h4>
+                      </div>
+                      <div class="col-sm-4 " *ngIf="taskerDto.active" style="color: green;">
+                       <h4> {{taskerDto.active}} <i class="fas fa-dot-circle"></i></h4>
+                      </div>
+
+                      <div class="col-sm-4 " *ngIf="!taskerDto.active" style="color: red;">
+                        <h4> {{taskerDto.active}}<i class="fas fa-dot-circle"></i></h4>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

@@ -6,16 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default.component.css']
 })
 export class DefaultComponent implements OnInit {
-sideBarOpen = false;
-  constructor() { }
-
+ sideBarOpen = true;
+  constructor() {
+    // window.addEventListener("click", () => {
+    //   if(this.sideBarOpen==true){
+    //  this.sideBarOpen=false;
+    //  console.log("listener "+this.sideBarOpen);
+    //   }
+    //  });
+   }
   ngOnInit(): void {
+  
+    
   }
+  
+
   sideBarToggler()
   {
     if(this.sideBarOpen==false)
     {
     this.sideBarOpen=true;
+    console.log(this.sideBarOpen);
     }
     else
     {

@@ -195,11 +195,14 @@
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="text-right">
-                                            <button type="button" id="submit" name="submit"
+                                            <button 
                                                 class="btn btn-danger">Clear</button>
-                                            <button type="button" id="submit" name="submit"
-                                                class="btn btn-primary">Update</button>
+                                            <button [disabled]="loading" (click)="update()"
+                                                class="btn btn-primary">
+                                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                                Update</button>
                                         </div>
+                                        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                                     </div>
                                 </div>
                             </div>

@@ -1,46 +1,240 @@
-<section fxLayout="row wrap" fxLayoutAlign="center ">
-    <mat-card fxFlex="500px" fxFlex.xs="100%">
-        <mat-card-title>Create a new employee</mat-card-title>
-        <form [formGroup]="employeeForm" autocomplete="off" novalidate (ngSubmit)="createOwner(employeeForm.value)" fxLayout="column wrap"
-      fxLayoutAlign="center" fxLayoutGap="10px">
-        <mat-card-content>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Employee's name" formControlName="name" id="name">
-                <mat-hint align="end">Not more then 60 characters long.</mat-hint>
-                <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
-                <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 60 characters</mat-error>
-              </mat-form-field>
-              
-              <mat-form-field>
-                <mat-label>Type</mat-label>
-                <mat-select  placeholder="Type"  formControlName="type">
-                    <mat-option value="option1">Option 1</mat-option>
-                    <mat-option value="option2" >Option 2 (disabled)</mat-option>
-                    <mat-option value="option3">Option 3</mat-option>
-                </mat-select>
-              </mat-form-field>
+<!-- <div class="modal-dialog">
+  <div class="modal-content">
+<div class="mat-elevation-z8">
+  <div class="card height-auto">
+      <div class="card-body">
+          <div class="heading-layout1">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Close</h4>
+                    </div>
+                   
+               
+      
+<div class="container">
+      <div class="item-title">
+          <h2>{{customerDto.customername}}</h2>
+      </div>
+     
+  <form [formGroup]="signupForm">
+     
+      <div class="form-group">
+          <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+              <label for="uploadImage">
+                  <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
+              </label>
+          </div>
+          <input 
+          type="file"
+          id="uploadImage" 
+          accept="image/*"   
+          (change)="showPreview($event)" hidden/>
+      
+     </div>
 
-              <mat-form-field>
-                <input matInput [matDatepicker]="picker" placeholder="Choose a date of birth" formControlName="dateOfBirth" id="dateOfBirth" 
-                    readonly (click)="picker.open()">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Email 
+          <span
+          class="text-danger"
+          >*</span>
+      </label>
+      <input 
+          type="email" 
+          formControlName="email" 
+          name="email"
+          [(ngModel)]="customerDto.email"
+          [value]="customerDto.email"
+          class="form-control" 
+          placeholder="Enter Valid Email" 
+          [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          required>
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+          </div>
+  </div>
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Name 
+          <span
+          class="text-danger"
+          >*</span>
+      </label>
+      <input 
+          type="text" 
+          formControlName="customername" 
+          name="customername"
+          [(ngModel)]="customerDto.customername"
+          [value]="customerDto.customername"
+          class="form-control" 
+          placeholder="Enter Your Full Name" 
+          [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+          required>
+          <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
+              <div *ngIf="f.customername.errors.required">customername is required</div>
+          </div>
+  </div>
 
-              
-              <mat-form-field>
-                <input matInput type="text" placeholder="Employee's address" formControlName="address">
-                <mat-hint align="end">Not more then 100 characters long.</mat-hint>
-                <mat-error *ngIf="hasError('address', 'required')">Address is required</mat-error>
-                <mat-error *ngIf="hasError('address', 'maxlength')">You have more than 100 characters</mat-error>
-              </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
-            <mat-card-actions align="center">
-                <button mat-raised-button color="primary" [disabled]="!employeeForm.valid">Create</button>
-                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
-              </mat-card-actions>
-        </mat-card-actions>
-        </form> 
-    </mat-card>
-  </section>
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Service
+          <span
+          class="text-danger"
+          >*</span>
+      </label>
+      <input 
+          type="text" 
+          formControlName="service" 
+          name="service"
+          [(ngModel)]="customerDto.service"
+          [value]="customerDto.service"
+          class="form-control" 
+          placeholder="Enter Your Service" 
+          [ngClass]="{ 'is-invalid': submitted && f.service.errors }" 
+          required>
+          <div *ngIf="submitted && f.service.errors" class="invalid-feedback">
+              <div *ngIf="f.service.errors.required">service is required</div>
+          </div>
+  </div>
+
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Phone Number</label>
+      <input 
+          type="text" 
+          formControlName="mobile"
+          name="mobile"
+          [(ngModel)]="customerDto.mobile" 
+          [value]="customerDto.mobile"
+          [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+          placeholder="Enter valid phone"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+              <div *ngIf="f.mobile.errors.required">mobile number is required</div>
+          </div>
+
+  </div>
+
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Address </label>
+      <input 
+          type="text" 
+          formControlName="address"
+          name="address"
+          [(ngModel)]="customerDto.address"
+          [value]="customerDto.address" 
+          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+          placeholder="Enter Address"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">address is required</div>
+          </div>
+  </div>
+
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Pincode</label>
+      <input 
+          type="text" 
+          formControlName="pincode"
+          name="pincode"
+          [(ngModel)]="customerDto.pincode"
+          [value]="customerDto.pincode" 
+          [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"
+          placeholder="Enter valid pincode"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+              <div *ngIf="f.pincode.errors.required">pincode is required</div>
+          </div>
+  </div>
+
+ 
+
+  <div class="form-group">
+      <label class="font-weight-bold">Gender </label>
+        <select 
+          class="custom-select" 
+          formControlName="gender"
+          name="gender"
+          placeholder="&nbsp;"
+          [(ngModel)]="customerDto.gender"
+          [value]="customerDto.gender"
+          size="1"
+          required>
+          <option selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      
+  </div>
+  <div class="form-group">
+      <label class="font-weight-bold">Date of Birth </label>
+      <input 
+          type="date" 
+          formControlName="dob" 
+          name="dob"
+          [(ngModel)]="customerDto.dob"
+          [value]="customerDto.dob"
+
+          class="form-control" required>
+  </div>
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Password 
+          <span
+          class="text-danger"
+          >*</span>
+      </label>
+      <input 
+          type="text" 
+          formControlName="password" 
+          name="password"
+          [(ngModel)]="customerDto.password"
+          [value]="customerDto.password"
+          class="form-control" 
+          placeholder="***************" 
+          required>
+  </div>
+
+  <div class="form-group">
+      <label 
+          class="font-weight-bold"
+          >Feedback </label>
+          <input 
+          type="text" 
+          formControlName="feedback" 
+          name="feedback"
+          [(ngModel)]="customerDto.feedback"
+          [value]="customerDto.feedback"
+          class="form-control" 
+          placeholder="***************" 
+          >
+    
+
+  </div>
+
+  <div class="form-group">
+      <button [disabled]="loading" class="btn btn-block btn-primary" (click)="update()">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Update
+      </button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+  </div>
+</form>
+</div>
+
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div> -->

@@ -37,7 +37,6 @@ import { HomeComponent } from 'src/app/components/home/home.component';
 import { TaskersComponent } from 'src/app/components/taskers/taskers.component';
 import { TeamComponent } from 'src/app/components/team/team.component';
 import { HfooterComponent } from 'src/app/components/hfooter/hfooter.component';
-import { ServicesComponent } from 'src/app/components/services/services.component';
 import { ViewcustomerComponent } from 'src/app/modules/customer/viewcustomer/viewcustomer.component';
 import { EditcustomerComponent } from 'src/app/modules/customer/editcustomer/editcustomer.component';
 import { ServicesPageComponent } from 'src/app/components/services-page/services-page.component';
@@ -48,6 +47,7 @@ import { EditadminsComponent } from 'src/app/modules/admin/editadmins/editadmins
 import { ViewadminsComponent } from 'src/app/modules/admin/viewadmins/viewadmins.component';
 import { ServiceComponent } from 'src/app/components/services-page/service/service.component';
 import { EmployeeprofileComponent } from 'src/app/employees/employeeprofile/employeeprofile.component';
+import { AboutComponent } from 'src/app/components/about/about.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -68,14 +68,14 @@ import { EmployeeprofileComponent } from 'src/app/employees/employeeprofile/empl
     TaskersComponent,
     TeamComponent,
     HfooterComponent,
-    ServicesComponent,
     ViewcustomerComponent,
     EditcustomerComponent,
     NavbarComponent,
     TaskerProfileComponent,
     EditadminsComponent,
     ViewadminsComponent,  
-    EmployeeprofileComponent 
+    EmployeeprofileComponent,
+    AboutComponent,
   ],
   imports: [
     CommonModule,

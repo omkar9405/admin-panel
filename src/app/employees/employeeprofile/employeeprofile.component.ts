@@ -11,7 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class EmployeeprofileComponent implements OnInit {
   profileForm:FormGroup;
-  imageURL='../assets/dp.png'
+  imageURL='';
   taskerDto = {
     "firstname":"",
     "lastname":"",
@@ -26,10 +26,14 @@ export class EmployeeprofileComponent implements OnInit {
     "street":"",
     "state":"",
    }
-   
-id=''
-username=''
-  constructor(private taskerService:TaskerService, private formBuilder:FormBuilder, private datatableservice: DatatableService,  private router: Router,) { }
+loading = false;
+submitted = false;   
+id='';
+error='';
+username='';
+  constructor(private taskerService:TaskerService, private formBuilder:FormBuilder, private datatableservice: DatatableService,  private router: Router,) {
+    
+   }
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
@@ -46,12 +50,6 @@ username=''
       street:['',Validators.required],
       imagePath: [null]
   });
-
-
-
-
-
-
     this.datatableservice.initTable('customers');
     var tasker=localStorage.getItem('currentTasker');
     var json = JSON.parse(tasker);
@@ -59,6 +57,7 @@ username=''
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
+    
   }
 
    getTasker(){
@@ -76,6 +75,14 @@ username=''
       this.taskerDto.password = res.password;
       this.taskerDto.street=res.address.street;
       this.taskerDto.state=res.address.state;
+      if(this.taskerDto.imagePath=="")
+    {
+      this.imageURL="../assets/dp.png";
+    }
+    else
+    {
+      this.imageURL=this.taskerDto.imagePath;
+    }
 
       console.log(this.taskerDto);
 
@@ -86,6 +93,21 @@ username=''
     return this.taskerDto;
    }
 
+   update() {
+        this.submitted = true;
+        this.loading = true;
+        
+    this.taskerService.update(this.taskerDto,this.id).subscribe(
+      (data:any) => {
+        console.log(data);
+        alert("Updated Successfully");
+        this.loading=false;
+    },(err) => {
+        alert(err);
+        this.error=err;
+        this.loading =false;
+    });
+  }
 
    showPreview(event) {
     const file = (event.target as HTMLInputElement).files[0];

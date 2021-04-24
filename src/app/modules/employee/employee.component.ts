@@ -1,82 +1,77 @@
-import { AfterViewInit,ViewChild,Component } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { AfterViewInit,Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
+import { TaskerService } from 'src/app/_services/tasker.service';
 
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
-export class EmployeeComponent implements AfterViewInit{
- 
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color','action'];
-  dataSource: MatTableDataSource<UserData>;
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  constructor(public router:Router,public route:ActivatedRoute) {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+export class EmployeeComponent implements OnInit{
+  employees:[];
+  id='';
+  employeeDto = {
+    "name":"",
+    "username":"",
+    "skills":[{
+      "skillname":"",
+      "charges":""
+    }],
+    "completedTasks":"",
+    "education":"",
+    "jobtype":"",
+    "address":"",
+    "pincode":0,
+    "mobile": 0,
+    "email": "",
+    "dob":"",
+    "createdAt":"",
+    "password":"",
+    "active":""
+   }
+  constructor(public router:Router,
+    private datatableservice: DatatableService,
+    public route:ActivatedRoute,
+    private authenticationService: TaskerService) {
   }
 
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  ngOnInit() {
+   this.getlist(); 
   }
+ getlist()
+ {
+  this.authenticationService.gettaskerList().subscribe((res: any) => {
+    console.log(res);
+    this.employees = res.map((key) => ({ ...key }));
+    this.datatableservice.initTable('employees');
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+ }
+  
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
-
-
-
-
-  create()
+  edit(id)
   {
-    this.router.navigate(['add-employee'],{relativeTo:this.route});
+    this.id=id;
+    this.router.navigate(['edit-employee',id],{relativeTo:this.route});
   }
-  viewlist()
+  view(id)
   {
-    this.router.navigate(['view-employee'],{relativeTo:this.route});
+    this.id=id;
+    this.router.navigate(['view-employee',id],{relativeTo:this.route});
   }
-}
+  delete(id)
+  {
+    this.authenticationService.delete(id).subscribe((res: any) => {
+      this.datatableservice.destroy();
+      this.getlist();
+    }, (err) => {
+      console.log('Error while deleting ');
+      console.error(err);
+    });
+  }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }
