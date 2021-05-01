@@ -48,12 +48,6 @@ export class AuthenticationService {
         localStorage.removeItem('currentCustomer');
         this.currentCustomerSubject.next(null);
     }
-
-
-
-
-
-
     //Taskers
 
     getTaskerList(){

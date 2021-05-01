@@ -48,6 +48,8 @@ import { ViewadminsComponent } from 'src/app/modules/admin/viewadmins/viewadmins
 import { ServiceComponent } from 'src/app/components/services-page/service/service.component';
 import { EmployeeprofileComponent } from 'src/app/employees/employeeprofile/employeeprofile.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
+import { EmployeeNavbarComponent } from 'src/app/employees/employee-navbar/employee-navbar.component';
+import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -71,6 +73,8 @@ import { AboutComponent } from 'src/app/components/about/about.component';
     ViewcustomerComponent,
     EditcustomerComponent,
     NavbarComponent,
+    EmployeeNavbarComponent,
+    CustomerNavbarComponent,
     TaskerProfileComponent,
     EditadminsComponent,
     ViewadminsComponent,  

@@ -26,7 +26,8 @@ import { EditemployeeComponent } from './modules/employee/editemployee/editemplo
     SignupEmployeeComponent,
     AdminLoginComponent,
     LayoutComponent,
-    EditemployeeComponent
+    EditemployeeComponent,
+  
   ],
   imports: [
     CommonModule,

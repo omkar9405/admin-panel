@@ -1,8 +1,12 @@
-
+body{
+    margin: 0;
+    padding: 0;
+    color: #1a202c;
+    text-align: left;
+    background: #1A233A;   
+}
 
  .Employee{
-    margin: 0px;
-    padding-top: 40px;
     color: #bcd0f7;
     background: #1A233A;
     position: relative;
@@ -31,11 +35,11 @@ tbody,tr{
 }
 
 .account-settings .user-profile .user-avatar img {
-    width: 90px;
-    height: 90px;
+    width: 80%;
+    height: 80%;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
-    border-radius: 100px;
+    border-radius: 50%;
 }
 
 .account-settings .user-profile h5.user-name {
@@ -143,7 +147,7 @@ tbody,tr{
 }
 
 .msg-img img {
-    width: 60px;
+    width: 100%;
     border-radius: 50%;
 }
 

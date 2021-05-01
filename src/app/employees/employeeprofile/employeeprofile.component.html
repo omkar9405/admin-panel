@@ -1,34 +1,4 @@
-<!-- Navbar -->
-
-<nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#" style="font-size: 30px;">At<span style="color: #F57C47;">Y</span>ourService</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link"  routerLinkActive="list-item-active"  routerLink="/home">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn btn-primary drop-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Logout
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item"  mat-list-item (click)="logout()">Logout</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav> 
-<!-- Navbar end here -->
-
-
+<app-employee-navbar></app-employee-navbar>
 <!-- Main body -->
 <div class="Employee">
 <div >
