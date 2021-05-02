@@ -1,9 +1,50 @@
-body{
+body {
+    margin: 0;
+    color: #bcd0f7;
+    background: #1A233A;
+    position: relative;
+    font-family: 'Varela Round',
+        sans-serif;
+    font-size: 13px;
+    /* height: 100%; */
+}
+.navbar-brand {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 28px;
+}
+.navbar-dark {
+    background-color: #272E48;
+}
+.navbar-dark .navbar-nav .nav-link {
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.navbar-dark .navbar-nav .nav-item {
+    margin: 0 15px;
+}
+
+
+/* /* body{
     margin-top:20px;
     color: #1a202c;
     text-align: left;
     background-color: #e2e8f0;    
-}
+} */
+ .Employee{
+    color: #bcd0f7;
+    background: #1A233A;
+    position: relative;
+    font-family: 'Varela Round',
+    sans-serif;
+    font-size: 16px;
+    position: absolute;
+    width: 100%;
+    height: 100%;   
+
+} 
 .main-body {
     padding: 15px;
 }
@@ -17,7 +58,7 @@ body{
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: #1f305c;
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
@@ -50,4 +91,48 @@ body{
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+.account-settings {
+    margin: 0 0 0.5rem 0;
+    height: 80%;
+    padding-bottom: 25px;
+    text-align: center;
+}
+
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 0.5rem 0;
+}
+
+.account-settings .user-profile .user-avatar img {
+    width: 100%;
+    height: 70%;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 50%;
+}
+
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: #9fa8b9;
+}
+
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    text-align: center;
+}
+
+.account-settings .about h5 {
+    margin: 0 0 15px 0;
+    color: #007ae1;
+}
+
+.account-settings .about p {
+    font-size: 15px;
 }

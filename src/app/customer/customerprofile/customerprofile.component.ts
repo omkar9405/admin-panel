@@ -58,6 +58,7 @@ customerDto = {
     this.id=obj["id"];
     this.username=obj["customername"];
     this.getCustomer();
+    console.log("Customerr Profile");
    // this.id=localStorage.getItem('CurrentTasker');
   }
 
