@@ -26,6 +26,9 @@ export class EmployeeprofileComponent implements OnInit {
     "street":"",
     "state":"",
    }
+   status={
+     "active":"false"
+   }
 loading = false;
 submitted = false;   
 id='';
@@ -125,9 +128,6 @@ username='';
     reader.readAsDataURL(file)
   }
 
-  logout(){
-    this.taskerService.logout();
-    this.router.navigate(['/employeeLogin']);
-  }
+ 
 
 }

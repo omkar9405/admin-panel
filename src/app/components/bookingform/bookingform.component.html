@@ -1,0 +1,256 @@
+<div class="container">
+    <div id="regForm">
+        <h1 class="text-primary">Service Booking</h1>
+        <div class="tab">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mb-2 text-info font-weight-bold" style="font-size: large;">Personal Details</h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter phone number"
+                            minlength="10" maxlength="10" required>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="eMail">Email</label>
+                        <input type="email" class="form-control" id="eMail"
+                            pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                            placeholder="Enter email ID" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h6 class="mt-3 mb-2 text-info font-weight-bold" style="font-size:large">
+                        Address</h6>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="Street">Street</label>
+                        <input type="name" class="form-control" id="Street" placeholder="Enter Street">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="name" class="form-control" id="city" placeholder="Enter City">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" class="form-control" id="state" placeholder="Enter State">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                        <label for="zip">Zip Code</label>
+                        <input id="zip" name="zip" class="form-control" type="text" pattern="[0-9]*" minlength="6"
+                            maxlength="6" placeholder="Zip Code">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+            <h4 class="text-info font-weight-bold">Task Options</h4>
+            <p class="font-weight-bold" style="font-size: large;">How big is your task?</p>
+            <div class="form-group d-flex justify-content-around mb-4">
+                <span><input type="radio" name="test" value="value1" required> Small - Est. 1 hr</span>
+                <span><input type="radio" name="test" value="value2" required> Medium - Est. 2-3 hrs</span>
+                <span><input type="radio" name="test" value="value3" required> Large - Est. 4+ hrs</span>
+            </div>
+            <p class="font-weight-bold" style="font-size: large;">How big is your task?</p>
+            <div class="form-group">
+                <p>Start the conversation and tell your Tasker what you need done. This helps us show you only
+                    qualified and available Taskers for the job.</p>
+                <textarea rows="3" cols="80" style="max-width: 100%;height:auto" required></textarea>
+            </div>
+        </div>
+        <div>
+            <div class="tab">
+                <div class="labl">
+                    <div class="tasker-select">
+                        <input type="radio" name="taskername" value="tasker1" />
+                        <div
+                            class="d-flex align-items-center w-100 flex-wrap align-content-center justify-content-center">
+                            <img src="./assets/dp.png" alt="" width="100px" height="15px"
+                                class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
+                            <div class="mb-2 p-2 ml-3" style="flex: 1;">
+                                <h5 class="font-weight-normal">XYZ name of tasker</h5>
+                                <p class="text-secondary">address</p>
+                                <p><i class="fas fa-check-circle"></i> no. of completed tasks</p>
+                            </div>
+                            <div style="align-self: flex-start;">
+                                <h5>RS 450/hr</h5>
+                                <span class="badge badge-pill badge-info">Great Value</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="labl">
+                    <div class="tasker-select">
+                        <input type="radio" name="taskername" value="tasker2" />
+                        <div
+                            class="d-flex align-items-center w-100 flex-wrap align-content-center justify-content-center">
+                            <img src="./assets/dp.png" alt="" width="100px" height="15px"
+                                class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
+                            <div class="mb-2 p-2 ml-3" style="flex: 1;">
+                                <h5 class="font-weight-normal">XYZ name of tasker</h5>
+                                <p class="text-secondary">address</p>
+                                <p><i class="fas fa-check-circle"></i> no. of completed tasks</p>
+                            </div>
+                            <div style="align-self: flex-start;">
+                                <h5>RS 450/hr </h5> <span class="badge badge-pill badge-info">Great Value</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab mb-3">
+            <div>
+                <label class="font-weight-bold m-2">Select Date: </label>
+                <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                    <input class="form-control" type="text" readonly required />
+                    <span class="input-group-addon ml-2"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+            </div>
+            <div>
+                <label class="font-weight-bold m-2">Select Time Slot</label>
+                <div class="ml-4">
+                    <div class="dropdown">
+                        <button style="background-color: #ffffffcf;color: #0009" type="button"
+                            class="btn dropdown-toggle" data-toggle="dropdown">
+                            Your time Slot
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">11 AM - 12 AM</a>
+                            <a class="dropdown-item" href="#">12 PM - 1 PM</a>
+                            <a class="dropdown-item" href="#">1 PM - 2 PM</a>
+                            <a class="dropdown-item" href="#">2 PM - 3 PM</a>
+                            <a class="dropdown-item" href="#">3 PM - 4 PM</a>
+                            <a class="dropdown-item" href="#">4 PM - 5 PM</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="overflow:auto;">
+            <div style="float:right;">
+                <button class="btn btn-secondary mr-2" type="button" id="prevBtn"
+                    onclick="nextPrev(-1)">Previous</button>
+                <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+        </div>
+    </div>
+</div>
+
+<script src="../../../assets/js/service_book.js">
+var currentTab = 0;
+showTab(currentTab);
+
+function showTab(n) {
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+    if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == x.length) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+    //... and run a function that will display the correct step indicator:
+    fixStepIndicator(n);
+}
+
+function nextPrev(n) {
+    // This function will figure out which tab to display
+    var x = document.getElementsByClassName("tab");
+    // Exit the function if any field in the current tab is invalid:
+    if (n == 1 && !validateForm()) return false;
+    // Hide the current tab:
+    x[currentTab].style.display = "none";
+    // Increase or decrease the current tab by 1:
+    currentTab = currentTab + n;
+    // if you have reached the end of the form...
+    if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+    }
+    // Otherwise, display the correct tab:
+    showTab(currentTab);
+}
+
+function validateForm() {
+    // This function deals with validation of the form fields
+    var x,
+        y,
+        i,
+        valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    // A loop that checks every input field in the current tab:
+    for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value == "") {
+            // add an "invalid" class to the field:
+            y[i].className += " invalid";
+            // and set the current valid status to false
+            valid = false;
+        }
+    }
+    // If the valid status is true, mark the step as finished and valid:
+    if (valid) {
+        document.getElementsByClassName("step")[currentTab].className +=
+            " finish";
+    }
+    return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+    // This function removes the "active" class of all steps...
+    var i,
+        x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+    }
+    //... and adds the "active" class on the current step:
+    x[n].className += " active";
+}
+
+$(function () {
+    $("#datepicker")
+        .datepicker({
+            autoclose: true,
+            todayHighlight: true,
+        })
+        .datepicker("update", new Date());
+});
+
+</script>

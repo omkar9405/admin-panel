@@ -10,7 +10,9 @@ import { TaskerService } from 'src/app/_services/tasker.service';
 })
 export class EmployeeNavbarComponent implements OnInit {
   username:'';
- 
+ status={
+   "active":"false"
+ }
   constructor(
     private router: Router,
     private authenticationService:TaskerService,
@@ -26,10 +28,24 @@ export class EmployeeNavbarComponent implements OnInit {
   
   }
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/employeeLogin']);
-}
+  logout(){
+    var tasker=localStorage.getItem('currentTasker');
+    var json = JSON.parse(tasker);
+    var obj=json["tasker"];
+    var id=obj["id"];
+    this.authenticationService.patch(this.status,id)
+    .subscribe(
+        data => {
+            console.log("You are logged out");
+            this.authenticationService.logout();
+            this.router.navigate(['/employeeLogin']);
+        },
+        error => {
+          console.log(error);
+        });
+  
+  }
+ 
 
 
 }

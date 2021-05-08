@@ -19,6 +19,7 @@ taskers:[];
     this.getAPI.gettaskerList().subscribe((res: any) => {
       console.log("Taskers loaded successful");
       this.taskers = res.map((key) => ({ ...key }));
+      console.log(this.taskers);
     }, (err) => {
       console.log('Error while fetching data');
       console.error(err);

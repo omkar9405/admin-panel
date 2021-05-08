@@ -16,7 +16,10 @@ export class LoginemployeeComponent implements OnInit {
   returnUrl: string;
   error = '';
   success='';
-
+  status ={
+      "active":"false"
+  };
+  id='';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -55,14 +58,37 @@ onSubmit() {
         .subscribe(
             data => {
                 alert("Login Successful..");
+                this.status.active = "true";
+               
                 console.log(localStorage.getItem('Token'));
                 this.router.navigate(['/employeeProfile']);
-               
+                this.loggedin();
             },
             error => {
                 this.error = error;
                 this.loading = false;
             });
+
+         
+
+}
+
+loggedin()
+{
+    var tasker=localStorage.getItem('currentTasker');
+    var json = JSON.parse(tasker);
+    var obj=json["tasker"];
+    this.id=obj["id"];
+    this.authenticationService.patch(this.status,this.id)
+    .subscribe(
+        data => {
+            console.log("You are active now");
+        },
+        err => {
+            console.log(err);
+            this.error = err;
+            this.loading = false;
+        });
 }
 
 

@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #1A233A;
+}
+
+#regForm {
+    background: #272E48;
+    color: #bcd0f7;
+    margin: 20px auto;
+    padding: 20px;
+    width: 70%;
+    min-width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    background: #cdd5f1;
+    /* width: 100%; */
+    font-size: 17px;
+    border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+    background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+    display: none;
+}
+
+button {
+    background-color: #4CAF50;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 17px;
+    font-family: Raleway;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+.step.active {
+    opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+    background-color: #4CAF50;
+}
+
+textarea{
+    border: 2px solid #4c74af;
+    border-radius: 5px;
+}
+
+.tasker-select{
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+label {
+    position: relative;
+    cursor: pointer;
+} 
+
+label input{
+    visibility: hidden;
+    position: absolute;
+}
+label [type="radio"] {
+    display: none;
+}
+[type="radio"]+div {
+    display: inline-block;
+    padding: 1em;
+}
+
+:checked+div {
+    background: #11113570;
+    display: inline-block;
+}
+
+#datepicker {
+    width: max-content;
+    margin: 0 20px 20px 20px;
+}
+
+#datepicker>span:hover {
+    cursor: pointer;
+}

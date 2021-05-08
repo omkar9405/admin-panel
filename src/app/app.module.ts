@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
 import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
 import { CustomerNavbarComponent } from './customer/customer-navbar/customer-navbar.component';
+import { BookingformComponent } from './components/bookingform/bookingform.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CustomerNavbarComponent } from './customer/customer-navbar/customer-nav
     AdminLoginComponent,
     LayoutComponent,
     EditemployeeComponent,
+  
   
   ],
   imports: [

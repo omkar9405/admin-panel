@@ -149,3 +149,11 @@
   .breadcrumb {
     background-color: transparent;
   }
+
+  .tasker:hover{
+    cursor:pointer;
+    background-color: darkgrey;
+  }
+  .tasker:active{
+    background-color: #06cde7;
+  }

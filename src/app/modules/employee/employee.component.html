@@ -46,7 +46,14 @@
               <td>{{ employee.email }}</td>
               <td>{{ employee.dob }}</td>
               <td>{{ employee.createdAt }}</td>
-              <td>{{ employee.active }}</td>
+              <td>
+                <div class="col-sm-4 " *ngIf="employee.active" style="color: green;">
+                  <h4><i class="fas fa-dot-circle" style="color: green;"></i></h4>
+                 </div>
+                 <div class="col-sm-4 " *ngIf="!employee.active" style="color: red;">
+                  <h4><i class="fas fa-dot-circle" style="color: red;"></i></h4>
+                 </div>
+              </td>
               <td>
               <button (click)="edit(employee.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
               <button (click)="view(employee.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>

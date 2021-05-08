@@ -50,6 +50,7 @@ import { EmployeeprofileComponent } from 'src/app/employees/employeeprofile/empl
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { EmployeeNavbarComponent } from 'src/app/employees/employee-navbar/employee-navbar.component';
 import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
+import { BookingformComponent } from 'src/app/components/bookingform/bookingform.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -80,6 +81,7 @@ import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/custom
     ViewadminsComponent,  
     EmployeeprofileComponent,
     AboutComponent,
+    BookingformComponent,
   ],
   imports: [
     CommonModule,

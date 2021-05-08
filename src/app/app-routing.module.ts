@@ -29,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceComponent } from './components/services-page/service/service.component';
 import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
 import { AboutComponent } from './components/about/about.component';
+import { BookingformComponent } from './components/bookingform/bookingform.component';
 
 const routes: Routes = [
   {
@@ -117,6 +118,10 @@ children:[
   {
     path:'employeeLogin',
     component:LoginemployeeComponent
+  },
+  {
+    path:'bookForm',
+    component:BookingformComponent
   },
   {
     path:'employeeProfile',canActivate:[TaskerAuthGuard],

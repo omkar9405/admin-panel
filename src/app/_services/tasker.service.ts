@@ -65,8 +65,12 @@ catch(Error){
     return this.http.get(`${environment.apiUrl}/taskers/` + Id,{ headers: this.headers });
   }
 
+  patch(status,Id): any {
+    return this.http.patch(`${environment.apiUrl}/taskers/status/` + Id ,status,{ headers: this.headers });
+  }
   logout() {
     // remove Customer from local storage to log Customer out
+  
     localStorage.removeItem('currentTasker');
     this.currentTaskerSubject.next(null);
 }
