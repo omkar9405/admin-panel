@@ -51,6 +51,9 @@ import { AboutComponent } from 'src/app/components/about/about.component';
 import { EmployeeNavbarComponent } from 'src/app/employees/employee-navbar/employee-navbar.component';
 import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
 import { BookingformComponent } from 'src/app/components/bookingform/bookingform.component';
+import { FormWizardModule } from 'angular-wizard-form';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -102,7 +105,7 @@ import { BookingformComponent } from 'src/app/components/bookingform/bookingform
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule
+    CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule,MatStepperModule,MatRadioModule
   ]
 })
 export class DefaultModule { }
