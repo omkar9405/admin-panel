@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 
+
 @Component({
   selector: 'app-loginemployee',
   templateUrl: './loginemployee.component.html',
@@ -59,18 +60,16 @@ onSubmit() {
             data => {
                 alert("Login Successful..");
                 this.status.active = "true";
-               
+    
                 console.log(localStorage.getItem('Token'));
-                this.router.navigate(['/employeeProfile']);
                 this.loggedin();
+                this.router.navigate(['/employeeProfile']);
+                
             },
             error => {
                 this.error = error;
                 this.loading = false;
             });
-
-         
-
 }
 
 loggedin()
@@ -78,8 +77,8 @@ loggedin()
     var tasker=localStorage.getItem('currentTasker');
     var json = JSON.parse(tasker);
     var obj=json["tasker"];
-    this.id=obj["id"];
-    this.authenticationService.patch(this.status,this.id)
+    var id=obj["id"];
+    this.authenticationService.patch(this.status,id)
     .subscribe(
         data => {
             console.log("You are active now");
@@ -90,6 +89,4 @@ loggedin()
             this.loading = false;
         });
 }
-
-
 }

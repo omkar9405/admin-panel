@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TaskerService } from 'src/app/_services/tasker.service';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -12,22 +13,36 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EmployeeprofileComponent implements OnInit {
   profileForm:FormGroup;
   imageURL='';
+  tasker=[];
   taskerDto = {
+    "username":"",
     "firstname":"",
     "lastname":"",
-    "city":"",
     "imagePath":"",
-    "zipcode":0,
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "pincode":0
+    }],
+    "education":"",
+    "completedTasks":0,
     "mobile": 0,
+    "skills":[{
+      "skillname":"",
+      "charges":""
+    },
+    {
+      "skillname":"",
+      "charges":""
+    }
+  ],
+    "jobtype":"",
     "gender":"",
     "email": "",
     "dob":"",
     "password": "",
-    "street":"",
-    "state":"",
-   }
-   status={
-     "active":"false"
+    "active":""
    }
 loading = false;
 submitted = false;   
@@ -41,17 +56,24 @@ username='';
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
       firstname:['',Validators.required],
+      username:['',Validators.required],
       mobile:['',Validators.required],
       city:['',Validators.required],
-      zipcode:['',Validators.required],
       lastname:['',Validators.required],
       gender:['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       dob:['',Validators.required],
+      pincode:['',Validators.required],
       state:['',Validators.required],
       street:['',Validators.required],
-      imagePath: [null]
+      education:['',Validators.required],
+      skillname:['',Validators.required],
+      charges:['',Validators.required],
+      jobtype:['',Validators.required],
+      completedTasks:['',Validators.required],
+      imagePath: [null],
+      skills:[null],
   });
     this.datatableservice.initTable('customers');
     var tasker=localStorage.getItem('currentTasker');
@@ -68,17 +90,23 @@ username='';
       
       this.taskerDto.firstname = res.firstname;
       this.taskerDto.lastname = res.lastname;
-      this.taskerDto.city = res.address.city;
-      this.taskerDto.zipcode = res.address.zipcode;
       this.taskerDto.mobile = res.mobile;
       this.taskerDto.gender = res.gender;
       this.taskerDto.email = res.email;
       this.taskerDto.imagePath = res.imagePath;
       this.taskerDto.dob = res.dob;   
+      this.taskerDto.completedTasks = res.completedTasks;
       this.taskerDto.password = res.password;
-      this.taskerDto.street=res.address.street;
-      this.taskerDto.state=res.address.state;
-      if(this.taskerDto.imagePath=="")
+      this.taskerDto.address[0].street = res.address[0].street;
+      this.taskerDto.address[0].city = res.address[0].city;
+      this.taskerDto.address[0].state = res.address[0].state;
+      this.taskerDto.address[0].pincode = res.address[0].pincode;
+      this.taskerDto.skills = res.skills;
+      this.taskerDto.education = res.education;
+      this.taskerDto.username = res.username;
+      this.taskerDto.jobtype = res.jobtype;
+      this.taskerDto.active = res.active;
+      if(this.taskerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined")
     {
       this.imageURL="../assets/dp.png";
     }
@@ -96,11 +124,11 @@ username='';
     return this.taskerDto;
    }
 
-   update() {
+   async update() {
         this.submitted = true;
         this.loading = true;
-        
-    this.taskerService.update(this.taskerDto,this.id).subscribe(
+        this.taskerDto.password = await bcrypt.hash(this.taskerDto.password,await bcrypt.genSalt(10))
+        this.taskerService.update(this.taskerDto,this.id).subscribe(
       (data:any) => {
         console.log(data);
         alert("Updated Successfully");

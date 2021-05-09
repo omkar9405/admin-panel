@@ -27,6 +27,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "angular-bootstrap-md": "^10.1.1",
     "angular-wizard-form": "^0.4.1",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.0",
     "g": "^2.0.1",
     "highcharts": "^8.2.2",

@@ -10,7 +10,8 @@
                         <div class="user-profile">
                             <div class="user-avatar">
                                 <label for="imageUpload">
-                                    <img  [src]="imageURL" [alt]="username" class="img-thumbnail">
+                                    <img  [src]="imageURL"  [alt]="username" class="img-thumbnail">
+                                    <!-- <img  src="../../../assets/dp.png" *ngIf="taskerDto.imagePath=='https://justdialapi.herokuapp.com/images/undefined'" [alt]="username" > -->
                                 </label>
                                 <input 
                                 type="file" 
@@ -61,7 +62,7 @@
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <h3 class="mb-2 text-primary">Personal Details</h3>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="firstName">First Name</label>
                                             <input type="text" 
@@ -72,7 +73,7 @@
                                                 placeholder="First Name">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="lastName">Last Name</label>
                                             <input type="text" 
@@ -84,7 +85,7 @@
                                                 placeholder="Last Name">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
                                             <input type="text" 
@@ -96,7 +97,7 @@
                                                 placeholder="Enter phone number">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="eMail">Email</label>
                                             <input type="email" 
@@ -108,56 +109,173 @@
                                                 placeholder="Enter email ID">
                                         </div>
                                     </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="gender">Gender</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="gender"
+                                            [(ngModel)]="taskerDto.gender"
+                                            [value]="taskerDto.gender"
+                                                placeholder="Gender">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="education">Education</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="education"
+                                            [(ngModel)]="taskerDto.education"
+                                            [value]="taskerDto.education"
+                                                placeholder="Education">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="completedTasks">Completed Tasks</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="completedTasks"
+                                            [(ngModel)]="taskerDto.completedTasks"
+                                            [value]="taskerDto.completedTasks"
+                                                placeholder="completed Task">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="jobtype">Job Type</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="jobtype"
+                                            [(ngModel)]="taskerDto.jobtype"
+                                            [value]="taskerDto.jobtype"
+                                                placeholder="Job Type">
+                                        </div>
+                                    </div>
                                 </div>
+
+
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h3 class="mt-3 mb-2 text-primary">Skills</h3>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   
+                                        <div class="form-group">
+                                            <label for="skillname">SkillName</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="skillname"
+                                            [(ngModel)]="taskerDto.skills[0].skillname"
+                                            [value]="taskerDto.skills[0].skillname"
+                                                placeholder="SkillName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"> 
+                                        <div class="form-group">
+                                            <label for="jobtype">Charges</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="charges"
+                                            [(ngModel)]="taskerDto.skills[0].charges"
+                                            [value]="taskerDto.skills[0].charges"
+                                                placeholder="Charges">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   
+                                        <div class="form-group">
+                                            <label for="skillname">SkillName</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="skillname"
+                                            [(ngModel)]="taskerDto.skills[1].skillname"
+                                            [value]="taskerDto.skills[1].skillname"
+                                                placeholder="SkillName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"> 
+                                        <div class="form-group">
+                                            <label for="jobtype">Charges</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            formControlName="charges"
+                                            [(ngModel)]="taskerDto.skills[1].charges"
+                                            [value]="taskerDto.skills[1].charges"
+                                                placeholder="Charges">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row gutters">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 form-group">
                                         <h3 class="mt-3 mb-2 text-primary">Address</h3>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="Street">Street</label>
-                                            <input type="name" 
+                                            <label for="street">Street</label>
+                                            <input type="text" 
                                             class="form-control" 
                                             id="Street"
                                             formControlName="street"
-                                            [(ngModel)]="taskerDto.street"
-                                            [value]="taskerDto.street"
+                                            [(ngModel)]="taskerDto.address[0].street"
+                                            [value]="taskerDto.address[0].street"
                                                 placeholder="Enter Street">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="ciTy">City</label>
-                                            <input type="name" class="form-control" 
+                                            <input type="text" class="form-control" 
                                             id="city"
                                             formControlName="city"
-                                            [(ngModel)]="taskerDto.city"
-                                            [value]="taskerDto.city"
+                                            [(ngModel)]="taskerDto.address[0].city"
+                                            [value]="taskerDto.address[0].city"
                                                 placeholder="Enter City">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
                                             <label for="sTate">State</label>
                                             <input type="text" 
                                             class="form-control" 
                                             id="sTate"
                                             formControlName="state"
-                                            [(ngModel)]="taskerDto.state"
-                                            [value]="taskerDto.state"
+                                            [(ngModel)]="taskerDto.address[0].state"
+                                            [value]="taskerDto.address[0].state"
                                                 placeholder="Enter State">
                                         </div>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="zIp">Zip Code</label>
+                                            <label for="zIp">Pin Code</label>
                                             <input type="text" 
                                             class="form-control" 
                                             id="zIp" 
-                                            formControlName="zipcode"
-                                            [(ngModel)]="taskerDto.zipcode"
-                                            [value]="taskerDto.zipcode"
-                                            placeholder="Zip Code">
+                                            formControlName="pincode"
+                                            [(ngModel)]="taskerDto.address[0].pincode"
+                                            [value]="taskerDto.address[0].pincode"
+                                            placeholder="Pin Code">
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h3 class="mt-3 mb-2 text-primary">Credetials</h3>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="passowrd">Password</label>
+                                            <input type="text" 
+                                            class="form-control" 
+                                            id="password"
+                                            formControlName="password"
+                                            [(ngModel)]="taskerDto.password"
+                                            [value]="taskerDto.password"
+                                                placeholder="Enter Password">
                                         </div>
                                     </div>
                                 </div>
@@ -167,6 +285,7 @@
                                         <div class="text-right">
                                             <button 
                                                 class="btn btn-danger">Clear</button>
+                                                &nbsp;
                                             <button [disabled]="loading" (click)="update()"
                                                 class="btn btn-primary">
                                                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
@@ -203,19 +322,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- <tr>
-                                        
-                                        <td>{{}}</td>
-                                        <td><a [href]="#">{{}}</a></td>
-                                        <td>{{}}</td>
-                                        <td>{{}}</td>
-                                        <td>{{}}</td>
-                                        <td><span class="status text-success">&bull;</span>{{}}</td>
-                                        <td><a href="#editStatus" class="view" title="Edit Status"
-                                                data-toggle="modal">
-                                                <i class="fas fa-pen-square"></i>
-                                            </a></td>
-                                    </tr> -->
                                     <tr>
                                         <td>2</td>
                                         <td><a href="#">Paula
@@ -228,7 +334,6 @@
                                                 data-toggle="modal">
                                                 <i class="fas fa-pen-square"></i></a></td>
                                     </tr>
-                                    
                                 </tbody>
                             </table>
                             </div>
