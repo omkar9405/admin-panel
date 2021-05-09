@@ -71,9 +71,9 @@
                         <img src="../../../../assets/dp.png" *ngIf="tasker.imagePath==''" alt="" width="100px" height="15px"
                             class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
                         <div class="mb-2 p-2 ml-3">
-                            <h4 class="text-normal">{{tasker.name}}</h4>
+                            <h4 class="text-normal">{{tasker.firstname}} {{tasker.lastname}}</h4>
                             <i class="fas fa-check-circle">
-                                <span class="text-warning">{{tasker.completedTasks}}completed tasks</span>
+                                <span class="text-warning"><span style="color: green;">{{tasker.completedTasks}}</span> completed tasks</span>
                             </i>
                             <div class="mt-0 ml-3">
                                 <p class="text-secondary">Featured Skills</p>

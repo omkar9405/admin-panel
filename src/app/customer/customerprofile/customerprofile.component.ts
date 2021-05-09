@@ -84,6 +84,7 @@ customerDto = {
     }
 
       console.log(this.customerDto);
+      localStorage.setItem('_id',this.id);
 
     }, (err) => {
       console.log('Error while fetching');

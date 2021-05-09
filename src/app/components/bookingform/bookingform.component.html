@@ -182,3 +182,19 @@
     </mat-step>
   </mat-horizontal-stepper>
 </mat-card>
+
+<div class="backdrop" [ngStyle]="{'display':display}"></div>
+<div class="modal fadein" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title"><span style="color: red;">Login</span></h4>
+            <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button> -->
+        </div>
+        <div class="modal-body">
+          <p>If you are not login. Please Login or Register First.</p>
+          <a type="button"  mat-button style="background-color: paleturquoise;" routerLinkActive="list-item-active"  routerLink="/customerlogin">Login / Register</a>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+   </div><!-- /.modal !-->
