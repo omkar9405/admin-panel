@@ -23,24 +23,47 @@
                         <div class="form-group">
                             <label 
                                 class="font-weight-bold"
-                                >Name 
+                                >First Name 
                                 <span
                                 class="text-danger"
                                 >*</span>
                             </label>
                             <input 
                                 type="text" 
-                                formControlName="customername" 
-                                name="customername"
-                                [(ngModel)]="customerDto.customername"
+                                formControlName="firstName" 
+                                name="firstName"
+                                [(ngModel)]="customerDto.firstName"
                                 class="form-control" 
-                                placeholder="Enter Your Full Name" 
-                                [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+                                placeholder="Enter Your First Name" 
+                                [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
                                 required>
-                                <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
-                                    <div *ngIf="f.customername.errors.required">customername is required</div>
+                                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
                                 </div>
                         </div>
+
+                        <div class="form-group">
+                            <label 
+                                class="font-weight-bold"
+                                >Last Name 
+                                <span
+                                class="text-danger"
+                                >*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                formControlName="lastName" 
+                                name="lastName"
+                                [(ngModel)]="customerDto.lastName"
+                                class="form-control" 
+                                placeholder="Enter Your Last Name" 
+                                [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" 
+                                required>
+                                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.lastName.errors.required">lastname is required</div>
+                                </div>
+                        </div>
+
                         <div class="form-group">
                             <label 
                                 class="font-weight-bold"

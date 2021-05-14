@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CustomerService } from 'src/app/_services/customer.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { BookingService } from 'src/app/_services/booking.service';
 export interface DialogData {
   email: string;
   password: string;
@@ -25,10 +26,36 @@ export class BookingformComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
   loginFormGroup: FormGroup
-
-  taskerId:'';
   taskers:[];
-  customer:[];
+  taskerId:'';
+  bookingDto={
+    "taskId":"",
+    "c_id":"",
+    "c_firstName":"",
+    "c_lastName":"",
+    "phone":"",
+    "email":"",
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "zipcode":""
+    }],
+    "requestDate":Date.now,
+    "taskOption":"",
+    "description":"",
+    "taskerId":"",
+    "isAccepted":false,
+    "status":"pending",
+    "comment":[
+      {
+        "name":"",
+        "comment":"",
+        "commentDate":"",
+        "rating":""
+      }
+    ]
+  }
   display='none';
   id:'';
   loading = false;
@@ -37,7 +64,7 @@ export class BookingformComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,public router:Router,
               public route:ActivatedRoute,public customreService:CustomerService,
               public authenticationService: TaskerService,public dialog: MatDialog,
-              private modalService: NgbModal) {}
+              private bookingservice:BookingService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -56,34 +83,42 @@ export class BookingformComponent implements OnInit {
     });
     if(localStorage.getItem('_id')==null)
     {
-      this.logged=false;
-    
+        this.logged=false;
         this.display='block';
-     
     }
     else
     {
       this.logged=true;
       this.onCloseHandled();
-      this.getCustomer(localStorage.getItem('_id'));
+      this.getCustomer();
+      this.getlist();
     }
-    this.getlist();
+    
   }
-  getCustomer(id)
+  getCustomer()
   {
     this.customreService.getById(localStorage.getItem('_id')).subscribe((res: any) => {
       console.log(res);
-      this.customer = res.map((key) => ({ ...key }));
-      console.log(this.customer);
+      this.bookingDto.c_id = res.id;
+      this.bookingDto.c_firstName = res.firstName;
+      this.bookingDto.c_lastName = res.lastName;
+      this.bookingDto.phone =res.mobile;
+      this.bookingDto.email = res.email;
+      this.bookingDto.address[0].street = res.address[0].street;
+      this.bookingDto.address[0].city = res.address[0].city;
+      this.bookingDto.address[0].state = res.address[0].state;
+      this.bookingDto.address[0].zipcode = res.address[0].zipcode;
+
     }, (err) => {
       console.log('Error while fetching data');
       console.error(err);
     });
   }
+
   getlist()
  {
   this.authenticationService.gettaskerList().subscribe((res: any) => {
-    console.log(res);
+    console.log("tasker loaded succesfully");
     this.taskers = res.map((key) => ({ ...key }));
     console.log(this.taskers);
   }, (err) => {
@@ -95,13 +130,25 @@ export class BookingformComponent implements OnInit {
 
  taskerSelected(id)
  {
-this.taskerId=id;
-console.log("selected Id"+this.taskerId);
+this.bookingDto.taskerId=id;
+console.log("selected Id"+this.bookingDto.taskerId);
  }
 
   book(){
     this.submitted = true;
     this.loading = true;   
+    this.bookingservice.save(this.bookingDto).subscribe(
+      (data:any) => {
+        console.log(data);
+        alert("Booked Successfully");
+        this.loading = false; 
+       
+    },(err) => {
+        alert(err);
+        console.log(err);
+        this.loading =false;
+    
+    });
   }
 
   onCloseHandled(){

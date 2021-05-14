@@ -12,14 +12,14 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="firstname" required>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="firstname" [(ngModel)]="bookingDto.c_firstName" [value]="bookingDto.c_firstName" required>
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="lastname" required>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="lastname" [(ngModel)]="bookingDto.c_lastName" [value]="bookingDto.c_lastName"  required>
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                     </mat-form-field>
                 </div>
@@ -28,13 +28,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Phone</mat-label>
-                        <input type="number" matInput placeholder="Placeholder" formControlName="phone" required>
+                        <input type="number" matInput placeholder="Placeholder" formControlName="phone" [(ngModel)]="bookingDto.phone" [value]="bookingDto.phone"  required>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Placeholder" formControlName="email" required>
+                        <input type="email" matInput placeholder="Placeholder" formControlName="email" [(ngModel)]="bookingDto.email" [value]="bookingDto.email"  required>
                     </mat-form-field>
                 </div>                
             </div>
@@ -44,13 +44,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Street</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="street" required>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="street" [(ngModel)]="bookingDto.address[0].street" [value]="bookingDto.address[0].street"  required>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>City</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="city" required>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="city" [(ngModel)]="bookingDto.address[0].city" [value]="bookingDto.address[0].city" required>
                     </mat-form-field>
                 </div>
                 </div>
@@ -58,13 +58,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>State</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="state" required>
+                        <input type="text" matInput placeholder="Placeholder" formControlName="state" [(ngModel)]="bookingDto.address[0].state" [value]="bookingDto.address[0].state" required>
                     </mat-form-field>
                 </div>                
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Zip Code</mat-label>
-                        <input type="number" matInput placeholder="Placeholder" formControlName="zipcode" required>
+                        <input type="number" matInput placeholder="Placeholder" formControlName="zipcode" [(ngModel)]="bookingDto.address[0].zipcode" [value]="bookingDto.address[0].zipcode" required>
                     </mat-form-field>
                 </div>                
             </div>
@@ -87,7 +87,7 @@
                     <mat-label style="font-weight: 300; font-size: 200%;color:teal;">Task Options </mat-label>
                     <br>
                         <label  style="margin-bottom:2%;font-weight: 100; font-size: 100%;">How big is your Task?</label>
-                        <mat-radio-group class="d-flex justify-content-around mb-4" formControlName="selecthr" required>
+                        <mat-radio-group class="d-flex justify-content-around mb-4" formControlName="selecthr" [(ngModel)]="bookingDto.taskOption" required>
                           <mat-radio-button  value='onehr' >small-Est.1 hr</mat-radio-button>
                           <mat-radio-button  value='twohr' >small-Est.2-3 hr</mat-radio-button>
                           <mat-radio-button  value='fourhr' >small-Est.4+ hr</mat-radio-button>
@@ -102,7 +102,7 @@
                             This helps us show you only qualified and available Taskers for the job.</label>
                         <br>
                         <mat-form-field appearance="outline">
-                            <textarea type="text" matInput placeholder="Placeholder" formControlName="description" required></textarea>
+                            <textarea type="text" matInput placeholder="Placeholder" formControlName="description" [(ngModel)]="bookingDto.description" required></textarea>
                         </mat-form-field>
                     </div>
                 </div>
@@ -115,11 +115,11 @@
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="thirdFormGroup" errorMessage="Select tassker is required.">
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Select tasker is required.">
         <!-- <form [formGroup]="thirdFormGroup"> -->
           <ng-template matStepLabel>Select Tasker</ng-template>
         <div *ngFor="let tasker of taskers">
-          <div class="tasker-select" (click)="taskerSelected(tasker.id)" style="background-color: silver;" *ngIf="tasker.id==taskerId">
+          <div class="tasker-select" (click)="taskerSelected(tasker.id)" style="background-color: silver;" *ngIf="tasker.id==bookingDto.taskerId">
             <input type="radio" name="taskername" [value]="tasker.id" checked>
             <div class="d-flex align-items-center w-100 flex-wrap align-content-center justify-content-center">
                 <img [src]="tasker.imagePath" *ngIf="tasker.imagePath!=''" alt="" width="100px" height="15px"
@@ -127,8 +127,8 @@
                 <img src="../../../assets/dp.png" *ngIf="tasker.imagePath==''" alt="" width="100px" height="15px"
                     class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
                 <div class="mb-2 p-2 ml-3" style="flex: 1;">
-                    <h5 class="font-weight-normal">{{tasker.name}}</h5>
-                    <p class="text-secondary">{{tasker.address.street}}, {{tasker.address.city}},{{tasker.address.state}},{{tasker.address.zipcode}}</p>
+                    <h5 class="font-weight-normal">{{tasker.firstname}} {{tasker.lastname}}</h5>
+                    <p class="text-secondary">{{tasker.address[0].street}}, {{tasker.address[0].city}},{{tasker.address[0].state}},{{tasker.address[0].zipcode}}</p>
                     <p><i class="fas fa-check-circle"></i> {{tasker.completedTasks}} of completed tasks</p>
                 </div>
                 <div style="align-self: flex-start;">
@@ -138,7 +138,7 @@
             </div>
            </div>
 
-           <div class="tasker-select" (click)="taskerSelected(tasker.id)" *ngIf="tasker.id!=taskerId">
+           <div class="tasker-select" (click)="taskerSelected(tasker.id)" *ngIf="tasker.id!=bookingDto.taskerId">
             <input type="radio" name="taskername" value="tasker1"  >
             <div class="d-flex align-items-center w-100 flex-wrap align-content-center justify-content-center">
                 <img [src]="tasker.imagePath" *ngIf="tasker.imagePath!=''" alt="" width="100px" height="15px"
@@ -146,8 +146,8 @@
                 <img src="../../../assets/dp.png" *ngIf="tasker.imagePath==''" alt="" width="100px" height="15px"
                     class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
                 <div class="mb-2 p-2 ml-3" style="flex: 1;">
-                    <h5 class="font-weight-normal">{{tasker.name}}</h5>
-                    <p class="text-secondary">{{tasker.address.street}}, {{tasker.address.city}},{{tasker.address.state}},{{tasker.address.zipcode}}</p>
+                    <h5 class="font-weight-normal">{{tasker.firstname}} {{tasker.lastname}}</h5>
+                    <p class="text-secondary">{{tasker.address[0].street}}, {{tasker.address[0].city}},{{tasker.address[0].state}},{{tasker.address[0].zipcode}}</p>
                     <p><i class="fas fa-check-circle"></i> {{tasker.completedTasks}} of completed tasks</p>
                 </div>
                 <div style="align-self: flex-start;">
@@ -169,7 +169,7 @@
       <p>You are now done.</p>
       <p>{{firstFormGroup.value | json}}</p>
       <p>{{secondFormGroup.value | json}}</p>
-      <p>{{taskerId | json}}</p>
+      <p>{{bookingDto.taskerId | json}}</p>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         
@@ -189,7 +189,7 @@
       <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title"><span style="color: red;">Login</span></h4>
-            <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button> -->
+            <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button>
         </div>
         <div class="modal-body">
           <p>If you are not login. Please Login or Register First.</p>

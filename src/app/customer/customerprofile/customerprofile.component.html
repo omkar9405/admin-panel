@@ -68,7 +68,7 @@
                           </div>
                       </div>
                       <div class="about" style="display: block;text-align: center;">
-                        <h3 class="user-name">{{customerDto.customername}}</h3>
+                        <h3 class="user-name">{{customerDto.firstName}} {{customerDto.lastName}}</h3>
                           <br>
                           <h4>Contact No:</h4>
                           <p style="font-size:medium">{{customerDto.mobile}}</p>
@@ -107,18 +107,29 @@
                                       <h3 class="mb-2 text-primary">Personal Details</h3>
                                   </div>
                                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                      <div class="form-group">
-                                          <label for="firstName">Customer Name</label>
-                                          <input type="text" 
-                                          class="form-control" 
-                                          formControlName="customername"
-                                          [(ngModel)]="customerDto
-.customername"
-                                          [value]="customerDto
-.customername"
-                                              placeholder="Customer Name">
-                                      </div>
-                                  </div>
+                                    <div class="form-group">
+                                        <label for="firstname">First Name</label>
+                                        <input type="text" 
+                                        class="form-control" 
+                                        id="firstname"
+                                        formControlName="firstName"
+                                        [(ngModel)]="customerDto.firstName"
+                                        [value]="customerDto.firstName"
+                                            placeholder="Enter first name">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name</label>
+                                        <input type="text" 
+                                        class="form-control" 
+                                        id="lastname"
+                                        formControlName="lastName"
+                                        [(ngModel)]="customerDto.lastName"
+                                        [value]="customerDto.lastName"
+                                            placeholder="Enter last name">
+                                    </div>
+                                </div>
                                   <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                       <div class="form-group">
                                           <label for="phone">Phone</label>
@@ -162,36 +173,59 @@
                                 </div>
                               </div>
                          <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h3 class="mb-2 text-primary">Address</h3>
+                            </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <textarea type="text" 
+                                    <label for="street">Street</label>
+                                    <input type="text" 
                                     class="form-control" 
-                                    id="address"
-                                    formControlName="address"
-                                    [(ngModel)]="customerDto
-.address"
-                                    [value]="customerDto
-.address"
-                                        placeholder="Enter Address" rows="3" cols="6"></textarea>
+                                    id="street"
+                                    formControlName="street"
+                                    [(ngModel)]="customerDto.address[0].street"
+                                    [value]="customerDto.address[0].street"
+                                        placeholder="Enter Street" >
                                 </div>
                             </div>
-                                  
-                                  
-                                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                      <div class="form-group">
-                                          <label for="pincode">Pin Code</label>
-                                          <input type="text" 
-                                          class="form-control" 
-                                          id="pincod" 
-                                          formControlName="pincode"
-                                          [(ngModel)]="customerDto
-.pincode"
-                                          [value]="customerDto
-.pincode"
-                                          placeholder="Enter Pin Code">
-                                      </div>
-                                  </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="city">City</label>
+                                    <input type="text" 
+                                    class="form-control" 
+                                    id="city"
+                                    formControlName="city"
+                                    [(ngModel)]="customerDto.address[0].city"
+                                    [value]="customerDto.address[0].city"
+                                        placeholder="Enter CITY" >
+                                </div>
+                            </div>
+                           
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="state">State</label>
+                                    <input type="text" 
+                                    class="form-control" 
+                                    id="state"
+                                    formControlName="state"
+                                    [(ngModel)]="customerDto.address[0].state"
+                                    [value]="customerDto.address[0].state"
+                                        placeholder="Enter State" >
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode</label>
+                                    <input type="text" 
+                                    class="form-control" 
+                                    id="zipcode"
+                                    formControlName="zipcode"
+                                    [(ngModel)]="customerDto.address[0].zipcode"
+                                    [value]="customerDto.address[0].zipcode"
+                                        placeholder="Enter zipcode" >
+                                </div>
+                            </div>
+                                 
                               </div>
                               </div>
                               <div class="row gutters">

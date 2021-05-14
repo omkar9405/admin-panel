@@ -19,10 +19,15 @@ id='';
 error='';
 username='';
 customerDto = {
-  "customername":"",
-  "address":"",
+  "firstName":"",
+  "lastName":"",
+  "address":[{
+    "street":"",
+    "city":"",
+    "state":"",
+    "zipcode":""
+  }],
   "imagePath":"",
-  "pincode":0,
   "mobile": 0,
   "gender":"",
   "email": "",
@@ -41,14 +46,18 @@ customerDto = {
 
   ngOnInit( ): void {
     this.customerForm = this.formBuilder.group({
-      customername:['',Validators.required],
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
       mobile:['',Validators.required],
-      pincode:['',Validators.required],
       gender:['',Validators.required],
+      city:['',Validators.required],
+      street:['',Validators.required],
+      state:['',Validators.required],
+      zipcode:['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
       dob:['',Validators.required],
-      address:['',Validators.required],
+      
       imagePath: [null]
   });
     this.datatableservice.initTable('customers');
@@ -65,16 +74,16 @@ customerDto = {
   getCustomer(){
     this.customerService.getById(this.id).subscribe((res: any) => {
       
-      this.customerDto.customername = res.customername;
+      this.customerDto.firstName = res.firstName;
+      this.customerDto.lastName = res.lastName;
       this.customerDto.mobile = res.mobile;
-      this.customerDto.pincode = res.pincode;
       this.customerDto.gender = res.gender;
       this.customerDto.email = res.email;
       this.customerDto.imagePath = res.imagePath;
       this.customerDto.dob = res.dob;   
       this.customerDto.password = res.password;
       this.customerDto.address = res.address;
-      if(this.customerDto.imagePath=="")
+      if(this.customerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined")
     {
       this.imageURL="../assets/dp.png";
     }
@@ -129,5 +138,6 @@ customerDto = {
   logout() {
     this.authenticationService.logout();
     this.router.navigate(['/customerlogin']);
+    localStorage.removeItem('_id');
 }
 }

@@ -12,9 +12,18 @@ export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   success='';
   customerDto = {
-   "customername":"",
+   "firstName":"",
+   "lastName":"",
    "mobile": 0,
    "gender":"Select Gender",
+   "address":[
+    {
+      "street":"",
+      "city":"",
+      "state":"",
+      "zipcode":""
+    }
+   ],
    "email": "",
    "dob":"",
    "password": "",
@@ -34,7 +43,8 @@ export class SignupComponent implements OnInit {
  
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      customername:['',Validators.required],
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
       mobile:['',Validators.required],
       gender:['',Validators.required],
       email: ['', Validators.required],
@@ -68,7 +78,8 @@ export class SignupComponent implements OnInit {
 
   clearAll()
   {
-    this.customerDto.customername="",
+    this.customerDto.firstName="",
+    this.customerDto.lastName="",
     this.customerDto.mobile= 0,
     this.customerDto.gender="",
     this.customerDto.email= "",
