@@ -246,22 +246,107 @@
                       </div>
                   </div>
               </div>
+
+
+              <!-- ----------------------------------------------- -->
               <div class="tab-pane" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tabs-2">
                   <div class="mat-elevation-z8" >
-                      <div class="card height-auto" style="background-color:transparent; color: blueviolet;" >
-                        <div class="card-body">
+                      <div class="card height-auto" style="background-color:transparent;" >
+                        <div>
                           <div class="heading-layout1">
                             <div class="item-title">
                               <h2>Activities</h2>
                             </div>
                           </div>
-                        All Activities are here
+                          <div class="col-md-12">
+                            <div class="book-card card-white mb-5">
+                                <div class="card-heading clearfix border-bottom mb-4">
+                                    <h4 class="card-title">Booking Requests</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled" *ngFor="let request of requests;">
+                                        <div *ngFor="let tasker of taskers;">
+                                        <li class="position-relative booking"  >
+                                            <div class="panel-group" *ngIf="request.taskerId==tasker.id" >
+                                                <div class="panel panel-default" >
+                                                  <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                      <a data-toggle="collapse" href="#i" >Request details</a>
+                                                    </h4>
+                                                  </div>
+                                                  <div id="i" class="panel-collapse ">
+                                                        <div class="media">
+                                                            <div class="msg-img">
+                                                                <img [src]="tasker.imagePath" alt="">
+                                                            </div>
+                                                            <div class="media-body">
+                                                                <h2 class="mb-4 text-primary">{{tasker.firstname}} {{tasker.lastname}}</h2>
+                                                                    <div class="mb-3">
+                                                                    <span class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Booking Date:</span>
+                                                                    <span>{{request.createdAt}}</span>
+                                                                    </div>
+                                                    <div class="mb-3">
+                                                        <span
+                                                            class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Service
+                                                            Details:</span>
+                                                        <span>{{request.description}}</span>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <span
+                                                            class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Base Price:</span>
+                                                        <span>150 RS</span>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <span
+                                                            class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Contact:</span>
+                                                        <span class="border-right pr-2 mr-2">{{tasker.mobile}}</span>
+                                                        <span class="border-right pr-2 mr-2">{{tasker.email}}</span>
+                                                        <span>123-563-789</span>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <span
+                                                            class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Address:</span>
+                                                        <span class="border-right pr-2 mr-2">{{tasker.address[0].street}}
+                                                        {{tasker.address[0].city}} {{tasker.address[0].state}}</span>
+                                                        <span>{{tasker.address[0].pincode}}</span>
+                                                    </div>
+                                                    <span class="button-to-right">
+                                                        <a  class="btn-gray btn-danger text-white" *ngIf="request.status=='canceled'">
+                                                            <i class="far fa-check-circle mr-2"></i>
+                                                            Cancelled
+                                                        </a> 
+                                                        <a  class="btn-gray btn-success text-white" *ngIf="request.status=='completed'">
+                                                            <i class="far fa-check-circle mr-2"></i>
+                                                            Completed
+                                                        </a> 
+                                                        <a  class="btn-gray btn-danger ml-4" (click)="action(request.id,'canceled')" *ngIf="request.status=='pending' || request.status=='rebooked' ">
+                                                            <i class="far fa-times-circle mr-2"></i> Cancel
+                                                        </a>
+                                                        <a  class="btn-gray btn-success ml-4" (click)="action(request.id,'rebooked')" *ngIf="request.status=='canceled'">
+                                                            <i class="far fa-times-circle mr-2"></i> Book again
+                                                        </a>
+                                                        
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </li>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-
-
+                        </div>
                       </div>
                   </div>
               </div>
+
+
+
+
+              <!-- ----------------------------------------------- -->
               <div class="tab-pane" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tabs-3">
                   <div class="col-md-12">
                       <div class="book-card card-white mb-5">

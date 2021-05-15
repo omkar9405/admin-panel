@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TaskerService } from 'src/app/_services/tasker.service';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
+import { BookingService } from 'src/app/_services/booking.service';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -15,6 +15,7 @@ export class EmployeeprofileComponent implements OnInit {
   imageURL='';
   tasker=[];
   taskerDto = {
+    "id":"",
     "username":"",
     "firstname":"",
     "lastname":"",
@@ -49,7 +50,10 @@ submitted = false;
 id='';
 error='';
 username='';
-  constructor(private taskerService:TaskerService, private formBuilder:FormBuilder, private datatableservice: DatatableService,  private router: Router,) {
+  constructor(private taskerService:TaskerService, 
+    private formBuilder:FormBuilder, 
+    private datatableservice: DatatableService,  
+    private bookingService:BookingService) {
     
    }
 
@@ -82,12 +86,12 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-    
+   
   }
 
    getTasker(){
     this.taskerService.getById(this.id).subscribe((res: any) => {
-      
+      this.taskerDto.id = res.id;
       this.taskerDto.firstname = res.firstname;
       this.taskerDto.lastname = res.lastname;
       this.taskerDto.mobile = res.mobile;
@@ -116,7 +120,7 @@ username='';
     }
 
       console.log(this.taskerDto);
-
+      this.getBookings();
     }, (err) => {
       console.log('Error while fetching');
       console.error(err);
@@ -127,11 +131,12 @@ username='';
    async update() {
         this.submitted = true;
         this.loading = true;
-        this.taskerDto.password = await bcrypt.hash(this.taskerDto.password,await bcrypt.genSalt(10))
+        // this.taskerDto.password = await bcrypt.hash(this.taskerDto.password,await bcrypt.genSalt(10));
         this.taskerService.update(this.taskerDto,this.id).subscribe(
       (data:any) => {
         console.log(data);
         alert("Updated Successfully");
+        this.ngOnInit();
         this.loading=false;
     },(err) => {
         alert(err);
@@ -156,6 +161,34 @@ username='';
     reader.readAsDataURL(file)
   }
 
- 
+ //get bookings
+requests:[];
+getBookings(){
+    this.bookingService.findAllEmployeeRequest(this.taskerDto.id).subscribe((res: any) => {
+    console.log("Request loaded successful");
+    this.requests = res.map((key) => ({ ...key }));
+    console.log(this.requests);
+    
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+}
 
+
+statusDto={
+  "isAccepted":false
+}
+action(id,status)
+{
+  this.statusDto.isAccepted= status;
+  this.bookingService.isAccepted(id,this.statusDto).subscribe((res: any) => {
+    this.getBookings();
+    console.log(res);
+    
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+}
 }

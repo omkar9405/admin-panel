@@ -4,13 +4,15 @@ import { AuthenticationService } from 'src/app/_services/authentication.service'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { CustomerService } from 'src/app/_services/customer.service';
+import { TaskerService } from 'src/app/_services/tasker.service';
+import { BookingService } from 'src/app/_services/booking.service';
 @Component({
   selector: 'app-customerprofile',
   templateUrl: './customerprofile.component.html',
   styleUrls: ['./customerprofile.component.css']
 })
 export class CustomerprofileComponent implements OnInit {
-tasker:[]
+// tasker:[]
 customerForm:FormGroup;
 imageURL='';
 loading = false;
@@ -19,6 +21,7 @@ id='';
 error='';
 username='';
 customerDto = {
+  "id":"",
   "firstName":"",
   "lastName":"",
   "address":[{
@@ -37,11 +40,12 @@ customerDto = {
 
   constructor(
     private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
     private datatableservice: DatatableService, 
     private router: Router,
     private customerService:CustomerService,
-    private authenticationService: AuthenticationService
+    private taskerService:TaskerService,
+    private authenticationService: AuthenticationService,
+    private bookingService:BookingService
   ) { }
 
   ngOnInit( ): void {
@@ -57,7 +61,6 @@ customerDto = {
       email: ['', Validators.required],
       password: ['', Validators.required],
       dob:['',Validators.required],
-      
       imagePath: [null]
   });
     this.datatableservice.initTable('customers');
@@ -67,13 +70,15 @@ customerDto = {
     this.id=obj["id"];
     this.username=obj["customername"];
     this.getCustomer();
-    console.log("Customerr Profile");
+    // console.log("Customerr Profile");
    // this.id=localStorage.getItem('CurrentTasker');
+   
+   this.getTaskers()
   }
 
   getCustomer(){
     this.customerService.getById(this.id).subscribe((res: any) => {
-      
+      this.customerDto.id = res.id;
       this.customerDto.firstName = res.firstName;
       this.customerDto.lastName = res.lastName;
       this.customerDto.mobile = res.mobile;
@@ -83,7 +88,7 @@ customerDto = {
       this.customerDto.dob = res.dob;   
       this.customerDto.password = res.password;
       this.customerDto.address = res.address;
-      if(this.customerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined")
+      if(this.customerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined" ||this.customerDto.imagePath==undefined )
     {
       this.imageURL="../assets/dp.png";
     }
@@ -94,6 +99,7 @@ customerDto = {
 
       console.log(this.customerDto);
       localStorage.setItem('_id',this.id);
+      this.getBookings();
 
     }, (err) => {
       console.log('Error while fetching');
@@ -139,5 +145,49 @@ customerDto = {
     this.authenticationService.logout();
     this.router.navigate(['/customerlogin']);
     localStorage.removeItem('_id');
+}
+
+//get bookings
+requests:[];
+getBookings(){
+    this.bookingService.findAllCustomerRequest(this.customerDto.id).subscribe((res: any) => {
+    console.log("Request loaded successful");
+    this.requests = res.map((key) => ({ ...key }));
+    console.log(this.requests);
+    
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+}
+
+
+//taskers
+taskers:[];
+getTaskers(){
+  this.taskerService.gettaskerList().subscribe((res: any) => {
+    this.taskers = res.map((key) => ({ ...key }));
+    console.log(this.taskers);
+    
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+}
+
+statusDto={
+  "status":""
+}
+action(id,status)
+{
+  this.statusDto.status= status;
+  this.bookingService.changeStatus(id,this.statusDto).subscribe((res: any) => {
+    this.getBookings();
+    console.log(res);
+    
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
 }
 }

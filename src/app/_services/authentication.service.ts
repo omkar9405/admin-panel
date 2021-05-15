@@ -50,7 +50,4 @@ export class AuthenticationService {
     }
     //Taskers
 
-    getTaskerList(){
-        
-    }
 }

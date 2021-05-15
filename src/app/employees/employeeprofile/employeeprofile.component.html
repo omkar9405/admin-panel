@@ -322,17 +322,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><a href="#">Paula
-                                                Wilson</a></td>
-                                        <td>Jun 21, 2017</td>
-                                        <td>Singhgad Road, Pune</td>
-                                        <td>1,260 RS</td>
-                                        <td><span class="status text-info">&bull;</span> Pending</td>
+                                    <tr *ngFor="let request of requests;let i=index;">
+                                        <td>{{i+1}}</td>
+                                        <td><a>{{request.c_firstName}} {{request.c_lastName}}</a></td>
+                                        <td>{{request.createdAt}}</td>
+                                        <td>{{request.address[0].street}},{{request.address[0].city}}</td>
+                                        <td>450 RS</td>
+                                        <td *ngIf="request.status=='pending'"><span class="status text-info">&bull;</span> {{request.status}}</td>
+                                        <td *ngIf="request.status=='completed'"><span class="status text-success">&bull;</span> {{request.status}}</td>
+                                        <td *ngIf="request.status=='canceled'"><span class="status text-danger">&bull;</span> {{request.status}}</td>
                                         <td><a href="#editStatus" class="view" title="Edit Status"
                                                 data-toggle="modal">
-                                                <i class="fas fa-pen-square"></i></a></td>
+                                                <i class="fas fa-pen-square"></i></a>
+                                        </td>
+<!-- request model start-->
+<div id="editStatus" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-primary">Accept Request</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                   <p style="color:black;">{{request.description}}</p>
+                </div>
+                <div class="modal-footer">
+                    <a  class="btn-gray btn-danger ml-4" data-dismiss="modal" (click)="action(request.id,'false')"  >
+                        <i class="far fa-times-circle mr-2"></i> Reject
+                    </a>
+                    <a  class="btn-gray btn-success ml-4" data-dismiss="modal" (click)="action(request.id,'true')">
+                        <i class="far fa-times-circle mr-2"></i> Accept
+                    </a>
+                </div>
+        </div>
+    </div>
+</div>
+<!-- request model end -->
                                     </tr>
                                 </tbody>
                             </table>
@@ -409,29 +434,5 @@
     </div>
     <!-- Tabs navs -->
 </div>
-<div id="editStatus" class="modal fade">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Edit Status</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="text-secondary">Update Status</label>
-                        <select class="form-control">
-                            <option>Status</option>
-                            <option>Completed</option>
-                            <option>Pending</option>
-                            <option>Cancelled</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>    
-        </div>
-    </div>
-</div>
+
 </div>

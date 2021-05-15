@@ -22,7 +22,43 @@
                 <li class="nav-item">
                     <a class="nav-link"  routerLinkActive="list-item-active"  routerLink="/contactUs">Contact Us</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="c_id!=''">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbar-list-4">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <img [src]="customerDto.imagePath" width="40" height="40" class="rounded-circle">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/customerlogin">Dashboard</a>
+                              <a class="dropdown-item" mat-list-item (click)="logoutCutomer()">Log Out</a>
+                            </div>
+                          </li>   
+                        </ul>
+                      </div>
+                </li>
+                <li class="nav-item" *ngIf="t_id!=''">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-4" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbar-list-4">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <img [src]="taskerDto.imagePath" [alt]="taskerDto.username" width="40" height="40" class="rounded-circle">
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item"  mat-list-item  routerLinkActive="list-item-active"  routerLink="/employeeLogin">Dashboard</a>
+                          <a class="dropdown-item" mat-list-item (click)="logoutTasker()">Log Out</a>
+                        </div>
+                      </li>   
+                    </ul>
+                  </div>
+            </li>
+                <li class="nav-item" *ngIf="c_id=='' && t_id==''">
                     <div class="dropdown">
                         <button class="btn drop-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Login/SignUp
