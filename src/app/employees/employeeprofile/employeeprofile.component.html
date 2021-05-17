@@ -322,48 +322,56 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let request of requests;let i=index;">
+                                    <tr *ngFor="let request of requests;let i=index;"(click)="view(request)" style="cursor:pointer;" >
                                         <td>{{i+1}}</td>
-                                        <td><a>{{request.c_firstName}} {{request.c_lastName}}</a></td>
+                                        <td><a >{{request.c_firstName}} {{request.c_lastName}}</a></td>
                                         <td>{{request.createdAt}}</td>
                                         <td>{{request.address[0].street}},{{request.address[0].city}}</td>
                                         <td>450 RS</td>
+                                        <td *ngIf="request.status=='rebooked'"><span class="status text-info">&bull;</span> {{request.status}}</td>
                                         <td *ngIf="request.status=='pending'"><span class="status text-info">&bull;</span> {{request.status}}</td>
                                         <td *ngIf="request.status=='completed'"><span class="status text-success">&bull;</span> {{request.status}}</td>
                                         <td *ngIf="request.status=='canceled'"><span class="status text-danger">&bull;</span> {{request.status}}</td>
-                                        <td><a href="#editStatus" class="view" title="Edit Status"
-                                                data-toggle="modal">
-                                                <i class="fas fa-pen-square"></i></a>
+                                        <td>
+                                            <a style="color: white;" class="btn-gray btn-danger" data-dismiss="modal" *ngIf="request.isAccepted==true" (click)="action(request.id,'false')"  >
+                                                <i class="far fa-times-circle mr-2"></i> Reject
+                                            </a>
+                                            <a style="color: white;" class="btn-gray btn-success" data-dismiss="modal" *ngIf="request.isAccepted==false" (click)="action(request.id,'true')">
+                                                <i class="far fa-check-circle mr-2"></i> Accept
+                                            </a>
                                         </td>
-<!-- request model start-->
-<div id="editStatus" class="modal fade">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title text-primary">Accept Request</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                   <p style="color:black;">{{request.description}}</p>
-                </div>
-                <div class="modal-footer">
-                    <a  class="btn-gray btn-danger ml-4" data-dismiss="modal" (click)="action(request.id,'false')"  >
-                        <i class="far fa-times-circle mr-2"></i> Reject
-                    </a>
-                    <a  class="btn-gray btn-success ml-4" data-dismiss="modal" (click)="action(request.id,'true')">
-                        <i class="far fa-times-circle mr-2"></i> Accept
-                    </a>
-                </div>
-        </div>
-    </div>
-</div>
-<!-- request model end -->
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                             </div>
                           </div>
                         </div>
+                    </div>
+                    <div class="mat-elevation-z8" [ngStyle]="{'display': show()}">
+                                <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="text-info ">Accept Request</h3>
+                                        </div>
+                                         <div class="modal-body" >
+                                        <h1 style="color:purple;">{{selected.c_firstName}} {{selected.c_lastName}}</h1>
+                                           <h3 style="color:black;">Description:{{selected.description}}</h3>
+                                           <h4 style="color:gray" *ngFor="let address of selected.address; let i=index;">Address:{{selected.address[i].street}},{{selected.address[i].city}}
+                                              {{selected.address[i].state}}, {{selected.address[i].zipcode}}</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <h3 *ngIf="selected.status=='rebooked'"><span class="status text-info">&bull; &nbsp; {{selected.status}}</span> </h3>
+                                        <h3 *ngIf="selected.status=='pending'"><span class="status text-info">&bull;  &nbsp; {{selected.status}}</span> </h3>
+                                        <h3 *ngIf="selected.status=='completed'"><span class="status text-success">&bull;  &nbsp; {{selected.status}}</span></h3>
+                                        <h3 *ngIf="selected.status=='canceled'"><span class="status text-danger">&bull;  &nbsp; {{selected.status}}</span> </h3>
+                                            <!--<a  class="btn-gray btn-danger ml-4" *ngIf='selected.isAccepted==true'>
+                                                <i class="far fa-times-circle mr-2"></i> Reject
+                                            </a>
+                                            <a  class="btn-gray btn-success ml-4" *ngIf='selected.isAccepted==false'>
+                                                <i class="far fa-check-circle mr-2"></i> Accept
+                                            </a>-->
+                                        </div>
+                                </div>
                     </div>
                 </div>
                 <div class="tab-pane" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tabs-3">

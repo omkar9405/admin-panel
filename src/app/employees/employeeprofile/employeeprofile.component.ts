@@ -54,7 +54,9 @@ username='';
     private formBuilder:FormBuilder, 
     private datatableservice: DatatableService,  
     private bookingService:BookingService) {
-    
+      setInterval(() => {
+        this.getBookings();
+      }, 10000);
    }
 
   ngOnInit(): void {
@@ -190,5 +192,21 @@ action(id,status)
     console.log('Error while fetching data');
     console.error(err);
   });
+}
+
+
+selected='';
+display='none';
+view(request){
+this.selected= request;
+if(this.display=='none')
+{
+  this.display='block';
+  console.log(this.selected);
+}
+} show()
+{
+
+  return this.display;
 }
 }
