@@ -195,7 +195,7 @@ action(id,status)
 }
 
 
-selected='';
+selected={};
 display='none';
 view(request){
 this.selected= request;
