@@ -11,7 +11,7 @@ import { TaskerService } from 'src/app/_services/tasker.service';
 export class EmployeeNavbarComponent implements OnInit {
   username:'';
  status={
-   "active":"false"
+   "active":false
  }
   constructor(
     private router: Router,
@@ -42,6 +42,7 @@ export class EmployeeNavbarComponent implements OnInit {
             console.log("You are logged out");
         },
         error => {
+          this.router.navigate(['/employeeLogin']);
           console.log(error);
         });
   

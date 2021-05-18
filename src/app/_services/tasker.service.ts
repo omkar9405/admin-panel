@@ -11,9 +11,6 @@ import { Tasker } from '../_models/tasker';
 export class TaskerService {
   private currentTaskerSubject: BehaviorSubject<Tasker>;
   public currentTasker: Observable<Tasker>;
-  
-
-
 
   constructor(private http:HttpClient) {
     this.currentTaskerSubject = new BehaviorSubject<Tasker>(JSON.parse(localStorage.getItem('currentTasker')));

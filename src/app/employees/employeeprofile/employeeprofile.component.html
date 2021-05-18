@@ -4,7 +4,7 @@
 <div >
     <div class="row">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="height: max-content;">
-            <div class="card">
+            <div class="card" style="background: #272E48;">
                 <div class="card-body">
                     <div class="account-settings">
                         <div class="user-profile">
@@ -54,8 +54,9 @@
             </ul>
             <div class="tab-content" id="ex1">
                 <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tabs-1">
+                <div class="mat-elevation-z8">
                     <div class="col-md-12">
-                        <div class="card h-100">
+                        <div class="card h-100" style="color:indigo;">
                             <div class="card-body">
                                 <div [formGroup]="profileForm">
                                 <div class="row gutters">
@@ -298,6 +299,7 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <div class="tab-pane" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tabs-2">
                     <div class="mat-elevation-z8" >
                         <div class="card height-auto" style="background-color:transparent; color: white;" >
@@ -355,9 +357,15 @@
                                         </div>
                                          <div class="modal-body" >
                                         <h1 style="color:purple;">{{selected.c_firstName}} {{selected.c_lastName}}</h1>
+                                       <div style="display: inline-flex;"> 
+                                            <span style="color:darkslategrey;"> Email: <h2 style="color: teal;">{{selected.email}} </h2></span> 
+                                            &nbsp;&nbsp;&nbsp; 
+                                            <span style="color:darkslategrey;">Phone: <h2 style="color: teal;">{{selected.phone}} </h2></span>  
+                                        </div>
                                            <h3 style="color:black;">Description:{{selected.description}}</h3>
-                                           <h4 style="color:gray" *ngFor="let address of selected.address; let i=index;">Address:{{selected.address[i].street}},{{selected.address[i].city}}
+                                           <h4 style="color:darkslategrey" *ngFor="let address of selected.address; let i=index;">Address:{{selected.address[i].street}},{{selected.address[i].city}}
                                               {{selected.address[i].state}}, {{selected.address[i].zipcode}}</h4>
+
                                         </div>
                                         <div class="modal-footer">
                                         <h3 *ngIf="selected.status=='rebooked'"><span class="status text-info">&bull; &nbsp; {{selected.status}}</span> </h3>
@@ -376,64 +384,27 @@
                 </div>
                 <div class="tab-pane" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tabs-3">
                     <div class="col-md-12">
+                        <div class="mat-elevation-z8">
                         <div class="book-card card-white mb-5">
                             <div class="card-heading clearfix border-bottom mb-4">
-                                <h4 class="card-title">Booking Requests</h4>
+                                <h4 class="card-title">Booking Notifications</h4>
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
-                                    <li class="position-relative booking">
-                                        <div class="media">
-                                            <div class="msg-img">
-                                                <img src="../assets/dp.png" alt="">
-                                            </div>
-                                            <div class="media-body">
-                                                <h5 class="mb-4 text-primary">Sunny Apartment</h5>
-                                                <div class="mb-3">
+                                    <li class="position-relative booking" *ngFor="let request of requests">
+                                        <div class="mb-1">
+                                            <h5 class="mb-1 text-primary">Your task is {{request.status}}</h5>
+                                                <span class="mr-1 d-block d-sm-inline-block mb-2 mb-sm-0">Booking Date:</span>
+                                                    <span>{{request.createdAt}}</span><br>
                                                     <span
-                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Booking
-                                                        Date:</span>
-                                                    <span>01/01/2022</span>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <span
-                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Service
-                                                        Details:</span>
-                                                    <span>Plumbing Service</span>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <span
-                                                        class="mr-2 d-block d-sm-inline-block mb-2 mb-sm-0">Price:</span>
-                                                    <span>150 RS</span>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <span
-                                                        class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Client:</span>
-                                                    <span class="border-right pr-2 mr-2">John Inoue</span>
-                                                    <span class="border-right pr-2 mr-2"> john@example.com</span>
-                                                    <span>123-563-789</span>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <span
-                                                        class="mr-2 d-block d-sm-inline-block mb-1 mb-sm-0">Address:</span>
-                                                    <span class="border-right pr-2 mr-2">Rajarampuri,
-                                                        Kolhapur</span>
-                                                    <span>416400</span>
-                                                </div>
-                                                <span class="button-to-right">
-                                                    <a href="#" class="btn-gray btn-success text-white">
-                                                        <i class="far fa-check-circle mr-2"></i>
-                                                        Accept
-                                                    </a>
-                                                    <a href="#" class="btn-gray btn-danger ml-4">
-                                                        <i class="far fa-times-circle mr-2"></i> Reject
-                                                    </a>
-                                                </span>
-                                            </div>
+                                                        class="mr-1 d-block d-sm-inline-block mb-2 mb-sm-0">Service Details:</span>
+                                                    <span>{{request.description}}</span>
                                         </div>
+                                
                                     </li>
                                 </ul>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>

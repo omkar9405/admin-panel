@@ -8,7 +8,7 @@ body{
 
  .Employee{
     color: #bcd0f7;
-    background: #1A233A;
+    /* background: #1A233A; */
     position: relative;
     font-family: 'Varela Round',
     sans-serif;
@@ -78,7 +78,8 @@ tbody,tr{
 }
 
 .card,.cart-body {
-    background: #272E48;
+    /* background: #272E48; */
+    
     font-size: 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;

@@ -54,9 +54,7 @@ username='';
     private formBuilder:FormBuilder, 
     private datatableservice: DatatableService,  
     private bookingService:BookingService) {
-      setInterval(() => {
-        this.getBookings();
-      }, 10000);
+     
    }
 
   ngOnInit(): void {
@@ -88,7 +86,11 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-   
+    if(localStorage.getItem('currentTasker')!=null){
+    setInterval(() => {
+      this.getBookings();
+    }, 10000);
+  }
   }
 
    getTasker(){
@@ -121,7 +123,7 @@ username='';
       this.imageURL=this.taskerDto.imagePath;
     }
 
-      console.log(this.taskerDto);
+      // console.log(this.taskerDto);
       this.getBookings();
     }, (err) => {
       console.log('Error while fetching');
@@ -167,9 +169,9 @@ username='';
 requests:[];
 getBookings(){
     this.bookingService.findAllEmployeeRequest(this.taskerDto.id).subscribe((res: any) => {
-    console.log("Request loaded successful");
+    // console.log("Request loaded successful");
     this.requests = res.map((key) => ({ ...key }));
-    console.log(this.requests);
+    // console.log(this.requests);
     
   }, (err) => {
     console.log('Error while fetching data');
@@ -186,7 +188,7 @@ action(id,status)
   this.statusDto.isAccepted= status;
   this.bookingService.isAccepted(id,this.statusDto).subscribe((res: any) => {
     this.getBookings();
-    console.log(res);
+    // console.log(res);
     
   }, (err) => {
     console.log('Error while fetching data');
@@ -195,14 +197,38 @@ action(id,status)
 }
 
 
-selected={};
+selected={
+  "c_firstName":"",
+  "c_lastName":"",
+  "email":"",
+  "phone":"",
+  "description":"",
+  "address":[{
+    "street":"",
+    "city":"",
+    "state":"",
+    "zipcode":""
+  }],
+  "status":"",
+  "isAccepted":false
+};
 display='none';
 view(request){
-this.selected= request;
+this.selected.c_firstName= request.c_firstName;
+this.selected.c_lastName=request.c_lastName;
+this.selected.email=request.email;
+this.selected.phone=request.phone;
+this.selected.description=request.description;
+this.selected.address[0].street=request.address[0].street;
+this.selected.address[0].city=request.address[0].city;
+this.selected.address[0].state=request.address[0].state;
+this.selected.address[0].zipcode=request.address[0].zipcode;
+this.selected.status=request.status;
+this.selected.isAccepted=request.isAccepted;
 if(this.display=='none')
 {
   this.display='block';
-  console.log(this.selected);
+  // console.log(this.selected);
 }
 } show()
 {
