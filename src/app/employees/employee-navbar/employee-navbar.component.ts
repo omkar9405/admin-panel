@@ -34,15 +34,14 @@ export class EmployeeNavbarComponent implements OnInit {
     var obj=json["tasker"];
     var id=obj["id"];
     // this.authenticationService.logout();
+    this.router.navigate(['/employeeLogin']);
+    this.authenticationService.logout();
     this.authenticationService.patch(this.status,id)
     .subscribe(
         data => {
-          this.authenticationService.logout();
-          this.router.navigate(['/employeeLogin']);
             console.log("You are logged out");
         },
         error => {
-          this.router.navigate(['/employeeLogin']);
           console.log(error);
         });
   
