@@ -4,6 +4,7 @@ import { DatatableService } from 'src/app/_services/datatableservice/datatable.s
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
 import { BookingService } from 'src/app/_services/booking.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -47,11 +48,12 @@ export class EmployeeprofileComponent implements OnInit {
    }
 loading = false;
 submitted = false;   
-id='';
+id:any;
 error='';
 username='';
   constructor(private taskerService:TaskerService, 
     private formBuilder:FormBuilder, 
+    private router: Router,
     private datatableservice: DatatableService,  
     private bookingService:BookingService) {
      
@@ -76,8 +78,7 @@ username='';
       charges:['',Validators.required],
       jobtype:['',Validators.required],
       completedTasks:['',Validators.required],
-      imagePath: [null],
-      skills:[null],
+      imagePath: [null]
   });
     this.datatableservice.initTable('customers');
     var tasker=localStorage.getItem('currentTasker');
@@ -86,11 +87,14 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-    if(localStorage.getItem('currentTasker')!=null){
+    if(localStorage.getItem('currentTasker')!=undefined){
     setInterval(() => {
       this.getBookings();
     }, 10000);
-  }
+    }
+    else{
+      stop
+    }
   }
 
    getTasker(){
@@ -109,7 +113,10 @@ username='';
       this.taskerDto.address[0].city = res.address[0].city;
       this.taskerDto.address[0].state = res.address[0].state;
       this.taskerDto.address[0].pincode = res.address[0].pincode;
-      this.taskerDto.skills = res.skills;
+      this.taskerDto.skills[0].skillname = res.skills[0].skillname;
+      this.taskerDto.skills[1].skillname = res.skills[1].skillname;
+      this.taskerDto.skills[0].charges = res.skills[0].charges;
+      this.taskerDto.skills[1].charges = res.skills[1].charges;
       this.taskerDto.education = res.education;
       this.taskerDto.username = res.username;
       this.taskerDto.jobtype = res.jobtype;
@@ -123,16 +130,16 @@ username='';
       this.imageURL=this.taskerDto.imagePath;
     }
 
-      // console.log(this.taskerDto);
-      this.getBookings();
+      console.log(this.taskerDto);
+      // this.getBookings();
     }, (err) => {
-      console.log('Error while fetching');
-      console.error(err);
+      console.log('Error while fetching getbyid');
+      console.log(err);
     });
     return this.taskerDto;
    }
 
-   async update() {
+    update() {
         this.submitted = true;
         this.loading = true;
         // this.taskerDto.password = await bcrypt.hash(this.taskerDto.password,await bcrypt.genSalt(10));
@@ -140,7 +147,7 @@ username='';
       (data:any) => {
         console.log(data);
         alert("Updated Successfully");
-        this.ngOnInit();
+        console.log(this.taskerDto);
         this.loading=false;
     },(err) => {
         alert(err);
@@ -167,7 +174,7 @@ username='';
 
  //get bookings
 requests:[];
-getBookings(){
+ getBookings(){
     this.bookingService.findAllEmployeeRequest(this.taskerDto.id).subscribe((res: any) => {
     // console.log("Request loaded successful");
     this.requests = res.map((key) => ({ ...key }));
@@ -198,6 +205,7 @@ action(id,status)
 
 
 selected={
+  "id":"",
   "c_firstName":"",
   "c_lastName":"",
   "email":"",
@@ -214,6 +222,7 @@ selected={
 };
 display='none';
 view(request){
+this.selected.id=request.id;
 this.selected.c_firstName= request.c_firstName;
 this.selected.c_lastName=request.c_lastName;
 this.selected.email=request.email;

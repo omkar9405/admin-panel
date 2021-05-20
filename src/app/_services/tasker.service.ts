@@ -69,6 +69,7 @@ catch(Error){
     // remove Customer from local storage to log Customer out
   
     localStorage.removeItem('currentTasker');
+    // localStorage.removeItem('Token');
     this.currentTaskerSubject.next(null);
 }
 }

@@ -63,6 +63,7 @@ export class AdminsService {
   logout() {
     // remove Customer from local storage to log Customer out
     localStorage.removeItem('currentAdmin');
+  
     this.currentAdminSubject.next(null);
 }
 

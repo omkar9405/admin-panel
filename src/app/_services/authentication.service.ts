@@ -46,6 +46,7 @@ export class AuthenticationService {
     logout() {
         // remove Customer from local storage to log Customer out
         localStorage.removeItem('currentCustomer');
+        
         this.currentCustomerSubject.next(null);
     }
     //Taskers

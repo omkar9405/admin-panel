@@ -18,7 +18,7 @@ export class LoginemployeeComponent implements OnInit {
   error = '';
   success='';
   status ={
-      "active":"false"
+      "active":false
   };
   id='';
   constructor(
@@ -59,12 +59,11 @@ onSubmit() {
         .subscribe(
             data => {
                 alert("Login Successful..");
-                this.status.active = "true";
-    
+                this.status.active = true;
                 console.log(localStorage.getItem('Token'));
-                this.loggedin();
                 this.router.navigate(['/employeeProfile']);
-                
+                this.loggedin();
+                console.log(data);
             },
             error => {
                 this.error = error;
@@ -81,7 +80,7 @@ loggedin()
     this.authenticationService.patch(this.status,id)
     .subscribe(
         data => {
-            console.log("You are active now");
+            console.log("You are active now "+data);
         },
         err => {
             console.log(err);
