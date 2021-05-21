@@ -61,17 +61,23 @@ export class EmployeeComponent implements OnInit{
   });
  }
   
+ add()
+  {
+    this.router.navigate(['add-employee'],{relativeTo:this.route});
+  }
 
   edit(id)
   {
     this.id=id;
     this.router.navigate(['edit-employee',id],{relativeTo:this.route});
   }
+
   view(id)
   {
     this.id=id;
     this.router.navigate(['view-employee',id],{relativeTo:this.route});
   }
+  
   delete(id)
   {
     this.authenticationService.delete(id).subscribe((res: any) => {

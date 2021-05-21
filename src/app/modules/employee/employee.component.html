@@ -5,6 +5,9 @@
         <div class="item-title">
           <h3>Employee Lists</h3>
         </div>
+        <div style="float:right">
+          <button (click)="add()" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-primary btn-sm mr-1" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp; Add New Employee</button>
+        </div>
       </div>
     
       <div class="table-responsive">
@@ -69,3 +72,6 @@
 <div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <router-outlet [id]="id" (getlist)="getlist()"></router-outlet>  
 </div>
+<!-- <div class="modal fade" id="addConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <router-outlet></router-outlet>  
+</div> -->

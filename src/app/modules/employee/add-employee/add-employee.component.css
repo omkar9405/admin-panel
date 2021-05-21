@@ -1,18 +1,2 @@
-mat-card{
-    text-align: center;
-}
-mat-form-field{
-    width: 400px;
-}
-mat-card-title{
-    text-align: center;
-}
-form{
-    align-items: center;
-    display:flex;
-    flex-direction: column;
-}
-mat-card-content{
-    display: flex;
-    flex-direction: column;
-}
+
+

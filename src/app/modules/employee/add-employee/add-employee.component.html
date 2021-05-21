@@ -1,27 +1,24 @@
-<!-- <div class="modal-dialog">
+<div class="modal-dialog modal-xl" >
   <div class="modal-content">
-<div class="mat-elevation-z8">
-  <div class="card height-auto">
-      <div class="card-body">
-          <div class="heading-layout1">
+    <div class="mat-elevation-z8">
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Close</h4>
+                        <h2>Add New Employee</h2>
+                        <button data-dismiss="modal" (click)="back()" aria-label="Close" type="button" class="close btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>       
                     </div>
-                   
-               
-      
-<div class="container">
-      <div class="item-title">
-          <h2>{{customerDto.customername}}</h2>
-      </div>
-     
-  <form [formGroup]="signupForm">
-     
-      <div class="form-group">
-          <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+                <div>
+                    
+    <form [formGroup]="signupForm">
+        <div class="row glutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group"
+         style="align-items: center;
+            display:flex;
+            flex-direction: column;">
+          <div class="imagePreview">
               <label for="uploadImage">
-                  <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
+                  <img src="../../../../assets/dp.png" [alt]="taskerDto.username" class="rounded-circle" width="200px">
               </label>
           </div>
           <input 
@@ -29,23 +26,75 @@
           id="uploadImage" 
           accept="image/*"   
           (change)="showPreview($event)" hidden/>
-      
-     </div>
+        </div>
+        </div>
 
-  <div class="form-group">
-      <label 
+        <div class="row glutters">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+                <label 
+                  class="font-weight-bold"
+                  >First Name 
+                  <span
+                  class="text-danger"
+                  >*</span>
+                </label>
+                <input 
+                  type="text" 
+                  formControlName="firstname" 
+                  name="firstname"
+                  [(ngModel)]="taskerDto.firstname"
+                  [value]="taskerDto.firstname"
+                  class="form-control" 
+                  placeholder="Enter First Name" 
+                  [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" 
+                  required>
+                  <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                      <div *ngIf="f.firstname.errors.required">Firstname is required</div>
+                  </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+                <label 
+                  class="font-weight-bold"
+                  >Last Name 
+                  <span
+                  class="text-danger"
+                  >*</span>
+                </label>
+                <input 
+                  type="text" 
+                  formControlName="lastname" 
+                  name="lastname"
+                  [(ngModel)]="taskerDto.lastname"
+                  [value]="taskerDto.lastname"
+                  class="form-control" 
+                  placeholder="Enter last Name" 
+                  [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" 
+                  required>
+                  <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                      <div *ngIf="f.lastname.errors.required">Lastname is required</div>
+                  </div>
+            </div>
+        </div>
+
+
+
+
+
+    <div class="row glutters">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+        <label 
           class="font-weight-bold"
           >Email 
           <span
           class="text-danger"
           >*</span>
-      </label>
-      <input 
+        </label>
+        <input 
           type="email" 
           formControlName="email" 
           name="email"
-          [(ngModel)]="customerDto.email"
-          [value]="customerDto.email"
+          [(ngModel)]="taskerDto.email"
+          [value]="taskerDto.email"
           class="form-control" 
           placeholder="Enter Valid Email" 
           [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
@@ -53,32 +102,32 @@
           <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
               <div *ngIf="f.email.errors.required">Email is required</div>
           </div>
-  </div>
-  <div class="form-group">
-      <label 
-          class="font-weight-bold"
-          >Name 
-          <span
-          class="text-danger"
-          >*</span>
-      </label>
-      <input 
-          type="text" 
-          formControlName="customername" 
-          name="customername"
-          [(ngModel)]="customerDto.customername"
-          [value]="customerDto.customername"
-          class="form-control" 
-          placeholder="Enter Your Full Name" 
-          [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
-          required>
-          <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
-              <div *ngIf="f.customername.errors.required">customername is required</div>
-          </div>
-  </div>
+    </div>
 
-  <div class="form-group">
-      <label 
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+        <label 
+            class="font-weight-bold"
+            >Phone Number</label>
+        <input 
+            type="text" 
+            formControlName="mobile"
+            name="mobile"
+            [(ngModel)]="taskerDto.mobile" 
+            [value]="taskerDto.mobile"
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+            placeholder="Enter valid phone"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">mobile number is required</div>
+            </div>
+  
+    </div>
+    </div>
+
+    
+
+    <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+        <label 
           class="font-weight-bold"
           >Service
           <span
@@ -89,8 +138,8 @@
           type="text" 
           formControlName="service" 
           name="service"
-          [(ngModel)]="customerDto.service"
-          [value]="customerDto.service"
+          [(ngModel)]="taskerDto.service"
+          [value]="taskerDto.service"
           class="form-control" 
           placeholder="Enter Your Service" 
           [ngClass]="{ 'is-invalid': submitted && f.service.errors }" 
@@ -98,46 +147,65 @@
           <div *ngIf="submitted && f.service.errors" class="invalid-feedback">
               <div *ngIf="f.service.errors.required">service is required</div>
           </div>
-  </div>
+  </div> -->
 
-  <div class="form-group">
+ 
+
+  <div class="row glutters">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
       <label 
           class="font-weight-bold"
-          >Phone Number</label>
+          >Street </label>
       <input 
           type="text" 
-          formControlName="mobile"
-          name="mobile"
-          [(ngModel)]="customerDto.mobile" 
-          [value]="customerDto.mobile"
-          [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-          placeholder="Enter valid phone"                                
+          formControlName="street"
+          name="street"
+          [(ngModel)]="taskerDto.address[0].street"
+          [value]="taskerDto.address[0].street" 
+          [ngClass]="{ 'is-invalid': submitted && f.street.errors }"
+          placeholder="Enter Street"                                
           class="form-control" required>
-          <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-              <div *ngIf="f.mobile.errors.required">mobile number is required</div>
-          </div>
-
-  </div>
-
-  <div class="form-group">
-      <label 
-          class="font-weight-bold"
-          >Address </label>
-      <input 
-          type="text" 
-          formControlName="address"
-          name="address"
-          [(ngModel)]="customerDto.address"
-          [value]="customerDto.address" 
-          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
-          placeholder="Enter Address"                                
-          class="form-control" required>
-          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-              <div *ngIf="f.address.errors.required">address is required</div>
+          <div *ngIf="submitted && f.street.errors" class="invalid-feedback">
+              <div *ngIf="f.street.errors.required">Street is required</div>
           </div>
   </div>
 
-  <div class="form-group">
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label 
+        class="font-weight-bold"
+        >City </label>
+    <input 
+        type="text" 
+        formControlName="city"
+        name="city"
+        [(ngModel)]="taskerDto.address[0].city"
+        [value]="taskerDto.address[0].city" 
+        [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+        placeholder="Enter City"                                
+        class="form-control" required>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+            <div *ngIf="f.city.errors.required">City is required</div>
+        </div>
+</div>
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label 
+        class="font-weight-bold"
+        >State </label>
+    <input 
+        type="text" 
+        formControlName="state"
+        name="state"
+        [(ngModel)]="taskerDto.address[0].state"
+        [value]="taskerDto.address[0].state" 
+        [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
+        placeholder="Enter State"                                
+        class="form-control" required>
+        <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+            <div *ngIf="f.state.errors.required">State is required</div>
+        </div>
+</div>
+
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
       <label 
           class="font-weight-bold"
           >Pincode</label>
@@ -145,8 +213,8 @@
           type="text" 
           formControlName="pincode"
           name="pincode"
-          [(ngModel)]="customerDto.pincode"
-          [value]="customerDto.pincode" 
+          [(ngModel)]="taskerDto.address[0].pincode"
+          [value]="taskerDto.address[0].pincode" 
           [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"
           placeholder="Enter valid pincode"                                
           class="form-control" required>
@@ -154,78 +222,94 @@
               <div *ngIf="f.pincode.errors.required">pincode is required</div>
           </div>
   </div>
+  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label class="font-weight-bold">Gender </label>
+      <select 
+        class="custom-select" 
+        formControlName="gender"
+        name="gender"
 
+        [(ngModel)]="taskerDto.gender"
+        required>
+        <option selected value="Select Gender">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6  form-group">
+    <label class="font-weight-bold">Job Type </label>
+      <select 
+        class="custom-select" 
+        formControlName="jobtype"
+        name="jobtype"
+        [(ngModel)]="taskerDto.jobtype"
+        required>
+        <option [selected]>Select Jobtype</option>
+        <option value="Hair Dresser">Hair Dresser</option>
+        <option value="Painter">Painter</option>
+        <option value="Electrician">Electrician</option>
+        <option value="Plumber">Plumber</option>
+        <option value="Repairmen">Repairmen</option>
+        <option value="carpenter">Carpenter</option>
+      </select>
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label class="font-weight-bold">Date of Birth </label>
+    <input 
+        type="date" 
+        formControlName="dob" 
+        name="dob"
+        [(ngModel)]="taskerDto.dob"
+        [value]="taskerDto.dob"
+        class="form-control" required>
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label 
+        class="font-weight-bold"
+        >Password 
+        <span
+        class="text-danger"
+        >*</span>
+    </label>
+    <input 
+        type="text" 
+        formControlName="password" 
+        name="password"
+        [(ngModel)]="taskerDto.password"
+        class="form-control" 
+        placeholder="***************" 
+        required>
+</div>
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+    <label 
+        class="font-weight-bold"
+        >Feedback </label>
+        <input 
+        type="text" 
+        formControlName="feedback" 
+        name="feedback"
+        [(ngModel)]="taskerDto.feedback"
+        class="form-control" 
+        placeholder="***************" 
+        >
+  
+
+</div>
+
+</div>
  
 
+  
   <div class="form-group">
-      <label class="font-weight-bold">Gender </label>
-        <select 
-          class="custom-select" 
-          formControlName="gender"
-          name="gender"
-          placeholder="&nbsp;"
-          [(ngModel)]="customerDto.gender"
-          [value]="customerDto.gender"
-          size="1"
-          required>
-          <option selected>Select Gender</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-      
-  </div>
-  <div class="form-group">
-      <label class="font-weight-bold">Date of Birth </label>
-      <input 
-          type="date" 
-          formControlName="dob" 
-          name="dob"
-          [(ngModel)]="customerDto.dob"
-          [value]="customerDto.dob"
-
-          class="form-control" required>
-  </div>
-  <div class="form-group">
-      <label 
-          class="font-weight-bold"
-          >Password 
-          <span
-          class="text-danger"
-          >*</span>
-      </label>
-      <input 
-          type="text" 
-          formControlName="password" 
-          name="password"
-          [(ngModel)]="customerDto.password"
-          [value]="customerDto.password"
-          class="form-control" 
-          placeholder="***************" 
-          required>
-  </div>
-
-  <div class="form-group">
-      <label 
-          class="font-weight-bold"
-          >Feedback </label>
-          <input 
-          type="text" 
-          formControlName="feedback" 
-          name="feedback"
-          [(ngModel)]="customerDto.feedback"
-          [value]="customerDto.feedback"
-          class="form-control" 
-          placeholder="***************" 
-          >
-    
-
-  </div>
-
-  <div class="form-group">
-      <button [disabled]="loading" class="btn btn-block btn-primary" (click)="update()">
+      <button [disabled]="loading" class="btn btn-block btn-primary" (click)="save()">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-          Update
+          Save
       </button>
       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
   </div>
@@ -237,4 +321,4 @@
   </div>
 </div>
 </div>
-</div> -->
+</div> 

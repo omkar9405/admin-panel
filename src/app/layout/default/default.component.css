@@ -9,7 +9,7 @@
 }
 .mat-drawer-container{
     
-    height: 640px;
+    height: 700px;
    }
 
 .mat-drawer-content{
@@ -20,7 +20,7 @@
 
 html {
     display: grid;
-    min-height: 100%;
+    height: 100%;
   }
   
   body {
