@@ -14,13 +14,12 @@
                 <th>SR</th>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Service</th>
                 <th>Address</th>
-                <th>Pincode</th>
                 <th>Mobile</th>
                 <th>Gender</th>
                 <th>Email</th>
                 <th>DOB</th>
+                <th>From</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -28,18 +27,17 @@
               <tr *ngFor="let customer of customers;let i=index;">
                 <td>{{ i+1 }}</td>
                 <td>{{ customer.id}}</td>
-                <td>{{ customer.customername }}</td>
-                <td>{{ customer.service }}</td>
-                <td>{{ customer.address }}</td>
-                <td>{{ customer.pincode }}</td>
+                <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+                <td>{{ customer.address[0].street }},{{ customer.address[0].city }}, <br> {{ customer.address[0].state }},{{ customer.address[0].zipcode }}</td>
                 <td>{{ customer.mobile }}</td>
                 <td>{{ customer.gender }}</td>
                 <td>{{ customer.email }}</td>
                 <td>{{ customer.dob }}</td>
+                <td>{{ customer.createdAt }}</td>
                 <td>
-                <button (click)="edit(customer.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
-                <button (click)="view(customer.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
-                <button (click)="delete(customer.id)"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
+                <button (click)="edit(customer.id)" type="button" class="btn btn-primary btn-sm mr-1"  style="color:orange; background-color: white;" data-toggle="modal" data-target="#deleteConfirmation"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
+                <button (click)="view(customer.id)" data-toggle="modal" type="button" class="btn btn-secondary btn-sm mr-1"  data-target="#deleteConfirmation" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
+                <button (click)="delete(customer.id)" type="button" class="btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
                 </td>
               </tr>
             </tbody>

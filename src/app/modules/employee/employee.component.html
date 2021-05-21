@@ -20,7 +20,6 @@
               <th>Education</th>
               <th>JobType</th>
               <th>Address</th>
-              <th>Pincode</th>
               <th>Mobile</th>
               <th>Email</th>
               <th>DOB</th>
@@ -33,15 +32,15 @@
             <tr *ngFor="let employee of employees;let i=index;">    
               <td>{{ i+1 }}</td>
               <td>{{ employee.id}}</td>
-              <td>{{ employee.name }}</td>
+              <td>{{ employee.firstname }} {{ employee.lastname }}</td>
               <td>{{ employee.username }}</td>
               <td><p *ngFor="let skill of employee.skills;">
                 {{ skill.skillname }}</p></td>
               <td>{{ employee.completedTasks }}</td>
               <td>{{ employee.education }}</td>
               <td>{{ employee.jobtype }}</td>
-              <td>{{ employee.address }}</td>
-              <td>{{ employee.pincode }}</td>
+              <td>{{ employee.address[0].street }},{{ employee.address[0].city }},<br>
+                {{ employee.address[0].state }},{{ employee.address[0].pincode }}</td>
               <td>{{ employee.mobile }}</td>
               <td>{{ employee.email }}</td>
               <td>{{ employee.dob }}</td>
@@ -55,9 +54,9 @@
                  </div>
               </td>
               <td>
-              <button (click)="edit(employee.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
-              <button (click)="view(employee.id)" data-toggle="modal" data-target="#deleteConfirmation" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
-              <button (click)="delete(employee.id)"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
+              <button (click)="edit(employee.id)" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-primary btn-sm mr-1" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
+              <button (click)="view(employee.id)" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-secondary btn-sm mr-1" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
+              <button (click)="delete(employee.id)"   class="btn btn-danger btn-sm mr-1" style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
               </td>
             </tr>
           </tbody>

@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 import { Location } from '@angular/common';
+import { EmployeeComponent } from '../employee.component';
 @Component({
   selector: 'app-editemployee',
   templateUrl: './editemployee.component.html',
@@ -30,7 +31,8 @@ export class EditemployeeComponent implements OnInit {
     taskers=[];
     
     taskerDto = {
-      "name":"",
+      "firstname":"",
+      "lastname":"",
       "username":"",
       "skills":[{
         "skillname":"",
@@ -40,14 +42,18 @@ export class EditemployeeComponent implements OnInit {
       "education":"",
       "imagePath":"",
       "jobtype":"",
-      "address":"",
-      "pincode":0,
+      "address":[{
+        "street":"",
+        "city":"",
+        "state":"",
+        "pincode":""
+      }],
       "mobile": 0,
       "email": "",
       "dob":"",
       "createdAt":"",
       "password":"",
-      "active":""
+      "active":false
      }
    loading = false;
    submitted = false;
@@ -58,18 +64,18 @@ export class EditemployeeComponent implements OnInit {
   
     ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      name:['',Validators.required],
+      firstname:['',Validators.required],
+      lastname:['',Validators.required],
       username:['',Validators.required],
-      skills:[{
-        skillname:['',Validators.required],
-        charges:['',Validators.required]
-      }
-    ],
+      skillname:['',Validators.required],
+      charges:['',Validators.required],
       completedTasks:['',Validators.required],
       education:['',Validators.required],
       mobile:['',Validators.required],
       jobtype:['',Validators.required],
-      address:['',Validators.required],
+      street:['',Validators.required],
+      city:['',Validators.required],
+      state:['',Validators.required],
       pincode:['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -86,14 +92,14 @@ export class EditemployeeComponent implements OnInit {
   {
     this.authenticationService.getById(ID).subscribe((res: any) => {
       
-      this.taskerDto.name = res.name;
+      this.taskerDto.firstname = res.firstname;
+      this.taskerDto.lastname = res.lastname;
       this.taskerDto.username = res.username;
       this.taskerDto.skills = res.skills;
       this.taskerDto.completedTasks = res.completedTasks;
       this.taskerDto.education = res.education;
       this.taskerDto.jobtype = res.jobtype;
       this.taskerDto.address = res.address;
-      this.taskerDto.pincode = res.pincode;
       this.taskerDto.mobile = res.mobile;
       this.taskerDto.dob = res.dob;
       this.taskerDto.email = res.email;
@@ -123,11 +129,9 @@ export class EditemployeeComponent implements OnInit {
     this.authenticationService.update(this.taskerDto,this.id).subscribe(
       (data:any) => {
         console.log(data);
-        this.datatableservice.initTable('Employee');
         alert("Updated Successfully");
         
     },(err) => {
-        alert(err);
         this.error=err;
         this.loading =false;
     });

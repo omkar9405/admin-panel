@@ -18,7 +18,8 @@ export class ViewemployeeComponent implements OnInit {
   ) { }
  
   taskerDto = {
-    "name":"",
+    "firstname":"",
+    "lastname":"",
     "username":"",
     "skills":[{
       "skillname":"",
@@ -28,8 +29,12 @@ export class ViewemployeeComponent implements OnInit {
     "education":"",
     "imagePath":"",
     "jobtype":"",
-    "address":"",
-    "pincode":0,
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "pincode":""
+    }],
     "mobile": 0,
     "email": "",
     "dob":"",
@@ -45,14 +50,14 @@ export class ViewemployeeComponent implements OnInit {
   {
     this.authenticationService.getById(ID).subscribe((res: any) => {
       
-      this.taskerDto.name = res.name;
+      this.taskerDto.firstname = res.firstname;
+      this.taskerDto.lastname = res.lastname;
       this.taskerDto.username = res.username;
       this.taskerDto.skills = res.skills;
       this.taskerDto.completedTasks = res.completedTasks;
       this.taskerDto.education = res.education;
       this.taskerDto.jobtype = res.jobtype;
       this.taskerDto.address = res.address;
-      this.taskerDto.pincode = res.pincode;
       this.taskerDto.mobile = res.mobile;
       this.taskerDto.dob = res.dob;
       this.taskerDto.email = res.email;

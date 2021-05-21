@@ -16,11 +16,15 @@ export class ViewcustomerComponent implements OnInit {
   ) { }
  
   customerDto = {
-    "customername":"",
-    "service":"",
-    "address":"",
+    "firstName":"",
+    "lastName":"",
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "zipcode":""
+    }],
     "imagePath":"",
-    "pincode":0,
     "mobile": 0,
     "gender":"",
     "email": "",
@@ -36,10 +40,9 @@ export class ViewcustomerComponent implements OnInit {
   {
     this.authenticationService.getById(ID).subscribe((res: any) => {
       
-      this.customerDto.customername = res.customername;
-      this.customerDto.service = res.service;
+      this.customerDto.firstName = res.firstName;
+      this.customerDto.lastName = res.lastName;
       this.customerDto.address = res.address;
-      this.customerDto.pincode = res.pincode;
       this.customerDto.mobile = res.mobile;
       this.customerDto.gender = res.gender;
       this.customerDto.email = res.email;

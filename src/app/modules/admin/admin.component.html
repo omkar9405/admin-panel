@@ -15,7 +15,6 @@
               <th>ID</th>
               <th>Name</th>
               <th>Username</th>
-              <th>Permissions</th>
               <th>Mobile</th>
               <th>Email</th>
               <th>Action</th>
@@ -27,14 +26,13 @@
               <td>{{ admin.id}}</td>
               <td>{{ admin.name }}</td>
               <td>{{ admin.username }}</td>
-              <td>{{ admin.permissions }}</td>
               <td>{{ admin.mobile }}</td>
               <td>{{ admin.email }}</td>
               <td>
                 
-              <button (click)="edit(admin.id)" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addContact"  style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
-              <button (click)="view(admin.id)" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteConfirmation"  style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
-              <button (click)="delete(admin.id)"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
+              <button (click)="edit(admin.id)" type="button" class="btn btn-primary btn-sm mr-1" data-toggle="modal" data-target="#addContact"  style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
+              <button (click)="view(admin.id)" type="button" class="btn btn-secondary btn-sm mr-1" data-toggle="modal" data-target="#deleteConfirmation"  style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
+              <button (click)="delete(admin.id)" type="button" class="btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
               </td>
               <div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <app-editadmins [getid]="admin.id" (changeId)="OnchnageId(admin.id)" ></app-editadmins>

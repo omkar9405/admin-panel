@@ -5,15 +5,14 @@
         <div class="card-body">
             <div class="heading-layout1">
                       <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Close</h4>
+                        <button data-dismiss="modal" (click)="back()" aria-label="Close" type="button" class="close btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>       
                       </div>
                      
                  
         
 <div class="container">
         <div class="item-title">
-            <h2>{{customerDto.customername}}</h2>
+            <h2>{{customerDto.firstName}} {{customerDto.lastName }}</h2>
         </div>
        
     <form [formGroup]="signupForm">
@@ -21,7 +20,7 @@
         <div class="form-group">
             <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
                 <label for="uploadImage">
-                    <img [src]="imageURL" [alt]="customerDto.customername" class="rounded-circle" width="200px">
+                    <img [src]="imageURL" [alt]="customerDto.firstName" class="rounded-circle" width="200px">
                 </label>
             </div>
             <input 
@@ -57,46 +56,46 @@
     <div class="form-group">
         <label 
             class="font-weight-bold"
-            >Name 
+            >First Name 
             <span
             class="text-danger"
             >*</span>
         </label>
         <input 
             type="text" 
-            formControlName="customername" 
-            name="customername"
-            [(ngModel)]="customerDto.customername"
-            [value]="customerDto.customername"
+            formControlName="firstName" 
+            name="firstName"
+            [(ngModel)]="customerDto.firstName"
+            [value]="customerDto.firstName"
             class="form-control" 
-            placeholder="Enter Your Full Name" 
-            [ngClass]="{ 'is-invalid': submitted && f.customername.errors }" 
+            placeholder="Enter First Name" 
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" 
             required>
-            <div *ngIf="submitted && f.customername.errors" class="invalid-feedback">
-                <div *ngIf="f.customername.errors.required">customername is required</div>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div *ngIf="f.firstName.errors.required">FirstName is required</div>
             </div>
     </div>
 
     <div class="form-group">
         <label 
             class="font-weight-bold"
-            >Service
+            >Last Name 
             <span
             class="text-danger"
             >*</span>
         </label>
         <input 
             type="text" 
-            formControlName="service" 
-            name="service"
-            [(ngModel)]="customerDto.service"
-            [value]="customerDto.service"
+            formControlName="lastName" 
+            name="lastName"
+            [(ngModel)]="customerDto.lastName"
+            [value]="customerDto.lastName"
             class="form-control" 
-            placeholder="Enter Your Service" 
-            [ngClass]="{ 'is-invalid': submitted && f.service.errors }" 
+            placeholder="Enter Last Name" 
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" 
             required>
-            <div *ngIf="submitted && f.service.errors" class="invalid-feedback">
-                <div *ngIf="f.service.errors.required">service is required</div>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div *ngIf="f.lastName.errors.required">LastName is required</div>
             </div>
     </div>
 
@@ -116,46 +115,79 @@
             <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                 <div *ngIf="f.mobile.errors.required">mobile number is required</div>
             </div>
-
     </div>
 
     <div class="form-group">
         <label 
             class="font-weight-bold"
-            >Address </label>
+            >Street </label>
         <input 
             type="text" 
-            formControlName="address"
-            name="address"
-            [(ngModel)]="customerDto.address"
-            [value]="customerDto.address" 
-            [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
-            placeholder="Enter Address"                                
+            formControlName="street"
+            name="street"
+            [(ngModel)]="customerDto.address[0].street"
+            [value]="customerDto.address[0].street" 
+            [ngClass]="{ 'is-invalid': submitted && f.address[0].street.errors }"
+            placeholder="Enter Street"                                
             class="form-control" required>
-            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                <div *ngIf="f.address.errors.required">address is required</div>
+            <div *ngIf="submitted && f.address[0].street.errors" class="invalid-feedback">
+                <div *ngIf="f.address[0].street.errors.required">Street is required</div>
             </div>
     </div>
 
     <div class="form-group">
         <label 
             class="font-weight-bold"
-            >Pincode</label>
+            >City </label>
         <input 
             type="text" 
-            formControlName="pincode"
-            name="pincode"
-            [(ngModel)]="customerDto.pincode"
-            [value]="customerDto.pincode" 
-            [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"
-            placeholder="Enter valid pincode"                                
+            formControlName="city"
+            name="city"
+            [(ngModel)]="customerDto.address[0].city"
+            [value]="customerDto.address[0].city" 
+            [ngClass]="{ 'is-invalid': submitted && f.address[0].city.errors }"
+            placeholder="Enter City"                                
             class="form-control" required>
-            <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
-                <div *ngIf="f.pincode.errors.required">pincode is required</div>
+            <div *ngIf="submitted && f.address[0].city.errors" class="invalid-feedback">
+                <div *ngIf="f.address[0].city.errors.required">City is required</div>
             </div>
     </div>
 
-   
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >State </label>
+        <input 
+            type="text" 
+            formControlName="state"
+            name="state"
+            [(ngModel)]="customerDto.address[0].state"
+            [value]="customerDto.address[0].state" 
+            [ngClass]="{ 'is-invalid': submitted && f.address[0].state.errors }"
+            placeholder="Enter State"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.address[0].state.errors" class="invalid-feedback">
+                <div *ngIf="f.address[0].state.errors.required">State is required</div>
+            </div>
+    </div>
+
+    <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Zipcode </label>
+        <input 
+            type="text" 
+            formControlName="zipcode"
+            name="zipcode"
+            [(ngModel)]="customerDto.address[0].zipcode"
+            [value]="customerDto.address[0].zipcode" 
+            [ngClass]="{ 'is-invalid': submitted && f.address[0].zipcode.errors }"
+            placeholder="Enter Zipcode"                                
+            class="form-control" required>
+            <div *ngIf="submitted && f.address[0].zipcode.errors" class="invalid-feedback">
+                <div *ngIf="f.address[0].zipcode.errors.required">Street is required</div>
+            </div>
+    </div>
 
     <div class="form-group">
         <label class="font-weight-bold">Gender </label>

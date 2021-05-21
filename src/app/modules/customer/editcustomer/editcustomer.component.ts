@@ -33,11 +33,15 @@ export class EditcustomerComponent implements OnInit {
     customers=[];
     
     customerDto = {
-    "customername":"",
-    "service":"",
+    "firstName":"",
+    "lastName":"",
     "imagePath":"",
-    "address":"",
-    "pincode":0,
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "zipcode":""
+    }],
     "mobile": 0,
     "gender":"",
     "email": "",
@@ -55,11 +59,13 @@ export class EditcustomerComponent implements OnInit {
   
     ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      customername:['',Validators.required],
+      firstName:['',Validators.required],
+      lastName:['',Validators.required],
       mobile:['',Validators.required],
-      address:['',Validators.required],
-      pincode:['',Validators.required],
-      service:['',Validators.required],
+      street:['',Validators.required],
+      zipcode:['',Validators.required],
+      state:['',Validators.required],
+      city:['',Validators.required],
       gender:['',Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -77,12 +83,10 @@ export class EditcustomerComponent implements OnInit {
   getCustomer(ID)
   {
     this.authenticationService.getById(ID).subscribe((res: any) => {
-      
-      this.customerDto.customername = res.customername;
-      this.customerDto.service = res.service;
+      this.customerDto.firstName = res.firstName;
+      this.customerDto.lastName = res.lastName;
       this.customerDto.address = res.address;
       this.customerDto.imagePath = res.imagePath;
-      this.customerDto.pincode = res.pincode;
       this.customerDto.mobile = res.mobile;
       this.customerDto.gender = res.gender;
       this.customerDto.email = res.email;

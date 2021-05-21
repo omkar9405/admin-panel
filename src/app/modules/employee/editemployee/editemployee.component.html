@@ -5,24 +5,22 @@
       <div class="card-body">
           <div class="heading-layout1">
                     <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Close</h4>
+                        <div class="text-primary item-title">
+                            <h2>{{taskerDto.username}}</h2>
+                        </div>
+                        <button data-dismiss="modal" (click)="back()" aria-label="Close" type="button" class="close btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>       
                     </div>
                    
                
       
 <div class="container">
-      <div class="item-title">
-          <h2>{{taskerDto.username}}</h2>
-      </div>
-     
   <form [formGroup]="signupForm">
-     <div class="row">
-        <div class="row">
-        <div class="col-sm-6 form-group">
+     
+        <div class="row gutters">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
             <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
                 <label for="uploadImage">
-                    <img [src]="imageURL" [alt]="taskerDto.username" class="rounded-circle" width="200px">
+                    <img [src]="imageURL" [alt]="taskerDto.username" width="100px" height="100px">
                 </label>
             </div>
             <input 
@@ -30,10 +28,8 @@
             id="uploadImage" 
             accept="image/*"   
             (change)="showPreview($event)" hidden/>
-        
        </div>
-  
-        <div class="col-sm-6 form-group">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
             <label 
                 class="font-weight-bold"
                 >CreatedAt</label>
@@ -42,8 +38,9 @@
             >{{taskerDto.createdAt}}</label>
         </div>
         </div>
-        <div class="row">
-            <div class="col-sm-6 form-group center">
+
+        <div class="row gutters">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
                 <label 
                   class="font-weight-bold"
                   >Job Type</label>
@@ -56,21 +53,25 @@
                   class="form-control"  
                   >
             </div>
-            <div class="col-sm-6 form-group center">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group" *ngIf="taskerDto.active==true">
                 <label 
                   class="font-weight-bold"
                   >Active</label>
-                  <h1>{{taskerDto.active}}<i class="fas fa-dot-circle"></i></h1>
-                  
+                  <h1  style="color: green;"><i class="fas fa-dot-circle"></i></h1>
+                  <h1  style="color: red;"><i class="fas fa-dot-circle"></i></h1>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group" *ngIf="taskerDto.active==false">
+                <label 
+                  class="font-weight-bold"
+                  >Not Active</label>
+                  <h1 *ngIf="taskerDto.active==false" style="color: red;"><i class="fas fa-dot-circle"></i></h1>
             </div>
         </div>
           
-     </div>
       
      
-    <div class="row">
-        
-        <div class="col-sm-6 form-group">
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group">
             <label 
                 class="font-weight-bold"
                 >Name 
@@ -78,21 +79,43 @@
                 class="text-danger"
                 >*</span>
             </label>
+            <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
             <input 
                 type="text" 
-                formControlName="name" 
-                name="name"
-                [(ngModel)]="taskerDto.name"
-                [value]="taskerDto.name"
+                formControlName="firstname" 
+                name="firstname"
+                [(ngModel)]="taskerDto.firstname"
+                [value]="taskerDto.firstname"
                 class="form-control" 
-                placeholder="Enter Your Full Name" 
-                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
+                placeholder="Enter First Name" 
+                [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" 
                 required>
-                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">name is required</div>
+                <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstname.errors.required">firstname is required</div>
                 </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">  
+                <input 
+                type="text" 
+                formControlName="lastname" 
+                name="lastname"
+                [(ngModel)]="taskerDto.lastname"
+                [value]="taskerDto.lastname"
+                class="form-control" 
+                placeholder="Enter Last Name" 
+                [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" 
+                required>
+                <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastname.errors.required">lastname is required</div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6 form-group">
+        </div>
+    </div>
+
+    <div class="row gutters">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
             <label 
                 class="font-weight-bold"
                 >Username 
@@ -102,24 +125,34 @@
             </label>
             <input 
                 type="text" 
-                formControlName="name" 
-                name="name"
-                [(ngModel)]="taskerDto.name"
-                [value]="taskerDto.name"
+                formControlName="username" 
+                name="username"
+                [(ngModel)]="taskerDto.username"
+                [value]="taskerDto.username"
                 class="form-control" 
-                placeholder="Enter Your Full Name" 
-                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" 
+                placeholder="Enter  User Name" 
+                [ngClass]="{ 'is-invalid': submitted && f.username.errors }" 
                 required>
-                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                    <div *ngIf="f.name.errors.required">name is required</div>
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">username is required</div>
                 </div>
         </div>
+
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+            <label class="font-weight-bold">Date of Birth </label>
+            <input 
+                type="date" 
+                formControlName="dob" 
+                name="dob"
+                [(ngModel)]="taskerDto.dob"
+                [value]="taskerDto.dob"
         
-      
-      
+                class="form-control" required>
+        </div>
     </div>
-<div class="row">
-    <div class="col-sm-6 form-group">
+
+<div class="row gutters">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
         <label 
             class="font-weight-bold"
             >Email 
@@ -141,7 +174,7 @@
                 <div *ngIf="f.email.errors.required">Email is required</div>
             </div>
     </div>
-    <div class="col-sm-6 form-group">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
         <label 
             class="font-weight-bold"
             >Phone Number</label>
@@ -157,11 +190,11 @@
             <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                 <div *ngIf="f.mobile.errors.required">mobile number is required</div>
             </div>
-        </div>
     </div>
+</div>
 
-  <div class="row">
-      <div class="col-sm-6 form-group">
+  <div class="row gutters">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
       <label 
           class="font-weight-bold"
           >Education
@@ -182,20 +215,9 @@
           <div *ngIf="submitted && f.education.errors" class="invalid-feedback">
               <div *ngIf="f.education.errors.required">Education is required</div>
           </div>
-  </div>
-
-  <div class="col-sm-6 form-group">
-    <label class="font-weight-bold">Date of Birth </label>
-    <input 
-        type="date" 
-        formControlName="dob" 
-        name="dob"
-        [(ngModel)]="taskerDto.dob"
-        [value]="taskerDto.dob"
-
-        class="form-control" required>
-</div>
-<div class="form-group">
+        </div>
+ 
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
     <label 
         class="font-weight-bold"
         >Password 
@@ -212,62 +234,78 @@
         class="form-control" 
         placeholder="***************" 
         required>
-</div>
-
+        </div>
   </div>
 
-    <div class="row">
-    <div class="col-sm-6 form-group">
+    <div class="row gutters">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group">
       <label 
           class="font-weight-bold"
           >Address </label>
-      <textarea 
+          <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group"> 
+        <input 
           type="text" 
-          formControlName="address"
-          name="address"
-          [(ngModel)]="taskerDto.address"
-          [value]="taskerDto.address" 
-          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
-          placeholder="Enter Address"                                
-          class="form-control" required></textarea>
-          <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-              <div *ngIf="f.address.errors.required">address is required</div>
+          formControlName="street"
+          name="street"
+          [(ngModel)]="taskerDto.address[0].street"
+          [value]="taskerDto.address[0].street" 
+          [ngClass]="{ 'is-invalid': submitted && f.address[0].street.errors }"
+          placeholder="Enter Street"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.address[0].street.errors" class="invalid-feedback">
+              <div *ngIf="f.street.errors.required">Street is required</div>
           </div>
-    </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group"> 
+          <input 
+          type="text" 
+          formControlName="city"
+          name="city"
+          [(ngModel)]="taskerDto.address[0].city"
+          [value]="taskerDto.address[0].city" 
+          [ngClass]="{ 'is-invalid': submitted && f.address[0].city.errors }"
+          placeholder="Enter City"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.address[0].city.errors" class="invalid-feedback">
+              <div *ngIf="f.address[0].city.errors.required">City is required</div>
+          </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+          <input 
+          type="text" 
+          formControlName="state"
+          name="state"
+          [(ngModel)]="taskerDto.address[0].state"
+          [value]="taskerDto.address[0].state" 
+          [ngClass]="{ 'is-invalid': submitted && f.address[0].state.errors }"
+          placeholder="Enter State"                                
+          class="form-control" required>
+          <div *ngIf="submitted && f.address[0].state.errors" class="invalid-feedback">
+              <div *ngIf="f.address[0].state.errors.required">state is required</div>
+          </div>
+          </div>
 
-    <div class="col-sm-6 form-group">
-      <label 
-          class="font-weight-bold"
-          >Pincode</label>
-      <input 
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+          <input 
           type="text" 
           formControlName="pincode"
           name="pincode"
-          [(ngModel)]="taskerDto.pincode"
-          [value]="taskerDto.pincode" 
-          [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }"
-          placeholder="Enter valid pincode"                                
+          [(ngModel)]="taskerDto.address[0].pincode"
+          [value]="taskerDto.address[0].pincode" 
+          [ngClass]="{ 'is-invalid': submitted && f.address[0].pincode.errors }"
+          placeholder="Enter Pincode"                                
           class="form-control" required>
-          <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
-              <div *ngIf="f.pincode.errors.required">pincode is required</div>
+          <div *ngIf="submitted && f.address[0].pincode.errors" class="invalid-feedback">
+              <div *ngIf="f.address[0].pincode.errors.required">pincode is required</div>
           </div>
-    </div>
+          </div>
+        </div>
     </div>
 
-    <div class="row">
-    <div class="col-sm-6 form-group">
-        <label class="font-weight-bold">Password </label>
-        <input
-          class="form-control" 
-          formControlName="password"
-          name="password"
-          [(ngModel)]="taskerDto.password"
-          [value]="taskerDto.password"
-          required>
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-            </div>
-    </div>
+    
     </div>
 
   <div class="form-group">

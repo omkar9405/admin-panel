@@ -5,8 +5,7 @@
         <div class="card-body">
           <div class="heading-layout1">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" (click)="back()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabel">Close</h4>
+              <button data-dismiss="modal" (click)="back()" aria-label="Close" type="button" class="close btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>       
             </div>
                    
             <div class="container">
@@ -14,7 +13,7 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-12 mb-3">
-                      <img [src]="customerDto.imagePath" [alt]="customerDto.customername" width="200px">
+                      <img [src]="customerDto.imagePath" [alt]="customerDto.firstName" width="200px">
                     </div>
                   </div>
                   <div class="row">
@@ -22,7 +21,7 @@
                       <h4 class="mb-0">Full Name</h4>
                     </div>
                     <div class="col-sm-9 text-primary">
-                       <h4> {{ customerDto.customername}}    </h4>
+                       <h4> {{ customerDto.firstName }} {{ customerDto.lastName}}    </h4>
                     </div>
                   </div>
                   <hr>
@@ -49,25 +48,7 @@
                       <h4 class="mb-0">Address</h4>
                     </div>
                     <div class="col-sm-9 text-secondary">
-                     <h4> {{customerDto.address}}</h4>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h4 class="mb-0">Pincode</h4>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <h4> {{customerDto.pincode}}</h4>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h4 class="mb-0">Service</h4>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <h4> {{customerDto.service}}</h4>
+                     <h4> {{customerDto.address[0].street }},{{customerDto.address[0].city }},<br>{{customerDto.address[0].state }},{{customerDto.address[0].zipcode }}</h4>
                     </div>
                   </div>
                   <hr>
@@ -86,15 +67,6 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                       <h4>{{customerDto.dob}}</h4>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h4 class="mb-0">Pincode</h4>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                     <h4> {{customerDto.pincode}}</h4>
                     </div>
                   </div>
                   <hr>

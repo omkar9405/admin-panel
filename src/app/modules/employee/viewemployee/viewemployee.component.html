@@ -12,94 +12,92 @@
               <div class="container">
                 <div class="card mb-3">
                   <div class="card-body">
-                    <div class="row">
-                      <div class="col-12 mb-3 ">
-                        <img [src]="taskerDto.imagePath" [alt]="taskerDto.name" width="200px">
+                    <div class="row glutters mb-0">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <img [src]="taskerDto.imagePath" [alt]="taskerDto.username" width="100px" height="100px">
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ">
+                        <h4 class="mb-0">Full Name: <span class="text-primary">{{ taskerDto.firstname }} {{ taskerDto.lastname}}</span> </h4>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                          <h4>Username: <span class="text-primary"> {{ taskerDto.username}} </span></h4>
+                       </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-sm-2">
-                        <h4 class="mb-0">Full Name</h4>
-                      </div>
-                      <div class="col-sm-4 text-primary">
-                         <h4> {{ taskerDto.name}}    </h4>
-                      </div>
-                      <div class="col-sm-2">
-                        <h4 class="mb-0">User Name</h4>
-                      </div>
-                      <div class="col-sm-4 text-primary">
-                         <h4> {{ taskerDto.username}}    </h4>
-                      </div>
-                    </div>
+                  
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-2">
+
+                    <div class="row glutters mb-0">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                         <h4 class="mb-0">Email</h4>
+                        <h4 class="text-secondary"> {{taskerDto.email}}</h4>
                       </div>
-                      <div class="col-sm-4 text-secondary">
-                       <h4> {{taskerDto.email}}</h4>
-                      </div>
-                      <div class="col-sm-2">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 ">
                         <h4 class="mb-0">Mobile</h4>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                       <h4> {{taskerDto.mobile}}</h4>
+                        <h4 class="text-secondary"> {{taskerDto.mobile}}</h4>
                       </div>
                     </div>
+
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-2">
-                        <h4 class="mb-0">Address</h4>
+                    
+                    <div class="row glutters mb-0">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-0" >
+                        <h3 class="text-primary">Address</h3>
                       </div>
-                      <div class="col-sm-4 text-secondary">
-                       <h4> {{taskerDto.address}}</h4>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <h4 class="mb-0">Street</h4>
+                        <h4 class="text-secondary">{{taskerDto.address[0].street}}</h4>
                       </div>
-                      <div class="col-sm-2">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <h4 class="mb-0">City</h4>
+                        <h4 class="text-secondary">{{taskerDto.address[0].city}}</h4>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                        <h4 class="mb-0">State</h4>
+                        <h4 class="text-secondary">{{taskerDto.address[0].state}}</h4>
+                      </div>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                         <h4 class="mb-0">Pincode</h4>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                       <h4> {{taskerDto.pincode}}</h4>
+                        <h4 class="text-secondary">{{taskerDto.address[0].pincode}}</h4>
                       </div>
                     </div>
+
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-2">
+                    <div class="row glutters mb-0">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                         <h4 class="mb-0">Skills</h4>
                       </div>
-                      <div  class="col-sm-10 text-secondary" *ngFor="let skill of taskerDto.skills;">
-                        <div style="display: inline;width: 100%; height: 100%;">   
-                          <h4> {{skill.skillname}}</h4>
+                      <div  class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 text-secondary"  >
+                        <div class="row">
+                          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" *ngFor="let skill of taskerDto.skills;" >   
+                            <h4> {{skill.skillname}}</h4>
+                          </div>
                         </div>
                       </div>
                     </div>
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-2">
+
+                    <div class="row glutters mb-0">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                         <h4 class="mb-0">JobType</h4>
+                        <h4 class="text-secondary">{{taskerDto.jobtype}}</h4>
                       </div>
-                      <div class="col-sm-4 text-secondary">
-                        <h4>{{taskerDto.jobtype}}</h4>
-                      </div>
-                      <div class="col-sm-2">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
                         <h4 class="mb-0">Date of Birth</h4>
-                      </div>
-                      <div class="col-sm-4 text-secondary">
-                        <h4>{{taskerDto.dob}}</h4>
+                        <h4 class="text-secondary">{{taskerDto.dob}}</h4>
                       </div>
                     </div>
+
                     <hr>
-                    <div class="row">
-                      <div class="col-sm-2">
-                        <h4 class="mb-0">Active</h4>
-                      </div>
-                      <div class="col-sm-4 " *ngIf="taskerDto.active" style="color: green;">
-                       <h4><i class="fas fa-dot-circle" style="color: green;"></i></h4>
+
+                    <div class="row glutter mb-0">
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" *ngIf="taskerDto.active" style="color: green;">
+                       <h4>Active <i class="fas fa-dot-circle" style="color: green;"></i></h4>
                       </div>
 
-                      <div class="col-sm-4 " *ngIf="!taskerDto.active" style="color: red;">
-                        <h4><i class="fas fa-dot-circle" style="color: red;"></i></h4>
+                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" *ngIf="!taskerDto.active" style="color: red;">
+                        <h4>Not Active<i class="fas fa-dot-circle" style="color: red;"></i></h4>
                        </div>
-                    </div>
+                    </div> 
                   </div>
                 </div>
               </div>
@@ -108,7 +106,7 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
   
   
   

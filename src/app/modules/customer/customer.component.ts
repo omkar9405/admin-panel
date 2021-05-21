@@ -16,15 +16,20 @@ export class CustomerComponent implements OnInit{
   customers:[];
   id='';
   customerDto = {
-    "customername":"",
-    "service":"",
-    "address":"",
-    "pincode":0,
+    "firstName":"",
+    "lastName":"",
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "zipcode":""
+    }],
     "mobile": 0,
     "gender":"",
     "email": "",
     "dob":"",
     "password": "",
+    "createdAt":"",
     "feedback":[]
    }
   constructor(public router:Router,
