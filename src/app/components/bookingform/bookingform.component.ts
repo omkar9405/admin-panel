@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { CustomerService } from 'src/app/_services/customer.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { BookingService } from 'src/app/_services/booking.service';
+import { formatDate } from '@angular/common';
 export interface DialogData {
   email: string;
   password: string;
@@ -56,6 +57,8 @@ export class BookingformComponent implements OnInit {
       }
     ]
   }
+  currentDate=new Date();
+  cValue = formatDate(this.currentDate,  'yyyy/MM/dd', 'en');
   display='none';
   id:'';
   loading = false;
@@ -81,7 +84,7 @@ export class BookingformComponent implements OnInit {
       description: ['',Validators.required],
       selecthr:['',Validators.required]
     });
-    if(localStorage.getItem('_id')==null)
+    if(localStorage.getItem('_id')==undefined)
     {
         this.logged=false;
         this.display='block';
@@ -131,6 +134,7 @@ export class BookingformComponent implements OnInit {
  taskerSelected(id)
  {
 this.bookingDto.taskerId=id;
+this.getTasker(this.bookingDto.taskerId);
 console.log("selected Id"+this.bookingDto.taskerId);
  }
 
@@ -155,5 +159,18 @@ console.log("selected Id"+this.bookingDto.taskerId);
     this.display='none';
  }
 
+ taskerselected:any;
+ getTasker(id)
+ {
+ 
+  this.authenticationService.getById(id).subscribe((res: any) => {
+    console.log("Get tasker succesfully");
+    this.taskerselected = res;
+    console.log(this.taskerselected);
+  }, (err) => {
+    console.log('Error while fetching data');
+    console.error(err);
+  });
+ }
 }
 

@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
+import { Output } from '@angular/core';
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
+ 
   signupForm: FormGroup;
   taskerDto = {
     "firstname":"",
     "lastname":"",
     "username":"",
-    "skills":[{
-      "skillname":"",
-      "charges":""
-    }],
     "completedTasks":"",
     "education":"",
     "imagePath":"",
@@ -34,7 +32,6 @@ export class AddEmployeeComponent implements OnInit {
     "feedback":"",
     "gender":"",
     "dob":"",
-    "createdAt":"",
     "password":"",
     "active":false
    }
@@ -45,11 +42,10 @@ export class AddEmployeeComponent implements OnInit {
   imageURL: string;
 
   constructor(  private formBuilder: FormBuilder,
-    private route:ActivatedRoute,
     public router:Router,
     private location: Location,
-    private datatableservice: DatatableService,
     private authenticationService: TaskerService) { }
+
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       firstname:['',Validators.required],
@@ -69,19 +65,40 @@ export class AddEmployeeComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required],
       dob:['',Validators.required],
+      feedback:['',Validators.required],
       imagePath: [null]
   });
+  if(this.imageURL==null)
+  {
+    this.imageURL="../assets/dp.png";
   }
+  }
+
   get f() { return this.signupForm.controls; }
 
-save(){
-
+register(){
+  this.submitted = true;
+  this.loading = true;
+  console.log(this.taskerDto);
+  this.authenticationService.save(this.taskerDto).subscribe(
+    (data:any) => 
+    {
+      console.log(data);
+      alert("Registered Successfully");
+      this.loading = false;
+  },(err) => {
+      alert(err);
+      this.error=err;
+      this.loading =false;
+  
+  });
 }
 
 back()
 { 
   this.location.back();
 }
+
 
 
 showPreview(event) {

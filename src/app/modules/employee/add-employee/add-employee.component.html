@@ -1,4 +1,4 @@
-<div class="modal-dialog modal-xl" >
+<div class="modal-dialog modal-xl mr-2" >
   <div class="modal-content">
     <div class="mat-elevation-z8">
         <div class="card height-auto">
@@ -18,7 +18,7 @@
             flex-direction: column;">
           <div class="imagePreview">
               <label for="uploadImage">
-                  <img src="../../../../assets/dp.png" [alt]="taskerDto.username" class="rounded-circle" width="200px">
+                  <img [src]="imageURL" [alt]="taskerDto.username" class="rounded-circle" width="200px">
               </label>
           </div>
           <input 
@@ -30,7 +30,7 @@
         </div>
 
         <div class="row glutters">
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 form-group">
                 <label 
                   class="font-weight-bold"
                   >First Name 
@@ -43,7 +43,6 @@
                   formControlName="firstname" 
                   name="firstname"
                   [(ngModel)]="taskerDto.firstname"
-                  [value]="taskerDto.firstname"
                   class="form-control" 
                   placeholder="Enter First Name" 
                   [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" 
@@ -52,7 +51,7 @@
                       <div *ngIf="f.firstname.errors.required">Firstname is required</div>
                   </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6 form-group">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 form-group">
                 <label 
                   class="font-weight-bold"
                   >Last Name 
@@ -65,13 +64,34 @@
                   formControlName="lastname" 
                   name="lastname"
                   [(ngModel)]="taskerDto.lastname"
-                  [value]="taskerDto.lastname"
                   class="form-control" 
                   placeholder="Enter last Name" 
                   [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" 
                   required>
                   <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                       <div *ngIf="f.lastname.errors.required">Lastname is required</div>
+                  </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4 form-group">
+                <label 
+                  class="font-weight-bold"
+                  >Username
+                  <span
+                  class="text-danger"
+                  >*</span>
+                </label>
+                <input 
+                  type="text" 
+                  formControlName="username" 
+                  name="username"
+                  [(ngModel)]="taskerDto.username"
+                  [value]="taskerDto.username"
+                  class="form-control" 
+                  placeholder="Enter username" 
+                  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" 
+                  required>
+                  <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                      <div *ngIf="f.username.errors.required">Username is required</div>
                   </div>
             </div>
         </div>
@@ -298,8 +318,6 @@
         class="form-control" 
         placeholder="***************" 
         >
-  
-
 </div>
 
 </div>
@@ -307,13 +325,13 @@
 
   
   <div class="form-group">
-      <button [disabled]="loading" class="btn btn-block btn-primary" (click)="save()">
+      <button [disabled]="loading" class="btn btn-block btn-primary" (click)="register()">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Save
       </button>
       <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
   </div>
-</form>
+    </form>
 </div>
 
           </div>

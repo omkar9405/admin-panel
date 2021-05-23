@@ -12,14 +12,14 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>First Name</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="firstname" [(ngModel)]="bookingDto.c_firstName" [value]="bookingDto.c_firstName" required>
+                        <input [readonly]="true" type="text" matInput placeholder="Placeholder" formControlName="firstname" [(ngModel)]="bookingDto.c_firstName" [value]="bookingDto.c_firstName" required>
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Last Name</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="lastname" [(ngModel)]="bookingDto.c_lastName" [value]="bookingDto.c_lastName"  required>
+                        <input [readonly]="true" type="text" matInput placeholder="Placeholder" formControlName="lastname" [(ngModel)]="bookingDto.c_lastName" [value]="bookingDto.c_lastName"  required>
                         <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                     </mat-form-field>
                 </div>
@@ -28,13 +28,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Phone</mat-label>
-                        <input type="number" matInput placeholder="Placeholder" formControlName="phone" [(ngModel)]="bookingDto.phone" [value]="bookingDto.phone"  required>
+                        <input [readonly]="true" type="number" matInput placeholder="Placeholder" formControlName="phone" [(ngModel)]="bookingDto.phone" [value]="bookingDto.phone"  required>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Email</mat-label>
-                        <input type="email" matInput placeholder="Placeholder" formControlName="email" [(ngModel)]="bookingDto.email" [value]="bookingDto.email"  required>
+                        <input [readonly]="true" type="email" matInput placeholder="Placeholder" formControlName="email" [(ngModel)]="bookingDto.email" [value]="bookingDto.email"  required>
                     </mat-form-field>
                 </div>                
             </div>
@@ -44,13 +44,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Street</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="street" [(ngModel)]="bookingDto.address[0].street" [value]="bookingDto.address[0].street"  required>
+                        <input [readonly]="true" type="text" matInput placeholder="Placeholder" formControlName="street" [(ngModel)]="bookingDto.address[0].street" [value]="bookingDto.address[0].street"  required>
                     </mat-form-field>
                 </div>
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>City</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="city" [(ngModel)]="bookingDto.address[0].city" [value]="bookingDto.address[0].city" required>
+                        <input [readonly]="true" type="text" matInput placeholder="Placeholder" formControlName="city" [(ngModel)]="bookingDto.address[0].city" [value]="bookingDto.address[0].city" required>
                     </mat-form-field>
                 </div>
                 </div>
@@ -58,13 +58,13 @@
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>State</mat-label>
-                        <input type="text" matInput placeholder="Placeholder" formControlName="state" [(ngModel)]="bookingDto.address[0].state" [value]="bookingDto.address[0].state" required>
+                        <input [readonly]="true" type="text" matInput placeholder="Placeholder" formControlName="state" [(ngModel)]="bookingDto.address[0].state" [value]="bookingDto.address[0].state" required>
                     </mat-form-field>
                 </div>                
                 <div class="col-sm-6 col-lg-4">
                     <mat-form-field appearance="outline">
                         <mat-label>Zip Code</mat-label>
-                        <input type="number" matInput placeholder="Placeholder" formControlName="zipcode" [(ngModel)]="bookingDto.address[0].zipcode" [value]="bookingDto.address[0].zipcode" required>
+                        <input [readonly]="true" type="number" matInput placeholder="Placeholder" formControlName="zipcode" [(ngModel)]="bookingDto.address[0].zipcode" [value]="bookingDto.address[0].zipcode" required>
                     </mat-form-field>
                 </div>                
             </div>
@@ -166,18 +166,108 @@
 
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <p>{{firstFormGroup.value | json}}</p>
-      <p>{{secondFormGroup.value | json}}</p>
-      <p>{{bookingDto.taskerId | json}}</p>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        
-        <button mat-button (click)="stepper.reset()">Reset</button>
-        <button [disabled]="loading" class="btn btn-block btn-primary" (click)="book()">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Submit
-        </button>
+      <div class="container">
+          
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <mat-card>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Date: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{currentDate }}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row glutters">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Customer Name: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.c_firstName}} {{bookingDto.c_lastName}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Phone: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.phone}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Email: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.email}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Address: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.address[0].street}}, {{bookingDto.address[0].city}},
+                            {{bookingDto.address[0].state}}, {{bookingDto.address[0].zipcode}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Task Option: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.taskOption}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Description: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            {{bookingDto.description}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <h4 class="mb-0">Selected Tasker: </h4>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <div class="d-flex align-items-center w-100 flex-wrap align-content-center justify-content-center" *ngIf="taskerselected!=null">
+                                <img [src]="taskerselected.imagePath" *ngIf="taskerselected.imagePath!=''" alt="" width="100px" height="15px"
+                                    class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
+                                <img src="../../../assets/dp.png" *ngIf="taskerselected.imagePath==''" alt="" width="100px" height="15px"
+                                    class="img-fluid rounded-circle mb-2 img-thumbnail shadow-sm">
+                                <div class="mb-2 p-2 ml-3" style="flex: 1;">
+                                    <h5 class="font-weight-normal">{{taskerselected.firstname}} {{taskerselected.lastname}}</h5>
+                                    <p class="text-secondary">{{taskerselected.address[0].street}}, {{taskerselected.address[0].city}},{{taskerselected.address[0].state}},{{taskerselected.address[0].zipcode}}</p>
+                                    <p><i class="fas fa-check-circle"></i> {{taskerselected.completedTasks}} of completed tasks</p>
+                                </div>
+                                <div style="align-self: flex-start;">
+                                    <h5>RS 450/hr</h5>
+                                    <span class="badge badge-pill badge-info">Great Value</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious style="background-color: gray;color: white;">Back</button>&nbsp;    
+                <button mat-button (click)="stepper.reset()" style="background-color: red;color:white">Reset</button>&nbsp;
+                <button mat-button [disabled]="loading" (click)="book()" style="background-color: green; color: white;">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Submit
+                </button>
+            </div>
+        </div>
     </div>
     </mat-step>
   </mat-horizontal-stepper>
@@ -189,7 +279,7 @@
       <div class="modal-content">
         <div class="modal-header">
             <h4 class="modal-title"><span style="color: red;">Login</span></h4>
-            <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button>
+            <!-- <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">X</span></button> -->
         </div>
         <div class="modal-body">
           <p>If you are not login. Please Login or Register First.</p>
@@ -197,4 +287,4 @@
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
-   </div><!-- /.modal !-->
+</div><!-- /.modal !-->

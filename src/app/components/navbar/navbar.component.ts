@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { CustomerService } from 'src/app/_services/customer.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
@@ -28,7 +29,8 @@ customerDto = {
   constructor(private customerService:CustomerService,
     private authenticationService:AuthenticationService,
     private taskerService:TaskerService,
-    private router: Router) { }
+    private router: Router,
+    public loaderService:PreloaderService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem('currentCustomer')!=null){

@@ -1,5 +1,5 @@
 
-import { AfterViewInit,Component, OnInit } from '@angular/core';
+import { AfterViewInit,Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
@@ -11,6 +11,8 @@ import { TaskerService } from 'src/app/_services/tasker.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit{
+  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+
   employees:[];
   id='';
   employeeDto = {
@@ -63,6 +65,7 @@ export class EmployeeComponent implements OnInit{
   
  add()
   {
+
     this.router.navigate(['add-employee'],{relativeTo:this.route});
   }
 
@@ -88,5 +91,4 @@ export class EmployeeComponent implements OnInit{
       console.error(err);
     });
   }
-
 }

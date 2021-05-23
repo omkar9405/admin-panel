@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
 
 @Component({
   selector: 'app-default',
@@ -6,31 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./default.component.css']
 })
 export class DefaultComponent implements OnInit {
- sideBarOpen = true;
-  constructor() {
-    // window.addEventListener("click", () => {
-    //   if(this.sideBarOpen==true){
-    //  this.sideBarOpen=false;
-    //  console.log("listener "+this.sideBarOpen);
-    //   }
-    //  });
-   }
+ sideBarOpen=true;
+  
+ constructor(public loaderService:PreloaderService) {}
+
   ngOnInit(): void {
-  
-    
-  }
-  
+}
 
   sideBarToggler()
   {
-    if(this.sideBarOpen==false)
-    {
-    this.sideBarOpen=true;
+    
+    this.sideBarOpen=!this.sideBarOpen;
     console.log(this.sideBarOpen);
-    }
-    else
-    {
-    this.sideBarOpen=false;
-    }
+    
   }
 }

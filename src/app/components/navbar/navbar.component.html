@@ -1,5 +1,8 @@
 
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+  <div *ngIf="loaderService.isLoading | async" class="loader-container">
+    <mat-spinner style="top: 50%;left: 50%;"></mat-spinner>
+</div>
     <div class="container">
         <a class="navbar-brand" href="#">At<span style="color: #F57C47;">Y</span>ourService</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

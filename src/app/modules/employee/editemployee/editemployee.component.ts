@@ -38,7 +38,7 @@ export class EditemployeeComponent implements OnInit {
         "skillname":"",
         "charges":""
       }],
-      "completedTasks":"",
+      "completedTasks":0,
       "education":"",
       "imagePath":"",
       "jobtype":"",
@@ -107,9 +107,17 @@ export class EditemployeeComponent implements OnInit {
       this.taskerDto.createdAt = res.createdAt;   
       this.taskerDto.password = res.password;
       this.taskerDto.active = res.active;
+      this.taskerDto.imagePath = res.imagePath;
       console.log(this.taskerDto);
       // console.log(this.Dto);;
-      this.imageURL=this.taskerDto.imagePath;
+      if(this.taskerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined" || this.taskerDto.imagePath==null)
+      {
+        this.imageURL="../assets/dp.png";
+      }
+      else
+      {
+        this.imageURL=this.taskerDto.imagePath;
+      }
 
     }, (err) => {
       console.log('Error while fetching');

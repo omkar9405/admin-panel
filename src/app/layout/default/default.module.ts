@@ -51,9 +51,10 @@ import { AboutComponent } from 'src/app/components/about/about.component';
 import { EmployeeNavbarComponent } from 'src/app/employees/employee-navbar/employee-navbar.component';
 import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
 import { BookingformComponent } from 'src/app/components/bookingform/bookingform.component';
-import { FormWizardModule } from 'angular-wizard-form';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -105,6 +106,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,MatDialogModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
     CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule,MatStepperModule,MatRadioModule
   ]
 })
