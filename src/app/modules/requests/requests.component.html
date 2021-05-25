@@ -1,0 +1,137 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Requests">
+        <div class="row glutters">
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  *ngFor="let request of requests">
+            <!-- <div *ngFor="let tasker of Taskers"> -->
+            <mat-card class="example-card" >
+                <mat-card-header>
+                  <div mat-card-avatar 
+                  style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                  background-size: cover;"></div>
+                  <mat-card-title>Customer Name</mat-card-title>
+                  <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <h4>Email</h4>
+                    <h4>Phone</h4>
+                  <p>
+                    description
+                  </p>
+                  <h4>Request Date</h4>
+                  <h4>Task OPtion</h4>
+                  <div class="card">
+                  SelectedTasker
+                </div>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button class="btn-danger">Delete</button>
+                  <button mat-button class="btn-success">Accept</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+        <!-- </div> -->
+        </div>
+    </mat-tab>
+    
+    <mat-tab label="Accepted">
+        <div class="row glutters">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  *ngFor="let request of requests">
+                <div >
+                <mat-card class="example-card" *ngIf="request.isAccepted==true">
+                    <mat-card-header>
+                      <div mat-card-avatar 
+                      style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                      background-size: cover;"></div>
+                      <mat-card-title>Customer Name</mat-card-title>
+                      <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                      <p>
+                        description
+                      </p>
+                      <h4>Request Date</h4>
+                      <h4>Task OPtion</h4>
+                      <div class="card">
+                      SelectedTasker
+                    </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button class="btn-danger">Delete</button>
+                      <button mat-button class="btn-success">Accept</button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Cancelled">
+        <div class="row glutters">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"   *ngFor="let request of requests">
+            <div *ngIf="request.status=='canceled'" >
+                <mat-card class="example-card"   >
+                    <mat-card-header>
+                      <div mat-card-avatar 
+                      style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                      background-size: cover;"></div>
+                      <mat-card-title>Customer Name</mat-card-title>
+                      <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                      <p>
+                        description
+                      </p>
+                      <h4>Request Date</h4>
+                      <h4>Task OPtion</h4>
+                      <div class="card">
+                      SelectedTasker
+                    </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button class="btn-danger">Delete</button>
+                      <button mat-button class="btn-success">Accept</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Completed">
+        <div class="row glutters">
+            <div *ngFor="let request of requests">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1" *ngIf="request.status=='completed'">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                      <div mat-card-avatar 
+                      style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                      background-size: cover;"></div>
+                      <mat-card-title>Customer Name</mat-card-title>
+                      <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                      <p>
+                        description
+                      </p>
+                      <h4>Request Date</h4>
+                      <h4>Task OPtion</h4>
+                      <div class="card">
+                      SelectedTasker
+                    </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button class="btn-danger">Delete</button>
+                      <button mat-button class="btn-success">Accept</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+            </div>
+        </div>
+    </mat-tab>
+  </mat-tab-group>

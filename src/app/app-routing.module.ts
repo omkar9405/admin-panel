@@ -30,6 +30,7 @@ import { ServiceComponent } from './components/services-page/service/service.com
 import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
 import { AboutComponent } from './components/about/about.component';
 import { BookingformComponent } from './components/bookingform/bookingform.component';
+import { RequestsComponent } from './modules/requests/requests.component';
 
 const routes: Routes = [
   {
@@ -112,6 +113,10 @@ children:[
       component: EditcustomerComponent
     }
     ]
+  },
+  {
+    path:'requests',
+    component: RequestsComponent,
   },
   ]
   },

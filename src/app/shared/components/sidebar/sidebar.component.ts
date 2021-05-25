@@ -51,6 +51,11 @@ username="";
    
     this.router.navigate(['customer'],{relativeTo:this.route});
   }
+  requests()
+  {
+   
+    this.router.navigate(['requests'],{relativeTo:this.route});
+  }
   articles()
   {
    

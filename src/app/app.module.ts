@@ -22,6 +22,7 @@ import { BookingformComponent } from './components/bookingform/bookingform.compo
 import { PreloaderService } from './globalloader/preloader/preloader.service';
 import { LoaderInterceptorService } from './globalloader/preloader/loader-interceptor.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,6 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     AdminLoginComponent,
     LayoutComponent,
     EditemployeeComponent,
-  
   
   ],
   imports: [

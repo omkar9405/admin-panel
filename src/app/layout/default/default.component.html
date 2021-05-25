@@ -1,6 +1,6 @@
 <app-header (toggleSideBarForMe)="sideBarToggler()"></app-header>
 
-<mat-drawer-container>
+<mat-drawer-container [hasBackdrop]="true">
     
     <mat-drawer mode="side" [opened]="sideBarOpen">
         <app-sidebar></app-sidebar>

@@ -55,6 +55,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
+import {MatTabsModule} from '@angular/material/tabs';
+import { RequestsComponent } from '../../modules/requests/requests.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -86,6 +89,7 @@ import { MatRadioModule } from '@angular/material/radio';
     EmployeeprofileComponent,
     AboutComponent,
     BookingformComponent,
+    RequestsComponent
   ],
   imports: [
     CommonModule,
@@ -108,6 +112,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSelectModule,MatDialogModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
+    MatGridListModule,
     CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule,MatStepperModule,MatRadioModule
   ]
 })
