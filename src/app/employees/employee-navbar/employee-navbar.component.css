@@ -1,4 +1,7 @@
-body {
+body{
+    background:whitesmoke;
+}
+.navbar {
     margin: 0;
     color: #bcd0f7;
     background: #1A233A;
@@ -25,3 +28,4 @@ body {
 .navbar-dark .navbar-nav .nav-item {
     margin: 0 15px;
 }
+

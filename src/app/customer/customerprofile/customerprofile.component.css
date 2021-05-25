@@ -1,7 +1,14 @@
+.loader-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    z-index: 99;
+     }
 body {
     margin: 0;
     color: #bcd0f7;
-    background: #1A233A;
     position: relative;
     font-family: 'Varela Round',
         sans-serif;
@@ -26,42 +33,35 @@ body {
     margin: 0 15px;
 }
 
-
-/* /* body{
-    margin-top:20px;
-    color: #1a202c;
-    text-align: left;
-    background-color: #e2e8f0;    
-} */
  .Employee{
-    color: #bcd0f7;
-    background: #1A233A;
+    color: black;
+    background: whitesmoke;
     position: relative;
     font-family: 'Varela Round',
     sans-serif;
     font-size: 16px;
     position: absolute;
     width: 100%;
-    height: 100%;   
+    height: auto;   
 
 } 
 .main-body {
     padding: 15px;
 }
-.card {
+/* .card {
     box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
+} */
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #1f305c;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    font-size: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+    
 }
 
 .card-body {
@@ -94,10 +94,14 @@ body {
 }
 
 .account-settings {
-    margin: 0 0 0.5rem 0;
-    height: 80%;
+    margin-left:10px;
+    height: 100%;
     padding-bottom: 25px;
     text-align: center;
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    color: black;
+    background: white;
 }
 
 .account-settings .user-profile .user-avatar {
@@ -105,11 +109,11 @@ body {
 }
 
 .account-settings .user-profile .user-avatar img {
-    width: 100%;
-    height: 70%;
+    width: 80%;
+    height: 100%;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
 }
 
 .account-settings .user-profile h5.user-name {
@@ -137,8 +141,9 @@ body {
     font-size: 15px;
 }
 
-.card,.cart-body {
-    background: #272E48;
+.card {
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
     font-size: 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -187,7 +192,7 @@ body {
 
 .book-card {
     margin-bottom: 20px;
-    background-color: #272e48;
+    background-color: white;
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);

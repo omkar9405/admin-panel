@@ -6,6 +6,7 @@ import { DatatableService } from 'src/app/_services/datatableservice/datatable.s
 import { CustomerService } from 'src/app/_services/customer.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 import { BookingService } from 'src/app/_services/booking.service';
+import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
 @Component({
   selector: 'app-customerprofile',
   templateUrl: './customerprofile.component.html',
@@ -45,7 +46,8 @@ customerDto = {
     private customerService:CustomerService,
     private taskerService:TaskerService,
     private authenticationService: AuthenticationService,
-    private bookingService:BookingService
+    private bookingService:BookingService,
+    public loaderService:PreloaderService
   ) { }
 
   ngOnInit( ): void {

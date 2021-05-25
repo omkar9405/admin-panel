@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
 import { BookingService } from 'src/app/_services/booking.service';
 import { Router } from '@angular/router';
+import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -55,7 +56,8 @@ username='';
     private formBuilder:FormBuilder, 
     private router: Router,
     private datatableservice: DatatableService,  
-    private bookingService:BookingService) {
+    private bookingService:BookingService,
+    public loaderService:PreloaderService) {
      
    }
 
@@ -74,8 +76,10 @@ username='';
       state:['',Validators.required],
       street:['',Validators.required],
       education:['',Validators.required],
-      skillname:['',Validators.required],
-      charges:['',Validators.required],
+      skillname1:['',Validators.required],
+      skillname2:['',Validators.required],
+      charges1:['',Validators.required],
+      charges2:['',Validators.required],
       jobtype:['',Validators.required],
       completedTasks:['',Validators.required],
       imagePath: [null]
@@ -87,14 +91,15 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-    if(localStorage.getItem('currentTasker')!=undefined){
-    setInterval(() => {
-      this.getBookings();
-    }, 10000);
-    }
-    else{
-      stop
-    }
+    // if(localStorage.getItem('currentTasker')!=undefined){
+    // setInterval(() => {
+    //   this.getBookings();
+    // }, 10000);
+    // }
+    // else{
+    //   stop
+    // }
+
   }
 
    getTasker(){
@@ -109,14 +114,8 @@ username='';
       this.taskerDto.dob = res.dob;   
       this.taskerDto.completedTasks = res.completedTasks;
       this.taskerDto.password = res.password;
-      this.taskerDto.address[0].street = res.address[0].street;
-      this.taskerDto.address[0].city = res.address[0].city;
-      this.taskerDto.address[0].state = res.address[0].state;
-      this.taskerDto.address[0].pincode = res.address[0].pincode;
-      this.taskerDto.skills[0].skillname = res.skills[0].skillname;
-      this.taskerDto.skills[1].skillname = res.skills[1].skillname;
-      this.taskerDto.skills[0].charges = res.skills[0].charges;
-      this.taskerDto.skills[1].charges = res.skills[1].charges;
+      this.taskerDto.address = res.address;
+      this.taskerDto.skills = res.skills;
       this.taskerDto.education = res.education;
       this.taskerDto.username = res.username;
       this.taskerDto.jobtype = res.jobtype;
@@ -129,7 +128,7 @@ username='';
     {
       this.imageURL=this.taskerDto.imagePath;
     }
-
+    this.getBookings();
       console.log(this.taskerDto);
       // this.getBookings();
     }, (err) => {

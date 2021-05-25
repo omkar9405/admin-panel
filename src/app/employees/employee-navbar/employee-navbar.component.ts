@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 
@@ -16,6 +17,7 @@ export class EmployeeNavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService:TaskerService,
+   
   )
   {
     var tasker=localStorage.getItem('currentTasker');

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark mb-1">
     <div class="container">
         <a class="navbar-brand" href="../index.html">At<span style="color: orangered;">Y</span>ourService</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -49,6 +49,9 @@
 </nav>
 <!-- Main body -->
  <div class="Employee">
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+        <mat-spinner style="top: 50%;left: 50%;"></mat-spinner>
+    </div>
 <div >
   <div class="row">
       <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="height: max-content;">
@@ -250,12 +253,11 @@
 
               <!-- ----------------------------------------------- -->
               <div class="tab-pane" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tabs-2">
-                  <div class="mat-elevation-z8" >
-                      <div class="card height-auto" style="background-color:transparent;" >
+                      <div class="card height-auto">
                         <div>
                           <div class="heading-layout1">
                             <div class="item-title">
-                              <h2>Activities</h2>
+                              <h2 class="ml-2">Activities</h2>
                             </div>
                           </div>
                           <div class="col-md-12">
@@ -337,10 +339,10 @@
                                     </ul>
                                 </div>
                             </div>
+                            <hr>
                         </div>
                         </div>
                       </div>
-                  </div>
               </div>
 
 
@@ -373,29 +375,3 @@
 </div>
     <!-- Tabs navs -->
 
-<!--<div id="editStatus" class="modal fade">
-  <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-              <div class="modal-header">
-                  <h4 class="modal-title text-primary">Edit Status</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-              <div class="modal-body">
-                  <div class="form-group">
-                      <label class="text-secondary">Update Status</label>
-                      <select class="form-control">
-                          <option>Status</option>
-                          <option>Completed</option>
-                          <option>Pending</option>
-                          <option>Cancelled</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                  <input type="submit" class="btn btn-info" value="Save">
-              </div>    
-      </div>
-  </div>
-</div>
-</div> -->

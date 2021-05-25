@@ -16,18 +16,35 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;   
-
+    background:whitesmoke;
 } 
 tbody,tr{
-    background: transparent;
+    background: white;
     color: black;
 }
 
+.card {
+    /* background: #272E48; */
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    font-size: 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 0;
+    margin-bottom: 1rem;
+}
+
+
 .account-settings {
-    margin: 0 0 0.5rem 0;
+    margin-left:10px;
     height: 100%;
     padding-bottom: 25px;
     text-align: center;
+    -webkit-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);
+    color: black;
+    background: white;
 }
 
 .account-settings .user-profile .user-avatar {
@@ -68,25 +85,16 @@ tbody,tr{
 }
 
 .form-control {
-    border: 1px solid #596280;
+    border: 1px solid #d8dff5;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    font-size: .825rem;
-    background: #1A233A;
-    color: #bcd0f7;
+    font-size: 1rem;
+    font-weight: 300;
+    /* background: #1A233A; */
+    color: black;
 }
 
-.card,.cart-body {
-    /* background: #272E48; */
-    
-    font-size: 20px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: 0;
-    margin-bottom: 1rem;
-}
 
 .btn-gray {
     color: white;
@@ -134,7 +142,7 @@ tbody,tr{
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     border-radius: 4px;
-    box-shadow: none;
+    /* box-shadow: none; */
     border: none;
     padding: 25px;
 }
@@ -305,24 +313,6 @@ table.table .avatar {
     color: #ff5b5b;
 }
 
-/* .pagination {
-    float: right;
-    margin: 0 0 5px;
-    color: rgb(67, 138, 9);
-}
-
-.pagination li a {
-    border: none;
-    font-size: 13px;
-    min-width: 30px;
-    min-height: 30px;
-    color: rgb(67, 138, 9);
-    margin: 0 2px;
-    line-height: 30px;
-    border-radius: 2px !important;
-    text-align: center;
-    padding: 0 6px;
-} */
 .dataTables_wrapper .dataTables_info{
     color: rgb(67, 138, 9);
 }
@@ -372,3 +362,11 @@ table.table .avatar {
 .modal form label {
     font-weight: normal;
 }
+.loader-container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: 0.8;
+    z-index: 99;
+     }

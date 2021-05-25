@@ -1,12 +1,16 @@
+<div class="mb-0">
 <app-employee-navbar></app-employee-navbar>
+</div>
 <!-- Main body -->
 <div class="Employee">
-<div >
-    <div class="row">
+    <div *ngIf="loaderService.isLoading | async" class="loader-container">
+        <mat-spinner style="top: 50%;left: 50%;"></mat-spinner>
+    </div>
+    <div class="row glutters">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="height: max-content;">
-            <div class="card" style="background: #272E48;">
-                <div class="card-body">
-                    <div class="account-settings">
+            <!-- <div class="card">
+                <div class="card-body"> -->
+                    <div class="account-settings" >
                         <div class="user-profile">
                             <div class="user-avatar">
                                 <label for="imageUpload">
@@ -19,21 +23,21 @@
                                 accept="image/*"
                                 (change)="showPreview($event)" hidden/>
                             </div>
-                            <h3 class="user-name">{{username}}</h3>
-                            <h4>Tasker Job</h4>
+                            <h1 class="user-name" style="color: blueviolet;">{{username}}</h1>
+                            <h2 style="color: lightseagreen;">{{taskerDto.jobtype}}</h2>
                         </div>
-                        <div class="about">
-                            <h4>I'm tasker_name Tasker 1-2 line intro.
-                            </h4>
+                        <div class="about" style="color: slateblue;">
+                            <h3>I'm {{taskerDto.firstname}} </h3>
+                            <h3>Completed Tasks:{{taskerDto.completedTasks}}</h3>
                             <br>
-                            <h4>Contact No:</h4>
-                            <p style="font-size:medium">{{taskerDto.mobile}}</p>
-                            <h4>Email</h4>
-                            <p style="font-size:medium">{{taskerDto.email}}</p>
+                            <h3>Contact No: {{taskerDto.mobile}}</h3>
+                            <!-- <p style="font-size:medium"></p> -->
+                            <h3>Email: {{taskerDto.email}}</h3>
+                            <!-- <p style="font-size:medium"></p> -->
                         </div>
                     </div>
-                </div>
-            </div>
+                <!-- </div>
+            </div> -->
         </div>
 
         <!-- Tabs navs -->
@@ -54,7 +58,7 @@
             </ul>
             <div class="tab-content" id="ex1">
                 <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tabs-1">
-                <div class="mat-elevation-z8">
+                <!-- <div class="mat-elevation-z8"> -->
                     <div class="col-md-12">
                         <div class="card h-100" style="color:indigo;">
                             <div class="card-body">
@@ -158,27 +162,25 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <h3 class="mt-3 mb-2 text-primary">Skills</h3>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   
                                         <div class="form-group">
-                                            <label for="skillname">SkillName</label>
+                                            <label for="skillname1">SkillName</label>
                                             <input type="text" 
                                             class="form-control" 
-                                            formControlName="skillname"
+                                            formControlName="skillname1"
                                             [(ngModel)]="taskerDto.skills[0].skillname"
                                             [value]="taskerDto.skills[0].skillname"
                                                 placeholder="SkillName">
                                         </div>
                                         <div class="form-group">
-                                            <label for="jobtype">Charges</label>
+                                            <label for="chargers1">Charges</label>
                                             <input type="text" 
                                             class="form-control" 
-                                            formControlName="charges"
+                                            formControlName="charges1"
                                             [(ngModel)]="taskerDto.skills[0].charges"
                                             [value]="taskerDto.skills[0].charges"
                                                 placeholder="Charges">
@@ -187,26 +189,25 @@
 
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">   
                                         <div class="form-group">
-                                            <label for="skillname">SkillName</label>
+                                            <label for="skillname2">SkillName</label>
                                             <input type="text" 
                                             class="form-control" 
-                                            formControlName="skillname"
+                                            formControlName="skillname2"
                                             [(ngModel)]="taskerDto.skills[1].skillname"
                                             [value]="taskerDto.skills[1].skillname"
                                                 placeholder="SkillName">
                                         </div>
                                         <div class="form-group">
-                                            <label for="jobtype">Charges</label>
+                                            <label for="charges2">Charges</label>
                                             <input type="text" 
                                             class="form-control" 
-                                            formControlName="charges"
+                                            formControlName="charges2"
                                             [(ngModel)]="taskerDto.skills[1].charges"
                                             [value]="taskerDto.skills[1].charges"
                                                 placeholder="Charges">
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                                         <h3 class="mt-3 mb-2 text-primary">Address</h3>
@@ -259,7 +260,6 @@
                                         </div>
                                     </div>
                                 </div>
-                              
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <h3 class="mt-3 mb-2 text-primary">Credetials</h3>
@@ -277,7 +277,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                </div>
+                                <!-- </div> -->
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="text-right">
@@ -292,18 +292,19 @@
                                         <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
                                     </div>
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                </div>
+                <!-- </div> -->
                 <div class="tab-pane" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tabs-2">
-                    <div class="mat-elevation-z8" >
-                        <div class="card height-auto" style="background-color:transparent; color: white;" >
+                    <!-- <div class="mat-elevation-z8" > -->
+                        <div class="card height-auto" >
                           <div class="card-body">
                             <div class="heading-layout1">
                               <div class="item-title">
-                                <h2>Activities</h2>
+                                <h2 style="color: black;">Activities</h2>
                               </div>
                             </div>
                     
@@ -332,10 +333,10 @@
                                         <td *ngIf="request.status=='completed'"><span class="status text-success">&bull;</span> {{request.status}}</td>
                                         <td *ngIf="request.status=='canceled'"><span class="status text-danger">&bull;</span> {{request.status}}</td>
                                         <td>
-                                            <a style="color: white;" class="btn-gray btn-danger" data-dismiss="modal" *ngIf="request.isAccepted==true" (click)="action(request.id,'false')"  >
+                                            <a style="color: white;" class="btn-gray btn-danger" data-dismiss="modal" *ngIf="request.isAccepted==false" (click)="action(request.id,'true')"  >
                                                 <i class="far fa-times-circle"></i> 
                                             </a>
-                                            <a style="color: white;" class="btn-gray btn-success" data-dismiss="modal" *ngIf="request.isAccepted==false" (click)="action(request.id,'true')">
+                                            <a style="color: white;" class="btn-gray btn-success" data-dismiss="modal" *ngIf="request.isAccepted==true" (click)="action(request.id,'false')">
                                                 <i class="far fa-check-circle"></i> 
                                             </a>
                                         </td>
@@ -346,7 +347,7 @@
                             </div>
                           </div>
                         </div>
-                    </div>
+                    <!-- </div> -->
                     <div class="mat-elevation-z8" [ngStyle]="{'display': show()}">
                                 <div class="modal-content">
                                         <div class="modal-header">
@@ -409,6 +410,4 @@
         </div>
     </div>
     <!-- Tabs navs -->
-</div>
-
 </div>
