@@ -4,7 +4,6 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AdminsService } from 'src/app/_services/admins.service';
 
 @Component({
@@ -21,7 +20,7 @@ export class EditadminsComponent implements OnInit {
   "email":"",
   "imagePath":"../assets/dp.png"
 }
- @Input()  getid:String;
+
 signupForm: FormGroup;
 id='';
 imageURL:string;

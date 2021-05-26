@@ -20,6 +20,7 @@ import { EditemployeeComponent } from './modules/employee/editemployee/editemplo
 import { LoaderInterceptorService } from './globalloader/preloader/loader-interceptor.service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     AdminLoginComponent,
     LayoutComponent,
     EditemployeeComponent,
+   
   
   ],
   imports: [

@@ -31,6 +31,7 @@ import { EditemployeeComponent } from './modules/employee/editemployee/editemplo
 import { AboutComponent } from './components/about/about.component';
 import { BookingformComponent } from './components/bookingform/bookingform.component';
 import { RequestsComponent } from './modules/requests/requests.component';
+import { NewadminComponent } from './modules/admin/newadmin/newadmin.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ children:[
     path:'admin',
     component: AdminComponent,
             children:[
+              {
+                path:'newadmin',
+                component: NewadminComponent
+              },
               {
                 path:'viewadmin/:id',
                 component: ViewadminsComponent

@@ -17,3 +17,8 @@ img{
     object-fit: cover;
     border-radius: 50px;
 }
+
+
+ a.active {
+    background: blue;
+}

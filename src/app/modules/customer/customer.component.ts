@@ -74,6 +74,11 @@ export class CustomerComponent implements OnInit{
       console.error(err);
     });
   }
+  refresh()
+{
+  this.datatableservice.destroy();
+  this.getlist();
+}
 }
 
 

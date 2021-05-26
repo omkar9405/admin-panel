@@ -91,13 +91,15 @@ customerDto = {
       "active":"false"
     }
   logoutTasker() {
+    this.taskerService.logout();
+    this.router.navigate(['/employeeLogin']);
     this.taskerService.patch(this.status,this.taskerDto.id)
     .subscribe(
         data => {
-          this.taskerService.logout();
+          
           this.t_id='';
           localStorage.removeItem('_id');
-          this.router.navigate(['/employeeLogin']);
+        
             console.log("You are logged out");
         },
         error => {

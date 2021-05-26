@@ -50,14 +50,13 @@ export class EmployeeComponent implements OnInit{
   }
 
   ngOnInit() {
-   
-  this.getlist();
+      this.getlist();
+  
   }
 
  getlist()
  {
   this.authenticationService.gettaskerList().subscribe((res: any) => {
-    // console.log(res);
     
     this.employees = res.map((key) => ({ ...key }));
     this.datatableservice.initTable('employee');
@@ -95,6 +94,12 @@ export class EmployeeComponent implements OnInit{
       console.error(err);
     });
   }
-
+refresh()
+{
+  this.datatableservice.destroy();
+  this.getlist();
+}
  
 }
+
+

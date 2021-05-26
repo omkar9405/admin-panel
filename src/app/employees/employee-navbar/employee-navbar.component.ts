@@ -12,7 +12,7 @@ import { TaskerService } from 'src/app/_services/tasker.service';
 export class EmployeeNavbarComponent implements OnInit {
   username:'';
  status={
-   "active":false
+   "active":true
  }
   constructor(
     private router: Router,
@@ -27,8 +27,24 @@ export class EmployeeNavbarComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  
+    this.loggedin()
   }
+
+  loggedin()
+{
+    var tasker=localStorage.getItem('currentTasker');
+    var json = JSON.parse(tasker);
+    var obj=json["tasker"];
+    var id=obj["id"];
+    this.authenticationService.patch(this.status,id).subscribe(
+        data => {
+         
+            alert("You are active now "+data);
+        },
+        err => {
+            console.log(err);
+        });
+}
 
   logout(){
     var tasker=localStorage.getItem('currentTasker');
@@ -38,6 +54,7 @@ export class EmployeeNavbarComponent implements OnInit {
     // this.authenticationService.logout();
     this.router.navigate(['/employeeLogin']);
     this.authenticationService.logout();
+    this.status.active=false;
     this.authenticationService.patch(this.status,id)
     .subscribe(
         data => {

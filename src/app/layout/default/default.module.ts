@@ -59,6 +59,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { RequestsComponent } from '../../modules/requests/requests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DataTablesModule } from 'angular-datatables';
+import { NewadminComponent } from 'src/app/modules/admin/newadmin/newadmin.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -90,7 +91,8 @@ import { DataTablesModule } from 'angular-datatables';
     EmployeeprofileComponent,
     AboutComponent,
     BookingformComponent,
-    RequestsComponent
+    RequestsComponent,
+    NewadminComponent,
   ],
   imports: [
     CommonModule,

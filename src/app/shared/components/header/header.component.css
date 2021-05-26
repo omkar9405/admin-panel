@@ -2,11 +2,16 @@ ul li{
     list-style: none;
 }
 
-.loader-container{
+/* .loader-container{
     position: absolute;
     height: 100%;
     width: 100%;
-    /* background: black;
-    opacity: 0.8; */
+    
     z-index: 99;
-     }
+     } */
+
+     .loader-container{
+        position: fixed;
+       width: 100%;
+        z-index: 99;
+         }
