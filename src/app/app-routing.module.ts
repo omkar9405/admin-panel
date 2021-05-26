@@ -67,9 +67,9 @@ children:[
                       component: ViewpostComponent
                         }]
           },
-          {
-            path:'admin',
-            component: AdminComponent,
+  {
+    path:'admin',
+    component: AdminComponent,
             children:[
               {
                 path:'viewadmin/:id',
@@ -81,8 +81,6 @@ children:[
               }
             ]
           },
-          
-  
   {
     path:'employee',
     component: EmployeeComponent,

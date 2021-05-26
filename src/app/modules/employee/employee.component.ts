@@ -1,6 +1,7 @@
 
-import { AfterViewInit,Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 
@@ -11,7 +12,7 @@ import { TaskerService } from 'src/app/_services/tasker.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit{
-  @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+
 
   employees:[];
   id='';
@@ -39,6 +40,9 @@ export class EmployeeComponent implements OnInit{
     "password":"",
     "active":""
    }
+
+
+   
   constructor(public router:Router,
     private datatableservice: DatatableService,
     public route:ActivatedRoute,
@@ -53,7 +57,7 @@ export class EmployeeComponent implements OnInit{
  getlist()
  {
   this.authenticationService.gettaskerList().subscribe((res: any) => {
-    console.log(res);
+    // console.log(res);
     
     this.employees = res.map((key) => ({ ...key }));
     this.datatableservice.initTable('employee');
@@ -91,4 +95,6 @@ export class EmployeeComponent implements OnInit{
       console.error(err);
     });
   }
+
+ 
 }

@@ -17,9 +17,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutComponent } from './components/layout/layout.component';
 import { EditemployeeComponent } from './modules/employee/editemployee/editemployee.component';
-import { CustomerNavbarComponent } from './customer/customer-navbar/customer-navbar.component';
-import { BookingformComponent } from './components/bookingform/bookingform.component';
-import { PreloaderService } from './globalloader/preloader/preloader.service';
 import { LoaderInterceptorService } from './globalloader/preloader/loader-interceptor.service';
 
 
@@ -42,8 +39,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     BrowserAnimationsModule,
     DefaultModule,
     DropdownModule.forRoot(),
-    HttpClientModule,
- 
+    HttpClientModule
   ],
   providers: [   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },DatatableService],

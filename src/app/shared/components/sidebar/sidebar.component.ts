@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AdminsService } from 'src/app/_services/admins.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,23 +10,51 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class SidebarComponent implements OnInit {
  
-name="";
-email="";
-imagePath="";
-username="";
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  adminDto={
+    "name":"",
+    "permissions":"",
+    "username":"",
+    "mobile":"",
+    "email":"",
+    "imagePath":"../assets/dp.png"
+  }
+  id:'';
+  imageURL: string;
+  constructor(private router:Router,private route:ActivatedRoute,  private authenticationService: AdminsService) { }
 
   ngOnInit(): void {
     this.router.navigate(['dashboard'],{relativeTo:this.route});
     var admin=localStorage.getItem('currentAdmin');
     var json = JSON.parse(admin);
     var obj=json["admin"];
-    this.name=obj["name"];
-    this.email=obj["email"];
-    this.imagePath=obj["imagePath"];
-    this.username=obj["username"];
+    this.id=obj["id"];
+    this.getAdmin(this.id)
   }
   
+  getAdmin(id)
+   {
+    this.authenticationService.getById(id).subscribe((res: any) => {
+    this.adminDto.name=res.name;
+    this.adminDto.username=res.username;
+    this.adminDto.mobile=res.mobile;
+    this.adminDto.email=res.email;
+    this.adminDto.permissions=res.permissions;
+    this.adminDto.imagePath=res.imagePath;  
+    if(this.adminDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined" || this.adminDto.imagePath==null )
+    {
+      this.imageURL="../assets/dp.png";
+    }
+    else
+    {
+      this.imageURL=this.adminDto.imagePath;
+    }  
+    console.log(this.adminDto);
+    }, (err) => {
+      console.log('Error while fetching data:viewadminsidebar');
+      console.error(err);
+    });
+   }
+
   dash()
   {
   

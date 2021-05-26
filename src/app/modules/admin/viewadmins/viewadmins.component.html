@@ -1,19 +1,146 @@
 <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Contact</h4>
-      </div>
-      <div class="modal-body">
-          <p>{{getid}}</p>
-        <label>First Name </label><input /> <br />
-      <label>Last Name </label><input /> <br />
-      <label>Address </label><input /> <br />
-      <label>Phone Number </label><input /> <br />
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary" id="addConfirm">Confirm</button>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button data-dismiss="modal" (click)="back()" aria-label="Close" type="button" class="close btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>       
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="signupForm">
+  <div class="row glutters">
+    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12  form-group">
+      <div class="imagePreview" *ngIf="imageURL && imageURL !== ''">
+          <label for="uploadImage">
+              <img [src]="imageURL" [alt]="adminDto.username"  width="150px" height="150px">
+          </label>
       </div>
     </div>
+    <div class="column col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 "> 
+       <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  form-group">
+        <label 
+            class="font-weight-bold"
+            >Name
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="name" 
+            name="name"
+            [(ngModel)]="adminDto.name"
+            [value]="adminDto.name"
+            class="form-control" 
+            placeholder="Enter Valid Name" 
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+            [readonly]="true"
+            required>
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+            </div>
+      </div>
+
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  form-group">
+        <label 
+            class="font-weight-bold"
+            >Username 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="text" 
+            formControlName="username" 
+            name="username"
+            [(ngModel)]="adminDto.username"
+            [value]="adminDto.username"
+            class="form-control" 
+            placeholder="Enter Valid Username" 
+            [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
+            [readonly]="true"
+            required>
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+            </div>
+      </div>
+    </div>
+
+      
+</div>
+      <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Permission 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="number" 
+            formControlName="permissions" 
+            name="permissions"
+            [(ngModel)]="adminDto.permissions"
+            [value]="adminDto.permissions"
+            class="form-control" 
+            placeholder="Enter Valid Prmission" 
+            [ngClass]="{ 'is-invalid': submitted && f.permissions.errors }"
+            [readonly]="true"
+            required>
+            <div *ngIf="submitted && f.permissions.errors" class="invalid-feedback">
+                <div *ngIf="f.permissions.errors.required">permissions is required</div>
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Mobile 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="mobile" 
+            formControlName="mobile" 
+            name="mobile"
+            [(ngModel)]="adminDto.mobile"
+            [value]="adminDto.mobile"
+            class="form-control" 
+            placeholder="Enter Valid Mobile" 
+            [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+            [readonly]="true"
+            required>
+            <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                <div *ngIf="f.mobile.errors.required">Mobile is required</div>
+            </div>
+      </div>
+
+      <div class="form-group">
+        <label 
+            class="font-weight-bold"
+            >Email 
+            <span
+            class="text-danger"
+            >*</span>
+        </label>
+        <input 
+            type="email" 
+            formControlName="email" 
+            name="email"
+            [(ngModel)]="adminDto.email"
+            [value]="adminDto.email"
+            class="form-control" 
+            placeholder="Enter Valid Email" 
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+            [readonly]="true"
+            required>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+            </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" (click)="back()" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+    </div>
   </div>
+</div>
+

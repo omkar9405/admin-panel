@@ -58,6 +58,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RequestsComponent } from '../../modules/requests/requests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -113,7 +114,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatTabsModule,
-    MatGridListModule,
     CheckboxModule, WavesModule, ButtonsModule, InputsModule, IconsModule, CardsModule, SelectModule,MatStepperModule,MatRadioModule
   ]
 })
