@@ -91,14 +91,7 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-    // if(localStorage.getItem('currentTasker')!=undefined){
-    // setInterval(() => {
-    //   this.getBookings();
-    // }, 10000);
-    // }
-    // else{
-    //   stop
-    // }
+    //this.getBookings();
 
   }
 
@@ -128,7 +121,7 @@ username='';
     {
       this.imageURL=this.taskerDto.imagePath;
     }
-    this.getBookings();
+    //this.refresh();
       console.log(this.taskerDto);
       // this.getBookings();
     }, (err) => {
@@ -178,7 +171,7 @@ requests:[];
     // console.log("Request loaded successful");
     this.requests = res.map((key) => ({ ...key }));
     // console.log(this.requests);
-    
+    this.datatableservice.initTable('bookings');
   }, (err) => {
     console.log('Error while fetching data');
     console.error(err);
@@ -195,7 +188,7 @@ action(id,status)
   this.bookingService.isAccepted(id,this.statusDto).subscribe((res: any) => {
     this.getBookings();
     // console.log(res);
-    
+   
   }, (err) => {
     console.log('Error while fetching data');
     console.error(err);
@@ -238,11 +231,13 @@ if(this.display=='none')
   this.display='block';
   // console.log(this.selected);
 }
-} show()
+}
+ show()
 {
 
   return this.display;
 }
+
 refresh()
 {
   this.datatableservice.destroy();

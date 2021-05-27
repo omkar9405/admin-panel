@@ -334,11 +334,11 @@
                                         <td *ngIf="request.status=='completed'"><span class="status text-success">&bull;</span> {{request.status}}</td>
                                         <td *ngIf="request.status=='canceled'"><span class="status text-danger">&bull;</span> {{request.status}}</td>
                                         <td>
-                                            <a style="color: white;" class="btn-gray btn-danger" data-dismiss="modal" *ngIf="request.isAccepted==false" (click)="action(request.id,'true')"  >
-                                                <i class="far fa-times-circle"></i> 
+                                            <a style="color: white;" class="btn-gray btn-success" data-dismiss="modal" *ngIf="request.isAccepted==false" (click)="action(request.id,'true')"  >
+                                                <i class="far fa-times-circle"></i> Accept
                                             </a>
-                                            <a style="color: white;" class="btn-gray btn-success" data-dismiss="modal" *ngIf="request.isAccepted==true" (click)="action(request.id,'false')">
-                                                <i class="far fa-check-circle"></i> 
+                                            <a style="color: white;" class="btn-gray btn-danger" data-dismiss="modal" *ngIf="request.isAccepted==true" (click)="action(request.id,'false')">
+                                                <i class="far fa-check-circle"></i> Reject
                                             </a>
                                         </td>
                                     </tr>
@@ -371,11 +371,11 @@
                                         <h3 *ngIf="selected.status=='pending'"><span class="status text-info">&bull;  &nbsp; {{selected.status}}</span> </h3>
                                         <h3 *ngIf="selected.status=='completed'"><span class="status text-success">&bull;  &nbsp; {{selected.status}}</span></h3>
                                         <h3 *ngIf="selected.status=='canceled'"><span class="status text-danger">&bull;  &nbsp; {{selected.status}}</span> </h3>
-                                            <a  class="btn-gray btn-danger ml-4" *ngIf='selected.isAccepted==true'>
-                                                <i class="far fa-times-circle mr-2"></i> Rejected
+                                            <a  class="btn-gray btn-success ml-4" *ngIf='selected.isAccepted==true'>
+                                                <i class="far fa-times-circle mr-2"></i> Accpeted
                                             </a>
-                                            <a  class="btn-gray btn-success ml-4" *ngIf='selected.isAccepted==false' >
-                                                <i class="far fa-check-circle mr-2"></i> Accepted
+                                            <a  class="btn-gray btn-danger ml-4" *ngIf='selected.isAccepted==false' >
+                                                <i class="far fa-check-circle mr-2"></i> Rejected
                                             </a>
                                         </div>
                                 </div>
