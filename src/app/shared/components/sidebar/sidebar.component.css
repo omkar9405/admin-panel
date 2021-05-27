@@ -19,6 +19,6 @@ img{
 }
 
 
- a.active {
-    background: blue;
+ a.list-item-active {
+    background: rgb(75, 149, 228);
 }

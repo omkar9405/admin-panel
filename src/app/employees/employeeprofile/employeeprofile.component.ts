@@ -243,4 +243,9 @@ if(this.display=='none')
 
   return this.display;
 }
+refresh()
+{
+  this.datatableservice.destroy();
+  this.getBookings();
+}
 }
