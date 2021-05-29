@@ -8,7 +8,7 @@ import { PreloaderService } from 'src/app/globalloader/preloader/preloader.servi
 })
 export class DefaultComponent implements OnInit {
  sideBarOpen=true;
-  
+
  constructor(public loaderService:PreloaderService) {}
 
   ngOnInit(): void {
@@ -16,8 +16,7 @@ export class DefaultComponent implements OnInit {
 
   sideBarToggler()
   {
-    
-    this.sideBarOpen=!this.sideBarOpen;
+   this.sideBarOpen=!this.sideBarOpen;
     console.log(this.sideBarOpen);
     
   }

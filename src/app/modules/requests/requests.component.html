@@ -1,9 +1,144 @@
-<mat-tab-group mat-align-tabs="center">
+<div class="mat-elevation-z8">
+  <div class="card height-auto">
+    <div class="card-body">
+      <div class="heading-layout1">
+        <div class="item-title">
+          <h3>Requests</h3>
+          <button (click)="refresh()"class="btn  btn-sm mr-1" style="color: rgb(103, 103, 238);" ><i class="fas fa-sync fa-spin"></i>&nbsp; Refresh</button>
+        </div>
+        <!-- <div style="float:right">
+          <button (click)="add()" data-toggle="modal" data-target="#adminview"  class="btn btn-primary btn-sm mr-1" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp; Add New Admin</button>
+        </div> -->
+      </div>
+      
+      <div class="table-responsive">
+        <table  id="example" class="table display data-table text-nowrap cell-border">
+          <thead>
+            <tr>
+              <th>SR</th>
+              <th>ID</th>
+              <th>Customer ID</th>
+              <th>Customer Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+              <th>Request Date</th>
+              <th>TaskOption</th>
+              <th>Description</th>
+              <th>Tasker ID</th>
+              <th>IsAccepted</th>
+              <th>Status</th>
+              <th>Last Modified</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let request of requests;let i=index;">
+              <td>{{ i+1 }}</td>
+              <td>{{ request.id }}</td>
+              <td>{{ request.c_id }}</td>
+              <td>{{ request.c_firstName }} {{ request.c_lastName }}</td>
+              <td>{{ request.email }}</td>
+              <td>{{ request.phone }}</td>
+              <td>{{ request.createdAt }}</td>
+              <td>{{ request.taskOption }}</td>
+              <td>{{ request.description }}</td>
+              <td>{{ request.taskerId }}</td>
+              <td>{{ request.isAccepted }}</td>
+              <td>{{ request.status }}</td>
+              <td>{{ request.updatedAt }}</td>
+              <td>
+                <button (click)="view(request.id)" data-toggle="modal" data-target="#requestview"  class="btn btn-secondary btn-sm mr-1" style="color: blue; background-color: white;"><i class="fas fa-eye"></i>&nbsp;</button>
+                <button data-toggle="modal" data-target="#deleteConfirmation" (click)="deleteId(request.id)"  class="btn btn-danger btn-sm mr-1" style="color: red; background-color: white;"><i class="fas fa-trash-alt"></i>&nbsp;</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div> 
+<mat-divider></mat-divider>
+
+<!-- Modal 1 -->
+<div class="modal fade" id="requestview" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <router-outlet></router-outlet>  
+</div>
+
+<div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <h2>Are you sure you want to delete this request(ID={{deleteid}})?</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger" (click)="delete(deleteid)"  data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Requests">
         <div class="row glutters">
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  *ngFor="let request of requests">
-            <!-- <div *ngFor="let tasker of Taskers"> -->
-            <mat-card class="example-card" >
+        <div *ngFor="let request of requests"> 
+           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  *ngFor="let request of requests">
+             <mat-card class="example-card" >
                 <mat-card-header>
                   <div mat-card-avatar 
                   style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -29,7 +164,100 @@
                 </mat-card-actions>
               </mat-card>
             </div>
-        <!-- </div> -->
+
+            
+            <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-1 mt-1"  >
+              <div class="">
+              <mat-card class="example-card"  *ngIf="request.isAccepted==true" style="background-color: rgb(126, 220, 126);">
+                  <mat-card-header>
+                    <div mat-card-avatar 
+                    style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                    background-size: cover;"></div>
+                    <mat-card-title>Customer Name</mat-card-title>
+                    <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                      <h4>Email</h4>
+                      <h4>Phone</h4>
+                    <p>
+                      description
+                    </p>
+                    <h4>Request Date</h4>
+                    <h4>Task OPtion</h4>
+                    <div class="card">
+                    SelectedTasker
+                  </div>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <button mat-button class="btn-danger">Delete</button>
+                    <button mat-button class="btn-success">Accept</button>
+                  </mat-card-actions>
+                </mat-card>
+              </div>
+          </div>
+
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  >
+            <div *ngIf="request.status=='canceled'" >
+                <mat-card class="example-card"  style="background-color: rgb(197, 98, 98);" >
+                    <mat-card-header>
+                      <div mat-card-avatar 
+                      style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                      background-size: cover;"></div>
+                      <mat-card-title>Customer Name</mat-card-title>
+                      <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                      <p>
+                        description
+                      </p>
+                      <h4>Request Date</h4>
+                      <h4>Task OPtion</h4>
+                      <div class="card">
+                      SelectedTasker
+                    </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button class="btn-danger">Delete</button>
+                      <button mat-button class="btn-success">Accept</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+            </div>
+
+
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1" *ngIf="request.status=='completed'">
+              <div >  
+              <mat-card class="example-card" style="background-color: rgb(176, 119, 204);">
+                    <mat-card-header>
+                      <div mat-card-avatar 
+                      style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+                      background-size: cover;"></div>
+                      <mat-card-title>Customer Name</mat-card-title>
+                      <mat-card-subtitle>Customer ID</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <h4>Email</h4>
+                        <h4>Phone</h4>
+                      <p>
+                        description
+                      </p>
+                      <h4>Request Date</h4>
+                      <h4>Task OPtion</h4>
+                      <div class="card">
+                      SelectedTasker
+                    </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                      <button mat-button class="btn-danger">Delete</button>
+                      <button mat-button class="btn-success">Accept</button>
+                    </mat-card-actions>
+                  </mat-card>
+            </div>
+            </div>
+
+          </div>
         </div>
     </mat-tab>
     
@@ -37,7 +265,7 @@
         <div class="row glutters">
             <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-1 mt-1"  *ngFor="let request of requests">
                 <div class="">
-                <mat-card *ngIf="request.isAccepted==true">
+                <mat-card class="example-card"  *ngIf="request.isAccepted==true" style="background-color: rgb(126, 220, 126);">
                     <mat-card-header>
                       <div mat-card-avatar 
                       style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -69,10 +297,9 @@
 
     <mat-tab label="Cancelled">
         <div class="row glutters">
-          <div class="">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"   *ngFor="let request of requests">
             <div *ngIf="request.status=='canceled'" >
-                <mat-card class="example-card"   >
+                <mat-card class="example-card"  style="background-color: rgb(197, 98, 98);" >
                     <mat-card-header>
                       <div mat-card-avatar 
                       style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -100,14 +327,14 @@
             </div>
             </div>
         </div>
-      </div>
     </mat-tab>
 
     <mat-tab label="Completed">
         <div class="row glutters">
-            <div *ngFor="let request of requests">
+          <div *ngFor="let request of requests"> 
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1" *ngIf="request.status=='completed'">
-                <mat-card class="example-card">
+               
+              <mat-card class="example-card" style="background-color: rgb(176, 119, 204);">
                     <mat-card-header>
                       <div mat-card-avatar 
                       style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -136,4 +363,4 @@
             </div>
         </div>
     </mat-tab>
-  </mat-tab-group>
+  </mat-tab-group> -->

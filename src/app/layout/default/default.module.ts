@@ -60,6 +60,8 @@ import { RequestsComponent } from '../../modules/requests/requests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DataTablesModule } from 'angular-datatables';
 import { NewadminComponent } from 'src/app/modules/admin/newadmin/newadmin.component';
+import { EditemployeeComponent } from 'src/app/modules/employee/editemployee/editemployee.component';
+import { ViewRequestComponent } from 'src/app/modules/requests/view-request/view-request.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -93,6 +95,8 @@ import { NewadminComponent } from 'src/app/modules/admin/newadmin/newadmin.compo
     BookingformComponent,
     RequestsComponent,
     NewadminComponent,
+    EditemployeeComponent,
+    ViewRequestComponent,
   ],
   imports: [
     CommonModule,

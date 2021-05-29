@@ -32,6 +32,7 @@ import { AboutComponent } from './components/about/about.component';
 import { BookingformComponent } from './components/bookingform/bookingform.component';
 import { RequestsComponent } from './modules/requests/requests.component';
 import { NewadminComponent } from './modules/admin/newadmin/newadmin.component';
+import { ViewRequestComponent } from './modules/requests/view-request/view-request.component';
 
 const routes: Routes = [
   {
@@ -120,6 +121,10 @@ children:[
   {
     path:'requests',
     component: RequestsComponent,
+    children:[{
+      path: 'viewrequest/:id',
+      component: ViewRequestComponent
+    }]
   },
   ]
   },

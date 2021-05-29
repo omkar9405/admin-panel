@@ -62,7 +62,7 @@ export class AdminComponent implements OnInit {
   {
     this.authenticationService.delete(id).subscribe((res: any) => {
       this.datatableservice.destroy();
-      this.getlist();
+      this.refresh();
     }, (err) => {
       console.log('Error while deleting ');
       console.error(err);

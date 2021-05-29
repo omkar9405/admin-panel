@@ -21,6 +21,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     SignupEmployeeComponent,
     AdminLoginComponent,
     LayoutComponent,
-    EditemployeeComponent,
+  
    
   
   ],

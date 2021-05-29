@@ -13,6 +13,7 @@ import { Admin } from '../../../_models/admin';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
+  
   constructor(private router:Router,private route:ActivatedRoute,private authenticationService: AdminsService,public loaderService:PreloaderService) {
     this.authenticationService.currentAdmin.subscribe(x => this.currentAdmin = x);
    }
