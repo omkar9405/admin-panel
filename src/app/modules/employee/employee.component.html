@@ -39,7 +39,7 @@
               <td>{{ employee.firstname }} {{ employee.lastname }}</td>
               <td>{{ employee.username }}</td>
               <td><p *ngFor="let skill of employee.skills;">
-                {{ skill.skillname }}</p></td>
+                {{ skill.skillname }} : {{ skill.charges }} </p></td>
               <td>{{ employee.completedTasks }}</td>
               <td>{{ employee.education }}</td>
               <td>{{ employee.jobtype }}</td>
@@ -59,8 +59,8 @@
               </td>
               <td>
               <button (click)="edit(employee.id)" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-primary btn-sm mr-1" style="color: orange; background-color: white;"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
-              <button (click)="view(employee.id)" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-secondary btn-sm mr-1" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
-              <button (click)="delete(employee.id)"   class="btn btn-danger btn-sm mr-1" style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
+              <button (click)="view(employee.id)" data-toggle="modal" data-target="#deleteConfirmation"  class="btn btn-secondary btn-sm mr-1" style="color: blue; background-color: white;"><i class="fas fa-eye"></i>&nbsp;</button>
+              <button (click)="delete(employee.id)"   class="btn btn-danger btn-sm mr-1" style="color: red; background-color: white;"><i class="fas fa-trash-alt"></i>&nbsp;</button>
               </td>
             </tr>
           </tbody>
@@ -73,6 +73,4 @@
 <div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <router-outlet [id]="id" (getlist)="getlist()"></router-outlet>  
 </div>
-<!-- <div class="modal fade" id="addConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <router-outlet></router-outlet>  
-</div> -->
+

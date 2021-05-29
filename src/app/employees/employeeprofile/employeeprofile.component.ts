@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskerService } from 'src/app/_services/tasker.service';
 import { DatatableService } from 'src/app/_services/datatableservice/datatable.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder,FormControl, FormArray, FormGroup, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
 import { BookingService } from 'src/app/_services/booking.service';
 import { Router } from '@angular/router';
@@ -15,50 +15,19 @@ import { PreloaderService } from 'src/app/globalloader/preloader/preloader.servi
 export class EmployeeprofileComponent implements OnInit {
   profileForm:FormGroup;
   imageURL='';
-  tasker=[];
-  taskerDto = {
-    "id":"",
-    "username":"",
-    "firstname":"",
-    "lastname":"",
-    "imagePath":"",
-    "address":[{
-      "street":"",
-      "city":"",
-      "state":"",
-      "pincode":0
-    }],
-    "education":"",
-    "completedTasks":0,
-    "mobile": 0,
-    "skills":[{
-      "skillname":"",
-      "charges":""
-    },
-    {
-      "skillname":"",
-      "charges":""
-    }
-  ],
-    "jobtype":"",
-    "gender":"",
-    "email": "",
-    "dob":"",
-    "password": "",
-    "active":""
-   }
-loading = false;
-submitted = false;   
-id:any;
-error='';
-username='';
+
+  loading = false;  
+  submitted = false;   
+  id:any;
+  error='';
+  username='';
+  
   constructor(private taskerService:TaskerService, 
     private formBuilder:FormBuilder, 
     private router: Router,
     private datatableservice: DatatableService,  
     private bookingService:BookingService,
-    public loaderService:PreloaderService) {
-     
+    public loaderService:PreloaderService) {   
    }
 
   ngOnInit(): void {
@@ -76,13 +45,11 @@ username='';
       state:['',Validators.required],
       street:['',Validators.required],
       education:['',Validators.required],
-      skillname1:['',Validators.required],
-      skillname2:['',Validators.required],
-      charges1:['',Validators.required],
-      charges2:['',Validators.required],
       jobtype:['',Validators.required],
       completedTasks:['',Validators.required],
-      imagePath: [null]
+      active:['',Validators.required],
+      imagePath: [''],
+      skills: this.formBuilder.array([]),
   });
     this.datatableservice.initTable('customers');
     var tasker=localStorage.getItem('currentTasker');
@@ -91,55 +58,75 @@ username='';
     this.id=obj["id"];
     this.username=obj["username"];
     this.getTasker();
-    //this.getBookings();
+    // this.getBookings();
+  }
 
+  skills() : FormArray {
+    return this.profileForm.get("skills") as FormArray
+  }
+
+  newSkill(): FormGroup {
+    return this.formBuilder.group({
+      skillname: '',
+      charges: '',
+    })
+  }
+
+  addSkill() {
+    this.skills().push(this.newSkill());
+  }
+
+  removeSkill(i:number) {
+    this.skills().removeAt(i);
   }
 
    getTasker(){
     this.taskerService.getById(this.id).subscribe((res: any) => {
-      this.taskerDto.id = res.id;
-      this.taskerDto.firstname = res.firstname;
-      this.taskerDto.lastname = res.lastname;
-      this.taskerDto.mobile = res.mobile;
-      this.taskerDto.gender = res.gender;
-      this.taskerDto.email = res.email;
-      this.taskerDto.imagePath = res.imagePath;
-      this.taskerDto.dob = res.dob;   
-      this.taskerDto.completedTasks = res.completedTasks;
-      this.taskerDto.password = res.password;
-      this.taskerDto.address = res.address;
-      this.taskerDto.skills = res.skills;
-      this.taskerDto.education = res.education;
-      this.taskerDto.username = res.username;
-      this.taskerDto.jobtype = res.jobtype;
-      this.taskerDto.active = res.active;
-      if(this.taskerDto.imagePath=="https://justdialapi.herokuapp.com/images/undefined")
-    {
-      this.imageURL="../assets/dp.png";
-    }
-    else
-    {
-      this.imageURL=this.taskerDto.imagePath;
-    }
-    //this.refresh();
-      console.log(this.taskerDto);
+      this.profileForm.controls['gender'].setValue(res.gender);
+      this.profileForm.controls['firstname'].setValue(res.firstname);
+      this.profileForm.controls['lastname'].setValue(res.lastname);
+      this.profileForm.controls['mobile'].setValue(res.mobile);
+      this.profileForm.controls['email'].setValue(res.email);
+      this.profileForm.controls['dob'].setValue(res.dob);
+      this.profileForm.controls['completedTasks'].setValue(res.completedTasks);
+      this.profileForm.controls['password'].setValue(res.password);
+      this.profileForm.controls['street'].setValue(res.address[0].street);
+      this.profileForm.controls['city'].setValue(res.address[0].city);
+      this.profileForm.controls['state'].setValue(res.address[0].state);
+      this.profileForm.controls['pincode'].setValue(res.address[0].pincode);
+      this.profileForm.controls['education'].setValue(res.education);
+      this.profileForm.controls['username'].setValue(res.username);
+      this.profileForm.controls['jobtype'].setValue(res.jobtype);
+      this.profileForm.controls['active'].setValue(res.active);
+      res.skills.forEach(s => {
+        (this.profileForm.get("skills") as FormArray).push(this.newSkill())
+      });
+      this.profileForm.controls['skills'].patchValue(res.skills);
+      this.profileForm.controls['imagePath'].patchValue(res.imagePath);
+       if(this.profileForm.get('imagePath').value == "https://justdialapi.herokuapp.com/images/undefined")
+      {
+        this.imageURL="../assets/dp.png";
+      }
+      else
+      {
+        this.imageURL= this.profileForm.get('imagePath').value;
+      }
+      this.refresh();
       // this.getBookings();
     }, (err) => {
       console.log('Error while fetching getbyid');
       console.log(err);
     });
-    return this.taskerDto;
+    return this.profileForm;
    }
 
     update() {
         this.submitted = true;
         this.loading = true;
-        // this.taskerDto.password = await bcrypt.hash(this.taskerDto.password,await bcrypt.genSalt(10));
-        this.taskerService.update(this.taskerDto,this.id).subscribe(
+        this.taskerService.update(this.profileForm.value,this.id).subscribe(
       (data:any) => {
         console.log(data);
-        alert("Updated Successfully");
-        console.log(this.taskerDto);
+        alert("Updated Successfully");  
         this.loading=false;
     },(err) => {
         alert(err);
@@ -159,7 +146,7 @@ username='';
     const reader = new FileReader();
     reader.onload = () => {
       this.imageURL = reader.result as string;
-      this.taskerDto.imagePath=this.imageURL;
+      this.profileForm.controls['imagePath'].setValue(this.imageURL);
     }
     reader.readAsDataURL(file)
   }
@@ -167,10 +154,9 @@ username='';
  //get bookings
 requests:[];
  getBookings(){
-    this.bookingService.findAllEmployeeRequest(this.taskerDto.id).subscribe((res: any) => {
-    // console.log("Request loaded successful");
+    this.bookingService.findAllEmployeeRequest(this.id).subscribe((res: any) => {
     this.requests = res.map((key) => ({ ...key }));
-    // console.log(this.requests);
+    console.log(this.requests);
     this.datatableservice.initTable('bookings');
   }, (err) => {
     console.log('Error while fetching data');
@@ -186,8 +172,7 @@ action(id,status)
 {
   this.statusDto.isAccepted= status;
   this.bookingService.isAccepted(id,this.statusDto).subscribe((res: any) => {
-    this.getBookings();
-    // console.log(res);
+    this.refresh();
    
   }, (err) => {
     console.log('Error while fetching data');
@@ -213,6 +198,7 @@ selected={
   "isAccepted":false
 };
 display='none';
+
 view(request){
 this.selected.id=request.id;
 this.selected.c_firstName= request.c_firstName;
@@ -229,12 +215,11 @@ this.selected.isAccepted=request.isAccepted;
 if(this.display=='none')
 {
   this.display='block';
-  // console.log(this.selected);
 }
 }
- show()
+ 
+show()
 {
-
   return this.display;
 }
 

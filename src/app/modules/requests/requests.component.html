@@ -35,9 +35,9 @@
     
     <mat-tab label="Accepted">
         <div class="row glutters">
-            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"  *ngFor="let request of requests">
-                <div >
-                <mat-card class="example-card" *ngIf="request.isAccepted==true">
+            <div class=" col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 mb-1 mt-1"  *ngFor="let request of requests">
+                <div class="">
+                <mat-card *ngIf="request.isAccepted==true">
                     <mat-card-header>
                       <div mat-card-avatar 
                       style="background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
@@ -69,6 +69,7 @@
 
     <mat-tab label="Cancelled">
         <div class="row glutters">
+          <div class="">
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-1 mt-1"   *ngFor="let request of requests">
             <div *ngIf="request.status=='canceled'" >
                 <mat-card class="example-card"   >
@@ -99,6 +100,7 @@
             </div>
             </div>
         </div>
+      </div>
     </mat-tab>
 
     <mat-tab label="Completed">

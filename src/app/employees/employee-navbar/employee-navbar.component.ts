@@ -38,11 +38,14 @@ export class EmployeeNavbarComponent implements OnInit {
     var id=obj["id"];
     this.authenticationService.patch(this.status,id).subscribe(
         data => {
-         
-            alert("You are active now "+data);
+            alert("You are active now :) ");
         },
         err => {
             console.log(err);
+            // this.status.active=false;
+            // this.authenticationService.logout();
+            // this.router.navigate(['/employeeLogin']);
+            // alert("You are logged out...Please login again");
         });
 }
 

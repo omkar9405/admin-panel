@@ -46,6 +46,7 @@ export class AuthenticationService {
     logout() {
         // remove Customer from local storage to log Customer out
         localStorage.removeItem('currentCustomer');
+        localStorage.removeItem('Token');
         
         this.currentCustomerSubject.next(null);
     }

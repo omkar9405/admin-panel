@@ -37,8 +37,8 @@
                 <td>{{ customer.createdAt }}</td>
                 <td>
                 <button (click)="edit(customer.id)" type="button" class="btn btn-primary btn-sm mr-1"  style="color:orange; background-color: white;" data-toggle="modal" data-target="#viewcustomer"><i class="fas fa-pen-alt text-orange-peel" ></i>&nbsp;</button>
-                <button (click)="view(customer.id)" data-toggle="modal" type="button" class="btn btn-secondary btn-sm mr-1"  data-target="#viewcustomer" style="color: blue; background-color: white;"><i class="fas fa-align-justify" ></i>&nbsp;</button>
-                <button  data-toggle="modal" data-target="#deleteConfirmation" type="button" class="btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-times text-orange-red"></i>&nbsp;</button>
+                <button (click)="view(customer.id)" data-toggle="modal" type="button" class="btn btn-secondary btn-sm mr-1"  data-target="#viewcustomer" style="color: blue; background-color: white;"><i class="fas fa-eye"></i>&nbsp;</button>
+                <button  data-toggle="modal" data-target="#deleteConfirmation" type="button" class="btn btn-danger btn-sm"  style="color: red; background-color: white;"><i class="fas fa-trash-alt"></i>&nbsp;</button>
                 </td>
 
                 <div class="modal fade" id="deleteConfirmation" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
