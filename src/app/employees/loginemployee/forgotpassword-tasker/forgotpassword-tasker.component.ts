@@ -13,6 +13,7 @@ export class ForgotpasswordTaskerComponent implements OnInit {
   loadingOTP = false;
   loadingforgot = false;
   submittedEmail = false;
+  submitOTP = false;
   error = '';
   success='';
   constructor(private location: Location,private formBuilder:FormBuilder, private taskerService: TaskerService) { }
@@ -28,9 +29,12 @@ export class ForgotpasswordTaskerComponent implements OnInit {
   
   forgotPassword(){
     this.loadingforgot = true;
+    this.submitOTP =true;
+    
   }
 sendOTP()
 {
+  this.submittedEmail = true;
   this.loadingOTP = true;
   
 }

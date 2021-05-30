@@ -12,6 +12,7 @@ export class ForgotpasswordCustomerComponent implements OnInit {
   loadingOTP = false;
   loadingforgot = false;
   submittedEmail = false;
+  submitOTP = false;
   error = '';
   success='';
   constructor(private location: Location,private formBuilder:FormBuilder, private authenticationService: AuthenticationService) { }
@@ -26,9 +27,12 @@ export class ForgotpasswordCustomerComponent implements OnInit {
 
   forgotPassword(){
     this.loadingforgot = true;
+    this.submitOTP =true;
+    
   }
 sendOTP()
 {
+  this.submittedEmail = true;
   this.loadingOTP = true;
   
 }
