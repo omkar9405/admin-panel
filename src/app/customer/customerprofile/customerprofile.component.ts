@@ -104,8 +104,8 @@ customerDto = {
       this.getBookings();
 
     }, (err) => {
-      console.log('Error while fetching');
-      console.error(err);
+      console.log('Error while fetching customerProfile getCustomer');
+      console.log(err.message);
     });
     return this.customerDto;
    }

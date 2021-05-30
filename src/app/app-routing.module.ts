@@ -33,6 +33,9 @@ import { BookingformComponent } from './components/bookingform/bookingform.compo
 import { RequestsComponent } from './modules/requests/requests.component';
 import { NewadminComponent } from './modules/admin/newadmin/newadmin.component';
 import { ViewRequestComponent } from './modules/requests/view-request/view-request.component';
+import { AdminAuthGuard } from './_helper/adminAuth.guard';
+import { ForgotpasswordTaskerComponent } from './employees/loginemployee/forgotpassword-tasker/forgotpassword-tasker.component';
+import { ForgotpasswordCustomerComponent } from './customer/login/forgotpassword-customer/forgotpassword-customer.component';
 
 const routes: Routes = [
   {
@@ -47,14 +50,20 @@ const routes: Routes = [
   },
   {
     path:'customerlogin',
-    component:LoginComponent
+    component:LoginComponent,
+    children:[
+      {
+        path:'forgotPassword',
+        component:ForgotpasswordCustomerComponent
+      }
+    ]
   },
   {
     path:'tasker',
     component:TaskersComponent
   },
   {
-    path:'app',
+    path:'app',canActivate:[AdminAuthGuard],
     component: DefaultComponent,
 children:[
         {
@@ -130,7 +139,13 @@ children:[
   },
   {
     path:'employeeLogin',
-    component:LoginemployeeComponent
+    component:LoginemployeeComponent,
+    children:[
+      {
+        path:'forgotPassword',
+        component:ForgotpasswordTaskerComponent
+      }
+    ]
   },
   {
     path:'bookForm',

@@ -84,7 +84,7 @@ returnUrl: string;
       this.submitted = false;
       this.loading = false;
       alert("Updated Successfully");
-      
+      this.location.back();
   },(err) => {
       alert(err);
       this.error=err;

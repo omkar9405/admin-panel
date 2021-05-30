@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     alert("Login Successful..");
-                    console.log(localStorage.getItem('Token'));
+                    console.log(localStorage.getItem('CustomerToken'));
                     this.router.navigate(['/customerProfile']);
                    
                 },
@@ -65,4 +65,7 @@ export class LoginComponent implements OnInit {
                 });
     }
     
+    forgotPassword(){
+        this.router.navigate(['forgotPassword'],{relativeTo:this.route});
+    }
 }

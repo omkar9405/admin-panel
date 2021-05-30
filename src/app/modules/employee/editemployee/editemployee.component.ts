@@ -138,7 +138,7 @@ export class EditemployeeComponent implements OnInit {
       (data:any) => {
         console.log(data);
         alert("Updated Successfully");
-        
+        this.location.back();
     },(err) => {
         this.error=err;
         this.loading =false;

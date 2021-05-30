@@ -86,6 +86,7 @@ register(){
       console.log(data);
       alert("Registered Successfully");
       this.loading = false;
+      this.location.back();
   },(err) => {
       alert(err);
       this.error=err;

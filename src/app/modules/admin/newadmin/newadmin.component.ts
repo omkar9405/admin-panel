@@ -63,7 +63,7 @@ export class NewadminComponent implements OnInit {
         this.submitted = false;
         this.loading = false;
         alert("Saved Successfully");
-        
+        this.location.back();
     },(err) => {
         alert(err);
         this.error=err;

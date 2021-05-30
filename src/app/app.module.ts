@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layout/default/default.module';
 import { DropdownModule } from 'angular-bootstrap-md';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorInterceptor, JwtInterceptor } from './_helper';
+import { ErrorInterceptor, JwtAdminInterceptor, JwtCustomerInterceptor, JwtTaskerInterceptor } from './_helper';
 import { LoginemployeeComponent } from './employees/loginemployee/loginemployee.component';
 import { CustomerprofileComponent } from './customer/customerprofile/customerprofile.component';
 import { DatatableService } from './_services/datatableservice/datatable.service';
@@ -30,6 +30,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     SignupEmployeeComponent,
     AdminLoginComponent,
     LayoutComponent,
+
   
    
   
@@ -44,9 +45,14 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
     DropdownModule.forRoot(),
     HttpClientModule
   ],
-  providers: [   { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },{ provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },DatatableService],
-  bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    DatatableService],
+    bootstrap: [AppComponent],
+    schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
+// { provide: HTTP_INTERCEPTORS, useClass: JwtAdminInterceptor, multi: true },
+//     { provide: HTTP_INTERCEPTORS, useClass: JwtCustomerInterceptor, multi: true },
+//     { provide: HTTP_INTERCEPTORS, useClass: JwtTaskerInterceptor, multi: true },

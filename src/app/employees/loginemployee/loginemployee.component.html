@@ -89,6 +89,7 @@
                                         <a href="javascript:;"
                                            data-toggle="modal" 
                                            data-target="#forgotPass"
+                                           (click)="forgotPassword()"
                                            >Forgot Password?
                                         </a>
                                     </div>
@@ -123,7 +124,8 @@
             </div>
         </div>
     </div>
-    
-    
-    
-    </div>
+</div>
+
+<div class="modal fade" id="forgotPass" data-backdrop="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <router-outlet></router-outlet>  
+  </div>

@@ -24,7 +24,7 @@ export class AdminLoginComponent implements OnInit {
     private authenticationService: AdminsService
   ) {
     if (this.authenticationService.currentAdminValue) { 
-      this.router.navigate(['/app']);
+      this.router.navigate(['/app/dashboard']);
   }
    }
 
@@ -33,7 +33,7 @@ export class AdminLoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
   });
-  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/app/dashboard';
+  // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/app/dashboard';
   }
   get f() { return this.loginForm.controls; }
 

@@ -5,10 +5,11 @@ import { catchError } from 'rxjs/operators';
 
 import { AuthenticationService } from '../_services/authentication.service';
 import { AdminsService } from '../_services/admins.service';
+import { TaskerService } from '../_services/tasker.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private authenticationService: AuthenticationService,private adminService:AdminsService) { }
+    constructor(private authenticationService: AuthenticationService,private adminService:AdminsService,private taskerservice:TaskerService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(request).pipe(catchError(err => {
@@ -16,6 +17,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 // auto logout if 401 response returned from api
                 this.authenticationService.logout();
                 this.adminService.logout();
+                this.taskerservice.logout();
                 location.reload(true);
             }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
@@ -10,7 +10,7 @@ import { Customer } from '../_models/customer';
 export class AuthenticationService {
     private currentCustomerSubject: BehaviorSubject<Customer>;
     public currentCustomer: Observable<Customer>;
-
+    headers = new HttpHeaders().set('Token',localStorage.getItem('CustomerToken'));
     constructor(private http: HttpClient) {
         this.currentCustomerSubject = new BehaviorSubject<Customer>(JSON.parse(localStorage.getItem('currentCustomer')));
         this.currentCustomer = this.currentCustomerSubject.asObservable();
@@ -24,7 +24,7 @@ export class AuthenticationService {
         return this.http.post<any>(`${environment.apiUrl}/customers/login`, { email, password })
             .pipe(map(customer => {
                 // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
-                localStorage.setItem('Token',customer.token);
+                localStorage.setItem('CustomerToken',customer.token);
                 const cust=this.getDecodedAccessToken(customer.token)
                 localStorage.setItem('currentCustomer', JSON.stringify(cust));
                 this.currentCustomerSubject.next(cust);
@@ -46,7 +46,7 @@ export class AuthenticationService {
     logout() {
         // remove Customer from local storage to log Customer out
         localStorage.removeItem('currentCustomer');
-        localStorage.removeItem('Token');
+        localStorage.removeItem('CustomerToken');
         
         this.currentCustomerSubject.next(null);
     }

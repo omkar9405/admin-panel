@@ -71,4 +71,9 @@ onSubmit() {
 }
 
 
+
+forgotPassword(){
+    this.router.navigate(['forgotPassword'],{relativeTo:this.route});
+}
+
 }

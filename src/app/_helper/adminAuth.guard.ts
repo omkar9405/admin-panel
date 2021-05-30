@@ -12,6 +12,7 @@ export class AdminAuthGuard implements CanActivate {
         const currentUser = this.adminService.currentAdminValue;
         if (currentUser) {
             // logged in so return true
+            console.log(currentUser);
             return true;
         }
 

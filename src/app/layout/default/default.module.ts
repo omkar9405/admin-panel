@@ -49,7 +49,7 @@ import { ServiceComponent } from 'src/app/components/services-page/service/servi
 import { EmployeeprofileComponent } from 'src/app/employees/employeeprofile/employeeprofile.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { EmployeeNavbarComponent } from 'src/app/employees/employee-navbar/employee-navbar.component';
-import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
+// import { CustomerNavbarComponent } from 'src/app/customer/customer-navbar/customer-navbar.component';
 import { BookingformComponent } from 'src/app/components/bookingform/bookingform.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -62,6 +62,8 @@ import { DataTablesModule } from 'angular-datatables';
 import { NewadminComponent } from 'src/app/modules/admin/newadmin/newadmin.component';
 import { EditemployeeComponent } from 'src/app/modules/employee/editemployee/editemployee.component';
 import { ViewRequestComponent } from 'src/app/modules/requests/view-request/view-request.component';
+import { ForgotpasswordCustomerComponent } from 'src/app/customer/login/forgotpassword-customer/forgotpassword-customer.component';
+import { ForgotpasswordTaskerComponent } from 'src/app/employees/loginemployee/forgotpassword-tasker/forgotpassword-tasker.component';
 @NgModule({
   declarations: [
     DefaultComponent,
@@ -86,7 +88,7 @@ import { ViewRequestComponent } from 'src/app/modules/requests/view-request/view
     EditcustomerComponent,
     NavbarComponent,
     EmployeeNavbarComponent,
-    CustomerNavbarComponent,
+    // CustomerNavbarComponent,
     TaskerProfileComponent,
     EditadminsComponent,
     ViewadminsComponent,  
@@ -97,6 +99,8 @@ import { ViewRequestComponent } from 'src/app/modules/requests/view-request/view
     NewadminComponent,
     EditemployeeComponent,
     ViewRequestComponent,
+    ForgotpasswordTaskerComponent,
+    ForgotpasswordCustomerComponent,
   ],
   imports: [
     CommonModule,

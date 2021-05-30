@@ -25,7 +25,7 @@ login(username: string, password: string) {
   return this.http.post<any>(`${environment.apiUrl}/taskers/login`, { username, password })
       .pipe(map(tasker => {
           // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
-          localStorage.setItem('Token',tasker.token);
+          localStorage.setItem('TaskerToken',tasker.token);
           const ad=this.getDecodedAccessToken(tasker.token)
           localStorage.setItem('currentTasker', JSON.stringify(ad));
           this.currentTaskerSubject.next(ad);
@@ -41,7 +41,7 @@ catch(Error){
 }
 }
 
-  headers = new HttpHeaders().set('Token',localStorage.getItem('Token'));
+  headers = new HttpHeaders().set('Token',localStorage.getItem('TaskerToken'));
   save(customerDto): any {
     return this.http.post(`${environment.apiUrl}/taskers/signup`, customerDto);
   }
@@ -69,7 +69,7 @@ catch(Error){
     // remove Customer from local storage to log Customer out
   
     localStorage.removeItem('currentTasker');
-    // localStorage.removeItem('Token');
+    localStorage.removeItem('TaskerToken');
     this.currentTaskerSubject.next(null);
 }
 }

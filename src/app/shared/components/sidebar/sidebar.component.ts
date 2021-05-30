@@ -28,12 +28,12 @@ export class SidebarComponent implements OnInit {
     var json = JSON.parse(admin);
     var obj=json["admin"];
     this.id=obj["id"];
-    this.getAdmin(this.id)
+    this.getAdmin();
   }
   
-  getAdmin(id)
+  getAdmin()
    {
-    this.authenticationService.getById(id).subscribe((res: any) => {
+    this.authenticationService.getById(this.id).subscribe((res: any) => {
     this.adminDto.name=res.name;
     this.adminDto.username=res.username;
     this.adminDto.mobile=res.mobile;
@@ -48,10 +48,12 @@ export class SidebarComponent implements OnInit {
     {
       this.imageURL=this.adminDto.imagePath;
     }  
+    
     console.log(this.adminDto);
     }, (err) => {
-      console.log('Error while fetching data:viewadminsidebar');
-      console.error(err);
+      console.log('Error while fetching data:viewadminsidebar '+this.id);
+      console.log(err);
+      location.reload(true);
     });
    }
 
