@@ -10,7 +10,7 @@ import { Customer } from '../_models/customer';
 export class AuthenticationService {
     private currentCustomerSubject: BehaviorSubject<Customer>;
     public currentCustomer: Observable<Customer>;
-    headers = new HttpHeaders().set('Token',localStorage.getItem('CustomerToken'));
+    headers = new HttpHeaders().set('Token',localStorage.getItem('Token'));
     constructor(private http: HttpClient) {
         this.currentCustomerSubject = new BehaviorSubject<Customer>(JSON.parse(localStorage.getItem('currentCustomer')));
         this.currentCustomer = this.currentCustomerSubject.asObservable();
@@ -24,7 +24,7 @@ export class AuthenticationService {
         return this.http.post<any>(`${environment.apiUrl}/customers/login`, { email, password })
             .pipe(map(customer => {
                 // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
-                localStorage.setItem('CustomerToken',customer.token);
+                localStorage.setItem('Token',customer.token);
                 const cust=this.getDecodedAccessToken(customer.token)
                 localStorage.setItem('currentCustomer', JSON.stringify(cust));
                 this.currentCustomerSubject.next(cust);
@@ -46,7 +46,7 @@ export class AuthenticationService {
     logout() {
         // remove Customer from local storage to log Customer out
         localStorage.removeItem('currentCustomer');
-        localStorage.removeItem('CustomerToken');
+        localStorage.removeItem('Token');
         
         this.currentCustomerSubject.next(null);
     }

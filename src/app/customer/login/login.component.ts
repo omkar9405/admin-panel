@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 data => {
                     alert("Login Successful..");
-                    console.log(localStorage.getItem('CustomerToken'));
+                    console.log(localStorage.getItem('Token'));
                     this.router.navigate(['/customerProfile']);
                    
                 },

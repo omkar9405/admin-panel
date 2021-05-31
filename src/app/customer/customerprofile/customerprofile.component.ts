@@ -69,17 +69,18 @@ customerDto = {
     var customer=localStorage.getItem('currentCustomer');
     var json = JSON.parse(customer);
     var obj=json["customer"];
-    this.id=obj["id"];
+    var c_id=obj["id"];
+    this.id=c_id;
     this.username=obj["customername"];
-    this.getCustomer();
+    this.getCustomer(c_id);
     // console.log("Customerr Profile");
    // this.id=localStorage.getItem('CurrentTasker');
    
-   this.getTaskers()
+   
   }
 
-  getCustomer(){
-    this.customerService.getById(this.id).subscribe((res: any) => {
+  getCustomer(id){
+    this.customerService.getById(id).subscribe((res: any) => {
       this.customerDto.id = res.id;
       this.customerDto.firstName = res.firstName;
       this.customerDto.lastName = res.lastName;
@@ -100,14 +101,14 @@ customerDto = {
     }
 
       console.log(this.customerDto);
-      localStorage.setItem('_id',this.id);
+      localStorage.setItem('_id',id);
       this.getBookings();
 
     }, (err) => {
       console.log('Error while fetching customerProfile getCustomer');
       console.log(err.message);
     });
-    return this.customerDto;
+    // return this.customerDto;
    }
 
    update() {
@@ -156,7 +157,7 @@ getBookings(){
     console.log("Request loaded successful");
     this.requests = res.map((key) => ({ ...key }));
     console.log(this.requests);
-    
+    this.getTaskers();
   }, (err) => {
     console.log('Error while fetching data');
     console.error(err);

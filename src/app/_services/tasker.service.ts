@@ -11,7 +11,7 @@ import { Tasker } from '../_models/tasker';
 export class TaskerService {
   private currentTaskerSubject: BehaviorSubject<Tasker>;
   public currentTasker: Observable<Tasker>;
-
+  headers = new HttpHeaders().set('Token',localStorage.getItem('Token'));
   constructor(private http:HttpClient) {
     this.currentTaskerSubject = new BehaviorSubject<Tasker>(JSON.parse(localStorage.getItem('currentTasker')));
         this.currentTasker = this.currentTaskerSubject.asObservable();
@@ -25,7 +25,7 @@ login(username: string, password: string) {
   return this.http.post<any>(`${environment.apiUrl}/taskers/login`, { username, password })
       .pipe(map(tasker => {
           // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
-          localStorage.setItem('TaskerToken',tasker.token);
+          localStorage.setItem('Token',tasker.token);
           const ad=this.getDecodedAccessToken(tasker.token)
           localStorage.setItem('currentTasker', JSON.stringify(ad));
           this.currentTaskerSubject.next(ad);
@@ -41,7 +41,7 @@ catch(Error){
 }
 }
 
-  headers = new HttpHeaders().set('Token',localStorage.getItem('TaskerToken'));
+
   save(customerDto): any {
     return this.http.post(`${environment.apiUrl}/taskers/signup`, customerDto);
   }
@@ -69,7 +69,7 @@ catch(Error){
     // remove Customer from local storage to log Customer out
   
     localStorage.removeItem('currentTasker');
-    localStorage.removeItem('TaskerToken');
+    localStorage.removeItem('Token');
     this.currentTaskerSubject.next(null);
 }
 }

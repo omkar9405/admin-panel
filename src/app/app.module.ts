@@ -47,7 +47,7 @@ import { LoaderInterceptorService } from './globalloader/preloader/loader-interc
   ],
   providers: [ 
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+   
     DatatableService],
     bootstrap: [AppComponent],
     schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
@@ -56,3 +56,4 @@ export class AppModule { }
 // { provide: HTTP_INTERCEPTORS, useClass: JwtAdminInterceptor, multi: true },
 //     { provide: HTTP_INTERCEPTORS, useClass: JwtCustomerInterceptor, multi: true },
 //     { provide: HTTP_INTERCEPTORS, useClass: JwtTaskerInterceptor, multi: true },
+// { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

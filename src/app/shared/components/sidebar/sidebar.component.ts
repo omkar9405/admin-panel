@@ -27,13 +27,13 @@ export class SidebarComponent implements OnInit {
     var admin=localStorage.getItem('currentAdmin');
     var json = JSON.parse(admin);
     var obj=json["admin"];
-    this.id=obj["id"];
-    this.getAdmin();
+    var id=obj["id"];
+    this.getAdmin(id);
   }
   
-  getAdmin()
+  getAdmin(id)
    {
-    this.authenticationService.getById(this.id).subscribe((res: any) => {
+    this.authenticationService.getById(id).subscribe((res: any) => {
     this.adminDto.name=res.name;
     this.adminDto.username=res.username;
     this.adminDto.mobile=res.mobile;

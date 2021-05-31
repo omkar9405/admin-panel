@@ -12,7 +12,7 @@ import { Admin } from '../_models/admin';
 export class AdminsService {
   private currentAdminSubject: BehaviorSubject<Admin>;
     public currentAdmin: Observable<Admin>;
-    headers = new HttpHeaders().set('Token',localStorage.getItem('AdminToken'));
+    headers = new HttpHeaders().set('Token',localStorage.getItem('Token'));
     constructor(private http: HttpClient) {
         this.currentAdminSubject = new BehaviorSubject<Admin>(JSON.parse(localStorage.getItem('currentAdmin')));
         this.currentAdmin = this.currentAdminSubject.asObservable();
@@ -26,7 +26,7 @@ export class AdminsService {
       return this.http.post<any>(`${environment.apiUrl}/admin/login`, { username, password })
           .pipe(map(admin => {
               // store Customer details and jwt token in local storage to keep Customer logged in between page refreshes
-              localStorage.setItem('AdminToken',admin.token);
+              localStorage.setItem('Token',admin.token);
               const ad=this.getDecodedAccessToken(admin.token)
               localStorage.setItem('currentAdmin', JSON.stringify(ad));
               this.currentAdminSubject.next(ad);
@@ -63,7 +63,7 @@ export class AdminsService {
   logout() {
     // remove Customer from local storage to log Customer out
     localStorage.removeItem('currentAdmin');
-    localStorage.removeItem('AdminToken');
+    localStorage.removeItem('Token');
     this.currentAdminSubject.next(null);
 }
 
