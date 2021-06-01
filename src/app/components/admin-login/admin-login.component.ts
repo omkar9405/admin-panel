@@ -24,7 +24,7 @@ export class AdminLoginComponent implements OnInit {
     private authenticationService: AdminsService
   ) {
     if (this.authenticationService.currentAdminValue) { 
-      this.router.navigate(['/app']);
+      this.router.navigate(['/app/dashboard']);
   }
    }
 
@@ -51,7 +51,7 @@ export class AdminLoginComponent implements OnInit {
                 data => {
                     alert("Login Successful..");
                     console.log(localStorage.getItem('Token'));
-                    this.router.navigate(['/app']);
+                    this.router.navigate(['/app/dashboard']);
                    
                 },
                 error => {
