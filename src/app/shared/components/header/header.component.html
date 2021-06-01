@@ -26,8 +26,8 @@
            </ul>
        </div>
     </mat-toolbar-row>
-    
+    <div *ngIf="loaderService.isLoading | async"  class="loader-container">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
 </mat-toolbar>
-<div *ngIf="loaderService.isLoading | async"  class="loader-container">
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-  </div>
+
