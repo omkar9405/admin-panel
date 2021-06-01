@@ -53,7 +53,8 @@ export class SidebarComponent implements OnInit {
     }, (err) => {
       console.log('Error while fetching data:viewadminsidebar '+this.id);
       console.log(err);
-      location.reload(true);
+      this.getAdmin(id);
+      // location.reload(true);
     });
    }
 
