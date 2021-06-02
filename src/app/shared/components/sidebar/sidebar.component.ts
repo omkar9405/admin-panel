@@ -23,12 +23,16 @@ export class SidebarComponent implements OnInit {
   constructor(private router:Router,private route:ActivatedRoute,  private authenticationService: AdminsService) { }
 
   ngOnInit(): void {
-    this.router.navigate(['dashboard'],{relativeTo:this.route});
+    // this.router.navigate(['dashboard'],{relativeTo:this.route});
     var admin=localStorage.getItem('currentAdmin');
     var json = JSON.parse(admin);
     var obj=json["admin"];
     var id=obj["id"];
     this.getAdmin(id);
+    id=this.id;
+  }
+  ngAfterViewInit(){
+    this.getAdmin(this.id);
   }
   
   getAdmin(id)
@@ -53,7 +57,7 @@ export class SidebarComponent implements OnInit {
     }, (err) => {
       console.log('Error while fetching data:viewadminsidebar '+this.id);
       console.log(err);
-      this.getAdmin(id);
+     
       // location.reload(true);
     });
    }

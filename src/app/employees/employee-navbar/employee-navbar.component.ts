@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
-import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class EmployeeNavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private authenticationService:TaskerService,
-   
+    private _snackBar: MatSnackBar   
   )
   {
     var tasker=localStorage.getItem('currentTasker');
@@ -30,6 +29,10 @@ export class EmployeeNavbarComponent implements OnInit {
     this.loggedin()
   }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message,'OK',{horizontalPosition: 'center',verticalPosition: 'top',duration: 3000});
+  }
+
   loggedin()
 {
     var tasker=localStorage.getItem('currentTasker');
@@ -38,7 +41,7 @@ export class EmployeeNavbarComponent implements OnInit {
     var id=obj["id"];
     this.authenticationService.patch(this.status,id).subscribe(
         data => {
-            alert("You are active now :) ");
+          this.openSnackBar("You are Online now");
         },
         err => {
             console.log(err);
@@ -61,17 +64,10 @@ export class EmployeeNavbarComponent implements OnInit {
     this.authenticationService.patch(this.status,id)
     .subscribe(
         data => {
-            console.log("You are logged out");
+          this.openSnackBar("You are Logged out.");
         },
         error => {
           console.log(error);
         });
-    
-   
-    
-  
   }
- 
-
-
 }

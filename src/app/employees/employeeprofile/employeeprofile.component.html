@@ -4,7 +4,7 @@
 <!-- Main body -->
 <div class="Employee">
     <div *ngIf="loaderService.isLoading | async" class="loader-container">
-        <mat-spinner style="top: 50%;left: 50%;"></mat-spinner>
+        <mat-spinner   [mode]="indeterminate" style="top: 50%;left: 50%;"></mat-spinner>
     </div>
     <div class="row glutters">
         <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12" style="height: max-content;">

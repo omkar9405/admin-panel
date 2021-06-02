@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services/authentication.service';
 import { TaskerService } from 'src/app/_services/tasker.service';
@@ -25,7 +26,8 @@ export class LoginemployeeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: TaskerService
+    private authenticationService: TaskerService,
+    private _snackBar: MatSnackBar 
 ) { 
     // redirect to home if already logged in
     if (this.authenticationService.currentTaskerValue) { 
@@ -42,6 +44,9 @@ ngOnInit() {
     // get return url from route parameters or default to '/'
    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/customerProfle';
 }
+openSnackBar(message: string) {
+    this._snackBar.open(message,'OK',{horizontalPosition: 'center',verticalPosition: 'top',duration: 3000});
+  }
 
 // convenience getter for easy access to form fields
 get f() { return this.loginForm.controls; }
@@ -58,7 +63,7 @@ onSubmit() {
     this.authenticationService.login(this.f.email.value, this.f.password.value)
         .subscribe(
             data => {
-                alert("Login Successful..");
+                this.openSnackBar("Login Successfull");
                 console.log(localStorage.getItem('Token'));
                 this.router.navigate(['/employeeProfile']);
                 // this.loggedin();

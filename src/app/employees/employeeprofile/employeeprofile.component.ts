@@ -6,6 +6,7 @@ import * as bcrypt from 'bcryptjs';
 import { BookingService } from 'src/app/_services/booking.service';
 import { Router } from '@angular/router';
 import { PreloaderService } from 'src/app/globalloader/preloader/preloader.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-employeeprofile',
@@ -27,8 +28,13 @@ export class EmployeeprofileComponent implements OnInit {
     private router: Router,
     private datatableservice: DatatableService,  
     private bookingService:BookingService,
-    public loaderService:PreloaderService) {   
+    public loaderService:PreloaderService,
+    private _snackBar: MatSnackBar) {   
    }
+
+   openSnackBar(message: string) {
+    this._snackBar.open(message,'OK',{horizontalPosition: 'center',verticalPosition: 'top',duration: 3000});
+  }
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
@@ -126,7 +132,7 @@ export class EmployeeprofileComponent implements OnInit {
         this.taskerService.update(this.profileForm.value,this.id).subscribe(
       (data:any) => {
         console.log(data);
-        alert("Updated Successfully");  
+        this.openSnackBar("Updated Successfull");
         this.loading=false;
     },(err) => {
         alert(err);

@@ -50,7 +50,7 @@
 <!-- Main body -->
  <div class="Employee">
     <div *ngIf="loaderService.isLoading | async" class="loader-container">
-        <mat-spinner style="top: 50%;left: 50%;"></mat-spinner>
+        <mat-progress-spinner   [color]="accent" [mode]="indeterminate"style="top: 50%;left: 50%;"></mat-progress-spinner>
     </div>
 <div >
   <div class="row">

@@ -58,6 +58,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import {MatTabsModule} from '@angular/material/tabs';
 import { RequestsComponent } from '../../modules/requests/requests.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DataTablesModule } from 'angular-datatables';
 import { NewadminComponent } from 'src/app/modules/admin/newadmin/newadmin.component';
 import { EditemployeeComponent } from 'src/app/modules/employee/editemployee/editemployee.component';
@@ -113,6 +114,7 @@ import { ForgotpasswordTaskerComponent } from 'src/app/employees/loginemployee/f
     MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
+    MatSnackBarModule,
     MatListModule,
     MatInputModule,
     MatTableModule,
