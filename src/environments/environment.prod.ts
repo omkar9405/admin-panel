@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://justdialapi.herokuapp.com/api'
+  apiUrl: 'http://justdialapi.herokuapp.com/api'
 };

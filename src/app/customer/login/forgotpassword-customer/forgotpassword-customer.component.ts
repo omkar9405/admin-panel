@@ -45,6 +45,8 @@ export class ForgotpasswordCustomerComponent implements OnInit {
     }, (err) => {
       console.log('Error while reseting password');
       console.error(err);
+      this.loadingforgot = false;
+      this.submitOTP = false;
     });
   }
 
@@ -58,6 +60,8 @@ export class ForgotpasswordCustomerComponent implements OnInit {
   }, (err) => {
     console.log('Error while sending OTP');
     console.error(err);
+    this.submittedEmail = false;
+    this.loadingOTP = false;
   });
   }
 
