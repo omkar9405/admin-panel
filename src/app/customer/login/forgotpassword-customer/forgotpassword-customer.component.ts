@@ -41,6 +41,7 @@ export class ForgotpasswordCustomerComponent implements OnInit {
       this.loadingforgot = false;
       this.submitOTP = false;
       console.log("Forgot password successfully");
+      this.location.back();
     }, (err) => {
       console.log('Error while reseting password');
       console.error(err);
