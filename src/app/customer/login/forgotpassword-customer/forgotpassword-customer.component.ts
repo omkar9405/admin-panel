@@ -15,12 +15,21 @@ export class ForgotpasswordCustomerComponent implements OnInit {
   submitOTP = false;
   error = '';
   success='';
+  emailDTO={
+    "email":""
+  }
+  resetDTO={
+    "email":this.emailDTO.email,
+    "password":""
+  }
+  code="";
   constructor(private location: Location,private formBuilder:FormBuilder, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.forgotForm = this.formBuilder.group({
       email: ['', Validators.required],
-      OTP: ['', Validators.required]
+      OTP: ['', Validators.required],
+      password:['',Validators.required]
   });
   }
   get f() { return this.forgotForm.controls; }
@@ -28,14 +37,28 @@ export class ForgotpasswordCustomerComponent implements OnInit {
   forgotPassword(){
     this.loadingforgot = true;
     this.submitOTP =true;
-    
+    this.authenticationService.resetpassword(this.resetDTO,this.code).subscribe((res: any) => {
+      this.loadingforgot = false;
+      this.submitOTP = false;
+      console.log("Forgot password successfully");
+    }, (err) => {
+      console.log('Error while reseting password');
+      console.error(err);
+    });
   }
-sendOTP()
-{
+
+  sendOTP(){
   this.submittedEmail = true;
   this.loadingOTP = true;
-  
-}
+  this.authenticationService.getOTP(this.emailDTO).subscribe((res: any) => {
+    this.submittedEmail = false;
+    this.loadingOTP = false;
+    console.log("OTP send successfully");
+  }, (err) => {
+    console.log('Error while sending OTP');
+    console.error(err);
+  });
+  }
 
   back()
 { 

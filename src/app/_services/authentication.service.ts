@@ -51,5 +51,12 @@ export class AuthenticationService {
         this.currentCustomerSubject.next(null);
     }
     //Taskers
+    getOTP(Email){
+        return this.http.post(`${environment.apiUrl}/customers/sendOTP`,Email);
+      }
+    
+      resetpassword(passwordDto,code):any{
+        return this.http.patch(`${environment.apiUrl}/customers/passwordreset/`+ code,passwordDto);
+      }
 
 }
