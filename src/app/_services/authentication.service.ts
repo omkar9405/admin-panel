@@ -52,11 +52,11 @@ export class AuthenticationService {
     }
     //Taskers
     getOTP(Email){
-        return this.http.post<any>(`${environment.apiUrl}/customers/sendOTP`,Email);
+        return this.http.post<any>(`${environment.apiUrl}/customers/sendOTP`, Email);
       }
     
-      resetpassword(passwordDto,code){
-        return this.http.patch<any>(`${environment.apiUrl}/customers/passwordreset/`+ code,passwordDto);
+      resetpassword(passwordDto,code:any){
+        return this.http.patch<any>(`${environment.apiUrl}/customers/passwordreset/`+ code , passwordDto);
       }
 
 }
