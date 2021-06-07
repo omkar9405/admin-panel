@@ -71,5 +71,13 @@ catch(Error){
     localStorage.removeItem('currentTasker');
     localStorage.removeItem('Token');
     this.currentTaskerSubject.next(null);
-}
+  }
+
+      getOTP(Email){
+        return this.http.post<any>(`${environment.apiUrl}/taskers/sendOTP`, Email);
+      }
+    
+      resetpassword(passwordDto,code:any){
+        return this.http.patch<any>(`${environment.apiUrl}/taskers/passwordreset/`+ code , passwordDto);
+      }
 }
