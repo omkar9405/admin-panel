@@ -133,6 +133,7 @@ export class EmployeeprofileComponent implements OnInit {
       (data:any) => {
         console.log(data);
         this.openSnackBar("Updated Successfull");
+        console.log(this.profileForm.value);
         this.loading=false;
     },(err) => {
         alert(err);
