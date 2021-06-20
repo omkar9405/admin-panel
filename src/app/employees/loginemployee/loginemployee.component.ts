@@ -70,7 +70,7 @@ onSubmit() {
                 console.log(data);
             },
             error => {
-                this.error = error;
+                this.error = error.message;
                 this.loading = false;
             });
 }
