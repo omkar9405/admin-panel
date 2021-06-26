@@ -30,6 +30,7 @@
                             <h3>I'm {{this.profileForm.get('firstname').value}} </h3>
                             <h3>Completed Tasks:{{this.profileForm.get('completedTasks').value}}</h3>
                             <br>
+                            
                             <h3>Contact No: {{this.profileForm.get('mobile').value}}</h3>
                             <!-- <p style="font-size:medium"></p> -->
                             <h3>Email: {{this.profileForm.get('email').value}}</h3>
@@ -73,8 +74,8 @@
                                             <input type="text" 
                                             class="form-control" 
                                             formControlName="firstname"
-                                           
-                                                placeholder="First Name">
+                                            [(ngModel)]="taskerDto.firstname"
+                                            placeholder="First Name">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -83,6 +84,7 @@
                                             <input type="text" 
                                             class="form-control" 
                                             id="lastName"
+                                            [(ngModel)]="taskerDto.lastname"
                                             formControlName="lastname"
                                          
                                                 placeholder="Last Name">
@@ -95,8 +97,8 @@
                                             class="form-control" 
                                             id="phone"
                                             formControlName="mobile"
-                                           
-                                                placeholder="Enter phone number">
+                                            [(ngModel)]="taskerDto.mobile"
+                                            placeholder="Enter phone number">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -105,9 +107,9 @@
                                             <input type="email" 
                                             class="form-control" 
                                             id="email"
+                                            [(ngModel)]="taskerDto.email"
                                             formControlName="email"
-                                           
-                                                placeholder="Enter email ID">
+                                            placeholder="Enter email ID">
                                         </div>
                                     </div>
 
@@ -117,8 +119,20 @@
                                             <input type="text" 
                                             class="form-control" 
                                             formControlName="gender"
-                                           
-                                                placeholder="Gender">
+                                            [(ngModel)]="taskerDto.gender"
+                                            placeholder="Gender">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="dob">Date of Birth </label>
+                                            <input 
+                                            type="date" 
+                                            formControlName="dob" 
+                                            name="dob"
+                                            [(ngModel)]="taskerDto.dob"
+                                            class="form-control" required>
                                         </div>
                                     </div>
 
@@ -128,8 +142,8 @@
                                             <input type="text" 
                                             class="form-control" 
                                             formControlName="education"
-                                         
-                                                placeholder="Education">
+                                            [(ngModel)]="taskerDto.education"
+                                            placeholder="Education">
                                         </div>
                                     </div>
                         
@@ -139,8 +153,8 @@
                                             <input type="text" 
                                             class="form-control" 
                                             formControlName="completedTasks"
-                                           
-                                                placeholder="completed Task">
+                                            [(ngModel)]="taskerDto.completedTasks"
+                                            placeholder="completed Task">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -149,8 +163,8 @@
                                             <input type="text" 
                                             class="form-control" 
                                             formControlName="jobtype"
-                                           
-                                                placeholder="Job Type">
+                                            [(ngModel)]="taskerDto.jobtype"
+                                            placeholder="Job Type">
                                         </div>
                                     </div>
                                 </div>
@@ -163,11 +177,21 @@
                                         <tr *ngFor="let skill of skills().controls; let i=index" [formGroupName]="i">
                                           <td>
                                               Skillname :
-                                              <input type="text" formControlName="skillname" class="form-control">
+                                              <input 
+                                              type="text" 
+                                              formControlName="skillname" 
+                                              class="form-control"
+                                              [(ngModel)]="taskerDto.skills[i].skillname"
+                                              >
                                           </td>
                                           <td>
                                               Charges:
-                                              <input type="text" formControlName="charges" class="form-control">
+                                              <input 
+                                              type="text" 
+                                              formControlName="charges" 
+                                              class="form-control"
+                                              [(ngModel)]="taskerDto.skills[i].charges"
+                                              >
                                           </td>
                                           <td>
                                               <button (click)="removeSkill(i)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -187,8 +211,8 @@
                                             class="form-control" 
                                             id="street"
                                             formControlName="street"
-                                    
-                                                placeholder="Enter Street">
+                                            [(ngModel)]="taskerDto.address[0].street"
+                                            placeholder="Enter Street">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -197,8 +221,8 @@
                                             <input type="text" class="form-control" 
                                             id="city"
                                             formControlName="city"
-                                       
-                                                placeholder="Enter City">
+                                            [(ngModel)]="taskerDto.address[0].city"
+                                            placeholder="Enter City">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -208,8 +232,8 @@
                                             class="form-control" 
                                             id="state"
                                             formControlName="state"
-                                          
-                                                placeholder="Enter State">
+                                            [(ngModel)]="taskerDto.address[0].state"
+                                            placeholder="Enter State">
                                         </div>
                                     </div>
                                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12">
@@ -219,7 +243,7 @@
                                             class="form-control" 
                                             id="zip" 
                                             formControlName="pincode"
-                                         
+                                            [(ngModel)]="taskerDto.address[0].pincode"
                                             placeholder="Pin Code">
                                         </div>
                                     </div>
@@ -235,8 +259,8 @@
                                             class="form-control" 
                                             id="password"
                                             formControlName="password"
-                                         
-                                                placeholder="Enter Password">
+                                            [(ngModel)]="taskerDto.password"
+                                            placeholder="Enter Password">
                                         </div>
                                     </div>
                                 </div>

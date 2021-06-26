@@ -22,7 +22,36 @@ export class EmployeeprofileComponent implements OnInit {
   id:any;
   error='';
   username='';
-  
+  taskerDto = {
+    "imagePath":"",
+    "firstname":"",
+    "completedTasks":"",
+    "lastname":"",
+    "mobile": 0,
+    "gender":"",
+    "email": "",
+    "dob":"",
+    "username":"",
+    "jobtype":"",
+    "password": "",
+    "education":"",
+    "active":true,
+    "skills":[{
+     "skillname":"",
+     "charges":""
+   },
+   {
+    "skillname":"",
+    "charges":""
+  }
+ ],
+    "address":[{
+      "street":"",
+      "city":"",
+      "state":"",
+      "pincode":""
+    }]
+   }
   constructor(private taskerService:TaskerService, 
     private formBuilder:FormBuilder, 
     private router: Router,
@@ -88,6 +117,7 @@ export class EmployeeprofileComponent implements OnInit {
 
    getTasker(){
     this.taskerService.getById(this.id).subscribe((res: any) => {
+      console.log(res);
       this.profileForm.controls['gender'].setValue(res.gender);
       this.profileForm.controls['firstname'].setValue(res.firstname);
       this.profileForm.controls['lastname'].setValue(res.lastname);
@@ -102,20 +132,27 @@ export class EmployeeprofileComponent implements OnInit {
       this.profileForm.controls['pincode'].setValue(res.address[0].pincode);
       this.profileForm.controls['education'].setValue(res.education);
       this.profileForm.controls['username'].setValue(res.username);
+      this.taskerDto.username=res.username;
       this.profileForm.controls['jobtype'].setValue(res.jobtype);
       this.profileForm.controls['active'].setValue(res.active);
       res.skills.forEach(s => {
-        (this.profileForm.get("skills") as FormArray).push(this.newSkill())
+        (this.profileForm.get("skills") as FormArray).push(this.newSkill());
       });
+      for(let i=0;i<res.skills.length;i++)
+      {
+        this.taskerDto.skills[i].skillname=res.skills[i].skillname;
+        this.taskerDto.skills[i].charges=res.skills[i].charges;
+      }
       this.profileForm.controls['skills'].patchValue(res.skills);
       this.profileForm.controls['imagePath'].patchValue(res.imagePath);
-       if(this.profileForm.get('imagePath').value == "https://justdialapi.herokuapp.com/images/undefined")
+       if((this.profileForm.get('imagePath').value == "https://justdialapi.herokuapp.com/images/undefined") || (this.profileForm.get('imagePath').value == ""))
       {
         this.imageURL="../assets/dp.png";
       }
       else
       {
         this.imageURL= this.profileForm.get('imagePath').value;
+        this.taskerDto.imagePath=res.imagePath;
       }
       this.refresh();
       // this.getBookings();
@@ -129,11 +166,11 @@ export class EmployeeprofileComponent implements OnInit {
     update() {
         this.submitted = true;
         this.loading = true;
-        this.taskerService.update(this.profileForm.value,this.id).subscribe(
+        this.taskerService.update(this.taskerDto,this.id).subscribe(
       (data:any) => {
         console.log(data);
         this.openSnackBar("Updated Successfull");
-        console.log(this.profileForm.value);
+        console.log(this.taskerDto);
         this.loading=false;
     },(err) => {
         alert(err);
@@ -154,6 +191,7 @@ export class EmployeeprofileComponent implements OnInit {
     reader.onload = () => {
       this.imageURL = reader.result as string;
       this.profileForm.controls['imagePath'].setValue(this.imageURL);
+      this.taskerDto.imagePath =this.imageURL;
     }
     reader.readAsDataURL(file)
   }
