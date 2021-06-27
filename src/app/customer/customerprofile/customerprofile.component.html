@@ -115,6 +115,7 @@
                                         <input type="text" 
                                         class="form-control" 
                                         id="firstname"
+                                               [readonly]="true"
                                         formControlName="firstName"
                                         [(ngModel)]="customerDto.firstName"
                                         [value]="customerDto.firstName"
@@ -127,6 +128,7 @@
                                         <input type="text" 
                                         class="form-control" 
                                         id="lastname"
+                                               [readonly]="true"
                                         formControlName="lastName"
                                         [(ngModel)]="customerDto.lastName"
                                         [value]="customerDto.lastName"
@@ -153,6 +155,7 @@
                                           <input type="email" 
                                           class="form-control" 
                                           id="email"
+                                                 [readonly]="true"
                                           formControlName="email"
                                           [(ngModel)]="customerDto
 .email"
