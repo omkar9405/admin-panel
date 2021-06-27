@@ -72,6 +72,7 @@
                                         <div class="form-group">
                                             <label for="firstName">First Name</label>
                                             <input type="text" 
+                                                   [readonly]="true"
                                             class="form-control" 
                                             formControlName="firstname"
                                             [(ngModel)]="taskerDto.firstname"
@@ -82,6 +83,7 @@
                                         <div class="form-group">
                                             <label for="lastName">Last Name</label>
                                             <input type="text" 
+                                                   [readonly]="true"
                                             class="form-control" 
                                             id="lastName"
                                             [(ngModel)]="taskerDto.lastname"
@@ -105,6 +107,7 @@
                                         <div class="form-group">
                                             <label for="eMail">Email</label>
                                             <input type="email" 
+                                                   [readonly]="true"
                                             class="form-control" 
                                             id="email"
                                             [(ngModel)]="taskerDto.email"
@@ -118,6 +121,7 @@
                                             <label for="gender">Gender</label>
                                             <input type="text" 
                                             class="form-control" 
+                                                   [readonly]="true"
                                             formControlName="gender"
                                             [(ngModel)]="taskerDto.gender"
                                             placeholder="Gender">
@@ -162,6 +166,7 @@
                                             <label for="jobtype">Job Type</label>
                                             <input type="text" 
                                             class="form-control" 
+                                                   [readonly]="true"
                                             formControlName="jobtype"
                                             [(ngModel)]="taskerDto.jobtype"
                                             placeholder="Job Type">
@@ -258,6 +263,7 @@
                                             <input type="text" 
                                             class="form-control" 
                                             id="password"
+                                                   [readonly]="true"
                                             formControlName="password"
                                             [(ngModel)]="taskerDto.password"
                                             placeholder="Enter Password">
